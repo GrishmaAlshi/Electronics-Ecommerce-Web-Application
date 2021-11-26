@@ -4,6 +4,8 @@ import CarouselSlide from "../Carousel";
 import CarouselShop from "../Carousel/CarouselShop";
 import {Col, Container, Row} from "react-bootstrap";
 import Footer from "../Footer/Footer";
+import Products from "../Products";
+import Shop from "../Shop";
 const Home = () => {
     return (
         <>
@@ -33,7 +35,8 @@ const Home = () => {
             <br/>
             <CarouselShop/>
             <br/>
-
+<Shop/>
+            <br/>
             <Footer/>
         </>
 

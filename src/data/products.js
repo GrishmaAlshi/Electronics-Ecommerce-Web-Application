@@ -1,0 +1,34 @@
+export const popularProducts = [
+    {
+        id:1,
+        img:"https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1623447110-71tpda7cwul-ac-sl1500-1623447093.jpg",
+    },
+    {
+        id:2,
+        img:"https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1623447110-71tpda7cwul-ac-sl1500-1623447093.jpg",
+    },
+    {
+        id:3,
+        img:"https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1623447110-71tpda7cwul-ac-sl1500-1623447093.jpg",
+    },
+    {
+        id:4,
+        img:"https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1623447110-71tpda7cwul-ac-sl1500-1623447093.jpg",
+    },
+    {
+        id:5,
+        img:"https://media.wired.com/photos/5bcea2642eea7906bba84c67/master/w_2560%2Cc_limit/iphonexr.jpg",
+    },
+    {
+        id:6,
+        img:"https://media.wired.com/photos/5bcea2642eea7906bba84c67/master/w_2560%2Cc_limit/iphonexr.jpg",
+    },
+    {
+        id:7,
+        img:"https://media.wired.com/photos/5bcea2642eea7906bba84c67/master/w_2560%2Cc_limit/iphonexr.jpg",
+    },
+    {
+        id:8,
+        img:"https://media.wired.com/photos/5bcea2642eea7906bba84c67/master/w_2560%2Cc_limit/iphonexr.jpg",
+    },
+]

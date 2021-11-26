@@ -11,7 +11,9 @@ const NavigationTop = () => {
                     <Nav className="me-auto">
                         <Nav.Link href="/about">About</Nav.Link>
                         <Dropdown as={NavItem}>
-                            <Dropdown.Toggle as={NavLink}>Shop</Dropdown.Toggle>
+                            <Dropdown.Toggle as={NavLink}>
+
+                                Shop</Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item>Laptops</Dropdown.Item>
                                 <Dropdown.Item>Television sets</Dropdown.Item>
