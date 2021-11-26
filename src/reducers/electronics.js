@@ -10,6 +10,10 @@ const electronics = (state = initialState, action) => {
           ...action.electronics,
         },
       };
+    case "fetch-all-electronics" :
+      return({
+        electronics : action.electronics
+      });
     default:
       return state;
   }

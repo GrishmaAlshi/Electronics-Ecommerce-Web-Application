@@ -1,11 +1,12 @@
 import React from "react";
 import AdminNavbar from "../AdminNavbar";
+import ElectronicsList from "../ElectronicsList";
+
 const ElectronicsUpdate = () => {
   return (
     <>
       <AdminNavbar />
-
-      <h2>Update Component</h2>
+      <ElectronicsList/>
     </>
   );
 };

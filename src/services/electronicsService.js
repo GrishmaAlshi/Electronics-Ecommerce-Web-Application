@@ -9,3 +9,13 @@ export const createNewElectronics = (electronics) => {
     },
   });
 };
+
+export const fetchAllElectronics = (dispatch, electronics) => {
+  fetch(ELECTRONICS_API).then(response => response.json())
+  .then(electronics => 
+    dispatch({
+      type:"fetch-all-electronics",
+      electronics
+    })
+);
+}
