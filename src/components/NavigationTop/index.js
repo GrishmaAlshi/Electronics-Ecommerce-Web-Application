@@ -7,13 +7,13 @@ const NavigationTop = () => {
         <>
             <Navbar bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand href="/home">E-Commerce</Navbar.Brand>
+                    <Navbar.Brand href="/">E-Commerce</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/about">About</Nav.Link>
                         <Dropdown as={NavItem}>
                             <Dropdown.Toggle as={NavLink}>
-
-                                Shop</Dropdown.Toggle>
+                            <Link to="/shop">Shop</Link>
+                            </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item>Laptops</Dropdown.Item>
                                 <Dropdown.Item>Television sets</Dropdown.Item>
