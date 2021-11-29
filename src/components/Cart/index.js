@@ -1,16 +1,16 @@
 import React from 'react';
 import NavigationTop from "../NavigationTop/index";
 import Footer from "../Footer/Footer";
-import ProductDetailsComponent from "./ProductDetailsComponent";
-const ProductDetails = () => {
+import CartComponent from "./CartComponent";
+const Cart = () => {
     return (
         <>
             <NavigationTop/>
-            <ProductDetailsComponent/>
+            <CartComponent/>
             <Footer/>
         </>
 
     );
 }
 
-export default ProductDetails;
+export default Cart;

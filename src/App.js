@@ -4,6 +4,7 @@ import Shop from "./components/Shop/index";
 import Login from "./components/Login/index";
 import Signup from "./components/Signup/index";
 import ProductDetails from "./components/ProductDetails";
+import Cart from "./components/Cart";
 
 function App() {
     return (
@@ -23,6 +24,9 @@ function App() {
                 </Route>
                 <Route path="/productDetails">
                     <ProductDetails/>
+                </Route>
+                <Route path="/cart">
+                    <Cart/>
                 </Route>
             </div>
         </BrowserRouter>
