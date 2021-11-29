@@ -1,6 +1,8 @@
 import Home from './components/Home/index';
 import {BrowserRouter, Link, Route} from "react-router-dom";
 import Shop from "./components/Shop/index";
+import Login from "./components/Login/index";
+import Signup from "./components/Signup/index";
 
 function App() {
     return (
@@ -13,6 +15,10 @@ function App() {
                     <Shop/>
                 </Route>
                 <Route path="/login">
+                    <Login/>
+                </Route>
+                <Route path="/signup">
+                    <Signup/>
                 </Route>
             </div>
         </BrowserRouter>
