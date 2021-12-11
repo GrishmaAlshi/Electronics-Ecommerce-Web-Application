@@ -22,6 +22,7 @@ function App() {
         <Provider store={store}>
             <BrowserRouter>
                 <div className="container">
+
                     <Route path="/" exact={true}>
                         <Home/>
                     </Route>
@@ -52,6 +53,7 @@ function App() {
                     <Route path="/cart">
                         <Cart/>
                     </Route>
+    
                 </div>
             </BrowserRouter>
         </Provider>

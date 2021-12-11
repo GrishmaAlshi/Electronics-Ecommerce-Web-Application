@@ -1,7 +1,28 @@
 import '../../vendors/bootstrap/css/login.css';
-import {Link} from "react-router-dom";
+import React from 'react';
+import { useState } from 'react';
+import { signin} from '../../firebase';
+import { useEffect } from "react";
+import { useHistory } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
 
 const Login = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const history = useHistory();
+    const authListener= () => { 
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if(user) {
+                history.push("/");
+            } else {
+                history.push("/login");
+            }
+        });
+    }
+    useEffect(() => {
+        authListener();
+    }, []);
     return(
         <div className="box-form">
 
@@ -24,9 +45,17 @@ const Login = () => {
                 <div className="account mt-5">Don't have an account? <a href="/signup">Create Your Account</a> it takes less than a minute
                 </div>
                 <div className="inputs">
-                    <input type="text" placeholder="user name"/>
+                    <input type="text" 
+                    value={email}
+                    onChange = {(e) => setEmail(e.target.value)}
+                    placeholder="user name"
+                    />
                     <br/>
-                    <input type="password" placeholder="password"/>
+                    <input 
+                    type="password" 
+                    value={password}
+                    onChange = {(e) => setPassword(e.target.value)}
+                    placeholder="password"/>
                 </div>
 
                 <br/><br/>
@@ -40,7 +69,7 @@ const Login = () => {
                 </div>
 
                 <br/>
-                <button>Login</button>
+                <button onClick = {() => signin(email, password)}>Login</button>
             </div>
 
         </div>

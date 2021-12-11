@@ -1,6 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {logout} from '../../firebase';
 import {Container, Dropdown, Nav, Navbar, NavItem, NavLink} from "react-bootstrap";
+
 
 const NavigationTop = () => {
     return(
@@ -25,7 +27,8 @@ const NavigationTop = () => {
                         </Dropdown>
                         <Nav.Link href="/blog">Blog</Nav.Link>
                         <Nav.Link href="/login">Login</Nav.Link>
-
+                        <button onClick = {() => logout()}>Logout</button>
+                        
                     </Nav>
                 </Container>
             </Navbar>
