@@ -2,9 +2,21 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {logout} from '../../firebase';
 import {Container, Dropdown, Nav, Navbar, NavItem, NavLink} from "react-bootstrap";
-
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
 
 const NavigationTop = () => {
+    let text = "";
+    const authListener= () => { 
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if(user) {
+                alert(user);
+                text = "Profile";
+            } else {
+                text = "Login";
+            }
+        });
+    }
     return(
         <>
             <Navbar bg="dark" variant="dark">
@@ -26,7 +38,7 @@ const NavigationTop = () => {
                             </Dropdown.Menu>
                         </Dropdown>
                         <Nav.Link href="/blog">Blog</Nav.Link>
-                        <Nav.Link href="/login">Login</Nav.Link>
+                        <Nav.Link href="/login">{text}</Nav.Link>
                         <button onClick = {() => logout()}>Logout</button>
                         
                     </Nav>
