@@ -6,6 +6,7 @@ import ElectronicsUpdate from "./components/ElectronicsUpdate";
 import Admin from "./components/Admin";
 import { combineReducers, createStore } from "redux";
 import electronics from "./reducers/electronics";
+import UpdateDetails from "./components/ElectronicsUpdate/UpdateDetails";
 
 const reducer = combineReducers({electronics:electronics});
 const store = createStore(reducer);
@@ -19,6 +20,9 @@ function App() {
       </Route>
       <Route path="/admin/update" exact={true}>
         <ElectronicsUpdate />
+      </Route>
+      <Route path = "/admin/update/:id" exact={true}>
+        <UpdateDetails/>
       </Route>
     </BrowserRouter>
     </Provider>

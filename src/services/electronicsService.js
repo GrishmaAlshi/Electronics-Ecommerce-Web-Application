@@ -15,7 +15,18 @@ export const fetchAllElectronics = (dispatch, electronics) => {
   .then(electronics => 
     dispatch({
       type:"fetch-all-electronics",
-      electronics
+      electronics: electronics
     })
-);
-}
+  );
+};
+
+export const fetchElectronicById = (dispatch, id) => {
+  fetchAllElectronics(`${ELECTRONICS_API}/${id}`)
+  .then(response => response.json())
+  .then(electronics => dispatch({
+    type:"fetch-electronics-by-id",
+    electronics
+  }))
+};
+
+
