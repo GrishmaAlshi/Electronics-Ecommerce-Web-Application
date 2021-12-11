@@ -5,9 +5,17 @@ import Login from "./components/Login/index";
 import Signup from "./components/Signup/index";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
+import {Provider} from "react-redux";
+import  {combineReducers, createStore} from "redux";
+import electronics from "./reducers/electronics";
+import ProductList from "./components/Products/Product/ProductList";
+
+const reducer = combineReducers({electronics:electronics});
+const store = createStore(reducer);
 
 function App() {
     return (
+        <Provider store={store}>
         <BrowserRouter>
             <div className="container">
                 <Route path="/" exact={true}>
@@ -30,7 +38,7 @@ function App() {
                 </Route>
             </div>
         </BrowserRouter>
-
+        </Provider>
     );
 }
 

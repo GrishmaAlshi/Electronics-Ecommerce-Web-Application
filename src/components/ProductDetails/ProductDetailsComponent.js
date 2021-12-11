@@ -116,6 +116,14 @@ const Button = styled.button`
   }
 `;
 
+const Reviews = styled.div`
+  
+`;
+
+const heading = styled.head`
+  width: 100%
+`;
+
 const styles = {
 
     largeIcon: {
@@ -206,6 +214,14 @@ const ProductDetailsComponent = () => {
                     </AddContainer>
                 </InfoContainer>
             </Wrapper>
+            <heading>Reviews</heading>
+            <Reviews>
+                <ul className="list-group">
+                    <li className="list-group-item">Very good</li>
+                    <li className="list-group-item">Good</li>
+                    <li className="list-group-item">LOVED THE QUALITY</li>
+                </ul>
+            </Reviews>
         </Container>
     )};
 
