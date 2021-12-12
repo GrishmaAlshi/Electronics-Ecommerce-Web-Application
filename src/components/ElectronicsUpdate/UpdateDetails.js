@@ -11,7 +11,7 @@ const productDetails = (state) => state.electronics.electronics;
 const UpdateDetails = () => {
     const {id} = useParams();
     const ELECTRONICS_API = "http://localhost:4000/api/electronics";
-    const [electronics, setElectronics] = useState([{model_name: "", best_price: ""}]);
+    const [electronics, setElectronics] = useState({model_name: "", highest_price: ""});
     const [inputs, setInputs] = useState({});
     // const dispatch = useDispatch();
     // useEffect(() => fetchElectronicById(dispatch, id.id), []);
@@ -42,6 +42,7 @@ const UpdateDetails = () => {
             .then(electronics => {
                 setElectronics(electronics[0])})
         , []);
+   
     return(
         <div>
             <AdminNavbar/>
@@ -58,8 +59,8 @@ const UpdateDetails = () => {
                 <br></br>
             <label>Price</label>
             <input type = "number" 
-                value = {electronics.best_price} 
-                name='best_price'
+                value = {electronics.highest_price} 
+                name='highest_price'
                 onChange ={onPriceChange}
                 ></input>
             <div className = "btn">

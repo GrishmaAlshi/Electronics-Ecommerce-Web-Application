@@ -7,6 +7,7 @@ import Admin from "./components/Admin";
 import { combineReducers, createStore } from "redux";
 import electronics from "./reducers/electronics";
 import UpdateDetails from "./components/ElectronicsUpdate/UpdateDetails";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 const reducer = combineReducers({electronics:electronics});
 const store = createStore(reducer);
@@ -22,7 +23,7 @@ function App() {
         <ElectronicsUpdate />
       </Route>
       <Route path = "/admin/update/:id" exact={true}>
-        <UpdateDetails/>
+        <UpdateDetails />
       </Route>
     </BrowserRouter>
     </Provider>

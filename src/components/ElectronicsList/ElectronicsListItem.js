@@ -6,7 +6,8 @@ import UpdateDetails from "../ElectronicsUpdate/UpdateDetails";
 const ElectronicsListItem = ({electronics}) => {
     const dispatch = useDispatch();
     const editClickHandler = () => {
-        return <UpdateDetails data={electronics.id}/>
+        console.log("From List Item " + electronics.id);
+        return <UpdateDetails data={electronics}/>
     }
     return(
         <li className="list-group-item" key={electronics.id}>
