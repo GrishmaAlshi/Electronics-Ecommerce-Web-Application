@@ -1,6 +1,15 @@
 import '../../vendors/bootstrap/css/signup.css';
+import {useHistory} from "react-router-dom";
 
 const Signup = () => {
+
+    const history = useHistory();
+
+    const cancelSignUp = () =>{
+        let path = "/login";
+        history.push(path);
+    }
+
     return(
 
 
@@ -26,8 +35,8 @@ const Signup = () => {
                 & Privacy</a>.</p>
 
             <div className="clearfix">
-                <button type="button" className="cancelbtn">Cancel</button>
-                <button type="submit" className="signupbtn">Sign Up</button>
+                <button type="button" className="cancelbtn" onclick="cancelSignUp()">Cancel</button>
+                <button type="submit" className="signupbtn" >Sign Up</button>
             </div>
         </div>
 
