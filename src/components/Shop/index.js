@@ -1,8 +1,10 @@
+import { useState } from "react";
 import styled from "styled-components";
 import NavigationTop from "../NavigationTop/index";
 import Products from "../Products/index";
 import Footer from "../Footer/Footer";
 import { mobile } from "../../responsive";
+import SearchBar from "../NavigationTop/SearchBar";
 
 const Container = styled.div``;
 
@@ -35,6 +37,11 @@ const Select = styled.select`
 const Option = styled.option``;
 
 const Shop = () => {
+  const [keyword, setKeyword] = useState("");
+  function onChange(newValue) {
+    console.log(newValue);
+    setKeyword(newValue);
+  }
   return (
     <Container>
       <NavigationTop />
@@ -60,16 +67,9 @@ const Shop = () => {
             <Option>Nokia</Option>
           </Select>
         </Filter>
-        <Filter>
-          <FilterText>Sort Products:</FilterText>
-          <Select>
-            <Option selected>Newest</Option>
-            <Option>Lowest to Highest Price</Option>
-            <Option>Highest to Lowest Price</Option>
-          </Select>
-        </Filter>
+        <SearchBar keyword={keyword} setKeyword={onChange} />
       </FilterContainer>
-      <Products category="electronics" />
+      <Products category="electronics" keyword={keyword} />
       <br />
       <Footer />
     </Container>
