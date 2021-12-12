@@ -19,3 +19,7 @@ export const fetchAllElectronics = (dispatch, electronics) => {
                            })
         );
 }
+
+export const fetchElectronicsById = (electronics) =>
+    fetch(`${ELECTRONICS_API}/${electronics._id}`
+    ).then(response => response.json());

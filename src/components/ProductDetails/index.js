@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import NavigationTop from "../NavigationTop/index";
 import Footer from "../Footer/Footer";
 import ProductDetailsComponent from "./ProductDetailsComponent";
-const ProductDetails = () => {
+import {useDispatch} from "react-redux";
+const ProductDetails = (id) => {
+
+
     return (
         <>
             <NavigationTop/>
-            <ProductDetailsComponent/>
+            <ProductDetailsComponent item={id}/>
             <Footer/>
         </>
 
