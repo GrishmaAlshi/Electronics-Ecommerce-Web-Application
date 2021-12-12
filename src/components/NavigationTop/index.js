@@ -16,9 +16,14 @@ const NavigationTop = () => {
                             <Link to="/shop">Shop</Link>
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                                <Dropdown.Item>Laptops</Dropdown.Item>
+                                <Dropdown.Item>
+                                    <Link to="/laptops">Laptops</Link>
+                                    {/* <Nav.Link href="/shop/laptops">Laptops</Nav.Link> */}
+                                </Dropdown.Item>
                                 <Dropdown.Item>Television sets</Dropdown.Item>
-                                <Dropdown.Item>Mobile Phones</Dropdown.Item>
+                                <Dropdown.Item>
+                                    <Link to="/mobiles">Mobile Phones</Link>
+                                </Dropdown.Item>
                                 <Dropdown.Item>Tablets</Dropdown.Item>
                                 <Dropdown.Item>Smart devices</Dropdown.Item>
                                 <Dropdown.Item>Washing machines</Dropdown.Item>
@@ -34,4 +39,6 @@ const NavigationTop = () => {
         </>
     );
 }
+
+
 export default NavigationTop;

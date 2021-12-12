@@ -3,6 +3,9 @@ import NavigationTop from "../NavigationTop/index";
 import Products from "../Products/index";
 import Footer from "../Footer/Footer";
 import { mobile } from "../../responsive";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllElectronics } from "../../services/electronicsService";
 
 const Container = styled.div``;
 
@@ -34,22 +37,20 @@ const Select = styled.select`
 `;
 const Option = styled.option``;
 
-const Shop = () => {
+const Mobiles = () => {
   return (
     <Container>
       <NavigationTop />
-      <Title>Shop Electronics</Title>
+      <Title>Shop Mobiles</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
           <Select>
-            <Option disabled selected>
-              Electronics
-            </Option>
-            <Option>Laptops</Option>
-            <Option>Mobile Phones</Option>
-            <Option>Smart Wearables</Option>
-            <Option>Tablets</Option>
+            <Option defaultValue="electronics">All</Option>
+            <Option value="laptops">Laptops</Option>
+            <Option value="mobiles">Mobile Phones</Option>
+            {/* <Option>Smart Wearables</Option>
+            <Option>Tablets</Option> */}
           </Select>
           <Select>
             <Option disabled selected>
@@ -69,11 +70,11 @@ const Shop = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <Products category="electronics" />
+      <Products category="mobiles" />
       <br />
       <Footer />
     </Container>
   );
 };
 
-export default Shop;
+export default Mobiles;

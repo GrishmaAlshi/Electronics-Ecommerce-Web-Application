@@ -1,11 +1,11 @@
 import React from "react";
 import {
-    Box,
-    Container,
-    Row,
-    Column,
-    FooterLink,
-    Heading,
+  Box,
+  Container,
+  Row,
+  Column,
+  FooterLink,
+  Heading,
 } from "./FooterStyles";
 
 const Footer = () => {
@@ -22,9 +22,9 @@ const Footer = () => {
                     </Column>
                     <Column>
                         <Heading>Products</Heading>
-                        <FooterLink href="#">Laptops</FooterLink>
+                        <FooterLink href="/laptops">Laptops</FooterLink>
                         <FooterLink href="#">Tablets</FooterLink>
-                        <FooterLink href="#">Mobile Phones</FooterLink>
+                        <FooterLink href="/mobiles">Mobile Phones</FooterLink>
                         <FooterLink href="#">Smart wearables</FooterLink>
                     </Column>
                     <Column>
