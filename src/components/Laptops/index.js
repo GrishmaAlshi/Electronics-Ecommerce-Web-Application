@@ -3,9 +3,10 @@ import NavigationTop from "../NavigationTop/index";
 import Products from "../Products/index";
 import Footer from "../Footer/Footer";
 import { mobile } from "../../responsive";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllElectronics } from "../../services/electronicsService";
+import SearchBar from "../NavigationTop/SearchBar";
 
 const Container = styled.div``;
 
@@ -37,7 +38,13 @@ const Select = styled.select`
 `;
 const Option = styled.option``;
 
-const Laptops = ({keyword}) => {
+const Laptops = () => {
+  const[keyword,setKeyword] = useState("");
+  function onChange(newValue) {
+    console.log(newValue);
+    setKeyword(newValue);
+
+  }
   return (
     <Container>
       <NavigationTop />
@@ -61,14 +68,7 @@ const Laptops = ({keyword}) => {
             <Option>Nokia</Option>
           </Select>
         </Filter>
-        <Filter>
-          <FilterText>Sort Products:</FilterText>
-          <Select>
-            <Option selected>Newest</Option>
-            <Option>Lowest to Highest Price</Option>
-            <Option>Highest to Lowest Price</Option>
-          </Select>
-        </Filter>
+        <SearchBar keyword={keyword} setKeyword={onChange}/>
       </FilterContainer>
       <Products category="laptops" keyword={keyword}/>
       <br />

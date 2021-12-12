@@ -6,12 +6,11 @@ const Signup = () => {
     const history = useHistory();
 
     const cancelSignUp = () =>{
-        let path = "/login";
+        let path = "/";
         history.push(path);
     }
 
     return(
-
 
         <div className="container">
             <h1>Sign Up</h1>
@@ -31,11 +30,11 @@ const Signup = () => {
                 <input type="checkbox" checked="checked" name="remember"/> Remember me
             </label>
 
-            <p className="para">By creating an account you agree to our <a href="#">Terms
+            <p className="para">By creating an account you agree to our <a href="/privacypolicy">Terms
                 & Privacy</a>.</p>
 
             <div className="clearfix">
-                <button type="button" className="cancelbtn" onclick="cancelSignUp()">Cancel</button>
+                <button type="button" className="cancelbtn" onClick={cancelSignUp}>Cancel</button>
                 <button type="submit" className="signupbtn" >Sign Up</button>
             </div>
         </div>
