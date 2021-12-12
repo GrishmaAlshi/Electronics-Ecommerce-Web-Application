@@ -39,11 +39,10 @@ const Select = styled.select`
 const Option = styled.option``;
 
 const Mobiles = () => {
-  const[keyword,setKeyword] = useState("");
+  const [keyword, setKeyword] = useState("");
   function onChange(newValue) {
     console.log(newValue);
     setKeyword(newValue);
-
   }
   return (
     <Container>
@@ -68,9 +67,9 @@ const Mobiles = () => {
             <Option>Nokia</Option>
           </Select>
         </Filter>
-        <SearchBar keyword={keyword} setKeyword={onChange}/>
+        <SearchBar keyword={keyword} setKeyword={onChange} />
       </FilterContainer>
-      <Products category="mobiles" keyword={keyword}/>
+      <Products category="mobiles" keyword={keyword} />
       <br />
       <Footer />
     </Container>
