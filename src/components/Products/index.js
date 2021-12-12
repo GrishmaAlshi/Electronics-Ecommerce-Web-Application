@@ -17,7 +17,7 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const Products = ({ category }) => {
+const Products = ({ category, keyword }) => {
   console.log("Cat", category);
   //   const electronics = useSelector(selectAllElectronics);
   // const dispatch = useDispatch();
@@ -26,16 +26,22 @@ const Products = ({ category }) => {
 
   // electronics = useSelector(selectAllElectronics);
   const dispatch = useDispatch();
+  console.log("====", keyword)
   useEffect(
     () =>
       fetch(`http://localhost:4000/api/${category}`)
         .then((response) => response.json())
         .then((electronics) => {
+            console.log(electronics)
+            const filteredElectronics = electronics.filter(e=>
+                e['brand'].includes(keyword)
+
+            )
           dispatch({
             type: "fetch-all-electronics",
-            electronics,
+              filteredElectronics,
           });
-          setElectronics(electronics);
+          setElectronics(filteredElectronics);
         }),
     []
   );

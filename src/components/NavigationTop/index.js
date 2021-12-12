@@ -1,6 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
-import { useState } from 'react';
 import {logout} from '../../firebase';
 import { useEffect } from "react";
 import {Container, Dropdown, Nav, Navbar, NavItem, NavLink} from "react-bootstrap";
@@ -20,12 +19,12 @@ const NavigationTop = ({isLoggedIn}) => {
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item>
-                                    <Link to="/laptops">Laptops</Link>
+                                    <Link to="/laptops" >Laptops</Link>
                                     {/* <Nav.Link href="/shop/laptops">Laptops</Nav.Link> */}
                                 </Dropdown.Item>
                                 <Dropdown.Item>Television sets</Dropdown.Item>
                                 <Dropdown.Item>
-                                    <Link to="/mobiles">Mobile Phones</Link>
+                                    <Link to="/mobiles" >Mobile Phones</Link>
                                 </Dropdown.Item>
                                 <Dropdown.Item>Tablets</Dropdown.Item>
                                 <Dropdown.Item>Smart devices</Dropdown.Item>

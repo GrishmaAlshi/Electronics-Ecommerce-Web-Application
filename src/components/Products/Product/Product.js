@@ -58,6 +58,8 @@ const Details = styled.div`
     justify-content: center;
     z-index: 2;
     overflow: hidden;
+    padding-top:270px;
+    margin-left:-100px;
 `;
 
 const Icon = styled.div`

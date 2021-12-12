@@ -24,12 +24,12 @@ const Signup = () => {
     }, []);
 
     const cancelSignUp = () =>{
-        let path = "/login";
+        let path = "/";
         history.push(path);
     }
 
-
     return(
+
         <div className="container">
             <h1>Sign Up</h1>
             <p>Please fill in this form to create an account.</p>
@@ -55,7 +55,7 @@ const Signup = () => {
                 <input type="checkbox" checked="checked" name="remember"/> Remember me
             </label>
 
-            <p className="para">By creating an account you agree to our <a href="#">Terms
+            <p className="para">By creating an account you agree to our <a href="/privacypolicy">Terms
                 & Privacy</a>.</p>
 
             <div className="clearfix">

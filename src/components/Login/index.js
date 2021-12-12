@@ -32,9 +32,8 @@ const Login = () => {
 
             <div className="left">
                 <div className="overlay">
-                    <h1>Welcome to ABC.</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Curabitur et est sed felis aliquet sollicitudin</p>
+                    <h1>Welcome to Bazinga.</h1>
+
                     <span>
                 <p>login with social media</p>
                 <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
@@ -46,7 +45,7 @@ const Login = () => {
 
             <div className="right">
                 <h5>Login</h5>
-                <div className="account mt-5">Don't have an account? <a href="/signup">Create Your Account</a> it takes less than a minute
+                <div className="account mt-5">Don't have an account? <a href="/signup">Create Your Account</a> It takes less than a minute
                 </div>
                 <div className="inputs">
                     <input type="text" 
@@ -63,14 +62,6 @@ const Login = () => {
                 </div>
 
                 <br/><br/>
-
-                <div className="remember-me--forget-password">
-                    <label>
-                        <input type="checkbox" name="item"/>
-                        <span className="text-checkbox">Remember me</span>
-                    </label>
-                    <p>forget password?</p>
-                </div>
 
                 <br/>
                 <button onClick = {() => signin(email, password)}>Login</button>
