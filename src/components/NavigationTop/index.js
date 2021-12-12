@@ -4,7 +4,6 @@ import { useState } from 'react';
 import {logout} from '../../firebase';
 import { useEffect } from "react";
 import {Container, Dropdown, Nav, Navbar, NavItem, NavLink} from "react-bootstrap";
-import { getAuth, onAuthStateChanged } from "@firebase/auth";
 
 const NavigationTop = ({isLoggedIn}) => {
     return(

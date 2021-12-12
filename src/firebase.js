@@ -23,11 +23,12 @@ const signup = (email, password, firstName, lastName) => {
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
-      console.log("User Signed in");
+      console.log(user.email);
       var db = getFirestore();
       setDoc(doc(db, "Users", email), {
-        FirstName: firstName,
-        LastName : lastName
+        FirstName: "",
+        LastName : "",
+        cart: []
       });
       // ...
     })

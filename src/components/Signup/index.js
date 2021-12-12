@@ -13,7 +13,7 @@ const Signup = () => {
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
             if(user) {
-                history.push("/");
+                history.goBack();
             } else {
                 console.log("Please register");
             }

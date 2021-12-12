@@ -3,6 +3,9 @@ import NavigationTop from "../NavigationTop/index";
 import Products from "../Products/index";
 import Footer from "../Footer/Footer";
 import { mobile } from "../../responsive";
+import { getCurrentUser } from "../../firebase";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Container = styled.div``;
 
@@ -35,9 +38,17 @@ const Select = styled.select`
 const Option = styled.option``;
 
 const Shop = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(true); 
+    useEffect(()=> {
+        if(getCurrentUser() === null) {
+            setIsLoggedIn(false);
+        } else {
+            setIsLoggedIn(true);
+        }
+    });
     return (
         <Container>
-            <NavigationTop />
+            <NavigationTop isLoggedIn={isLoggedIn}/>
             <Title>Shop Electronics</Title>
             <FilterContainer>
                 <Filter>
