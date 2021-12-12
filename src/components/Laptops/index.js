@@ -3,10 +3,9 @@ import NavigationTop from "../NavigationTop/index";
 import Products from "../Products/index";
 import Footer from "../Footer/Footer";
 import { mobile } from "../../responsive";
-import { getCurrentUser } from "../../firebase";
-import { useState } from "react";
-import { useEffect } from "react";
-import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllElectronics } from "../../services/electronicsService";
 
 const Container = styled.div``;
 
@@ -38,36 +37,20 @@ const Select = styled.select`
 `;
 const Option = styled.option``;
 
-const Shop = () => {
-    const [loggedIn, setLoggedIn] = useState("");
-    const authListener= () => { 
-        const auth = getAuth();
-        onAuthStateChanged(auth, (user) => {
-            if(user) {
-                setLoggedIn(true);
-            } else {
-                setLoggedIn(false);
-            }
-        });
-    }
-    useEffect(() => {
-        authListener();
-    }, []);
+const Laptops = () => {
   return (
     <Container>
-      <NavigationTop isLoggedIn={loggedIn}/>
-      <Title>Shop Electronics</Title>
+      <NavigationTop />
+      <Title>Shop Laptops</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
           <Select>
-            <Option disabled selected>
-              Electronics
-            </Option>
-            <Option>Laptops</Option>
-            <Option>Mobile Phones</Option>
-            <Option>Smart Wearables</Option>
-            <Option>Tablets</Option>
+            <Option defaultValue="electronics">All</Option>
+            <Option value="laptops">Laptops</Option>
+            <Option value="mobiles">Mobile Phones</Option>
+            {/* <Option>Smart Wearables</Option>
+            <Option>Tablets</Option> */}
           </Select>
           <Select>
             <Option disabled selected>
@@ -87,11 +70,11 @@ const Shop = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <Products category="electronics" />
+      <Products category="laptops" />
       <br />
       <Footer />
     </Container>
   );
 };
 
-export default Shop;
+export default Laptops;

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import { Add, Remove } from "@material-ui/icons";
 import {Carousel} from "react-bootstrap";
 import { mobile } from "../responsive";
+import {useDispatch} from "react-redux";
 const Container = styled.div`
     padding: 20px;
     display: flex;
@@ -132,8 +133,22 @@ const styles = {
     },
 
 };
+const ELECTRONICS_API = "http://localhost:4000/api/electronics";
 
-const ProductDetailsComponent = () => {
+const ProductDetailsComponent = (item) => {
+    console.log(`${ELECTRONICS_API}/item`);
+    // const electronics = useSelector(selectAllElectronics);
+    // const dispatch = useDispatch();
+    // useEffect(() => fetchAllElectronics(dispatch), []);
+    const [electronics, setElectronics] = useState([]);
+
+    // electronics = useSelector(selectAllElectronics);
+    const dispatch = useDispatch();
+    // useEffect(() => fetchAllElectronics(dispatch), []);
+    useEffect(() =>
+             fetch(`${ELECTRONICS_API}/item`
+                  ).then(response => response.json())
+        , []);
     return (
         <Container>
             <Wrapper>
@@ -178,7 +193,7 @@ const ProductDetailsComponent = () => {
                 </ImgContainer>
                 <InfoContainer>
                     <Title>
-                        Dell XPS
+                        {electronics.model_name}
                     </Title>
                     <Desc>
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.

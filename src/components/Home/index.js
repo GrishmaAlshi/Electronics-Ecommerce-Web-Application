@@ -8,6 +8,7 @@ import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { useEffect } from "react";
 import { useState } from 'react';
 
+import PrivacyAlert from "../PrivacyAlert";
 const Home = () => {
     const [loggedIn, setLoggedIn] = useState("");
     const authListener= () => { 
@@ -26,6 +27,7 @@ const Home = () => {
     return (
         <>
             <NavigationTop isLoggedIn = {loggedIn}/>
+            <PrivacyAlert/>
             <br/>
             <CarouselSlide/>
             <br/>

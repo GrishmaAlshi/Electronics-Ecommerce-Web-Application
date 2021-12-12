@@ -23,6 +23,12 @@ const Signup = () => {
         authListener();
     }, []);
 
+    const cancelSignUp = () =>{
+        let path = "/login";
+        history.push(path);
+    }
+
+
     return(
         <div className="container">
             <h1>Sign Up</h1>
@@ -53,8 +59,8 @@ const Signup = () => {
                 & Privacy</a>.</p>
 
             <div className="clearfix">
-                <button type="button" className="cancelbtn">Cancel</button>
                 <button type="submit" className="signupbtn" onClick={() => signup(email, password)}>Sign Up</button>
+                <button type="button" className="cancelbtn" onclick={() => cancelSignUp()}>Cancel</button>
             </div>
         </div>
 

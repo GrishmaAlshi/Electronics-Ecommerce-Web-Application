@@ -14,9 +14,10 @@ const Order = () => {
                 <Col>
                     <NavigationSidebar/>
                 </Col>
-                <Col>
+                <Row>
                     <Orders/>
-                </Col>
+                </Row>
+
             </Row>
             <Footer/>
         </>
