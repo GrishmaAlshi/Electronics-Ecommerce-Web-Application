@@ -5,7 +5,6 @@ import Footer from "../Footer/Footer";
 import { mobile } from "../../responsive";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllElectronics } from "../../services/electronicsService";
 import SearchBar from "../NavigationTop/SearchBar";
 
 const Container = styled.div``;
@@ -39,11 +38,10 @@ const Select = styled.select`
 const Option = styled.option``;
 
 const Laptops = () => {
-  const[keyword,setKeyword] = useState("");
+  const [keyword, setKeyword] = useState("");
   function onChange(newValue) {
     console.log(newValue);
     setKeyword(newValue);
-
   }
   return (
     <Container>
@@ -56,8 +54,6 @@ const Laptops = () => {
             <Option defaultValue="electronics">All</Option>
             <Option value="laptops">Laptops</Option>
             <Option value="mobiles">Mobile Phones</Option>
-            {/* <Option>Smart Wearables</Option>
-            <Option>Tablets</Option> */}
           </Select>
           <Select>
             <Option disabled selected>
@@ -68,9 +64,9 @@ const Laptops = () => {
             <Option>Nokia</Option>
           </Select>
         </Filter>
-        <SearchBar keyword={keyword} setKeyword={onChange}/>
+        <SearchBar keyword={keyword} setKeyword={onChange} />
       </FilterContainer>
-      <Products category="laptops" keyword={keyword}/>
+      <Products category="laptops" keyword={keyword} />
       <br />
       <Footer />
     </Container>

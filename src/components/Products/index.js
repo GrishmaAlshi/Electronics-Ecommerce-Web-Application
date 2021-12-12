@@ -1,14 +1,6 @@
+import React from "react";
 import styled from "styled-components";
-// import { popularProducts } from "../../data/products";
 import Product from "../Products/Product/Product";
-// import {fetchAllElectronics} from "../../fromservices/electronicsService";
-import { useEffect, useState } from "react";
-import * as electronicsService from "../../services/electronicsService";
-import { fetchAllElectronics } from "../../services/electronicsService";
-import { Provider, useDispatch, useSelector } from "react-redux";
-import ProductList from "./Product/ProductList";
-
-const selectAllElectronics = (state) => state.electronics.electronics;
 
 const Container = styled.div`
   padding: 20px;
@@ -17,42 +9,51 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const Products = ({ category, keyword }) => {
-  console.log("Cat", category);
-  //   const electronics = useSelector(selectAllElectronics);
-  // const dispatch = useDispatch();
-  //   useEffect(() => fetchAllElectronics(dispatch), []);
-  const [electronics, setElectronics] = useState([]);
+class Products extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      electronics: [],
+      filteredElectronics: [],
+    };
+    this.setElectronics();
+  }
 
-  // electronics = useSelector(selectAllElectronics);
-  const dispatch = useDispatch();
-  console.log("====", keyword)
-  useEffect(
-    () =>
-      fetch(`http://localhost:4000/api/${category}`)
-        .then((response) => response.json())
-        .then((electronics) => {
-            console.log(electronics)
-            const filteredElectronics = electronics.filter(e=>
-                e['brand'].includes(keyword)
+  componentDidUpdate(prevProps, prevData) {
+    if (prevProps["keyword"] && prevProps["keyword"] != this.props.keyword) {
+      const filteredElex = this.state.electronics.filter(
+        (e) =>
+          e["brand"].toLowerCase().includes(this.props.keyword.toLowerCase()) ||
+          e["model_name"]
+            .toLowerCase()
+            .includes(this.props.keyword.toLowerCase())
+      );
+      this.setState({ filteredElectronics: filteredElex });
+    }
+  }
 
-            )
-          dispatch({
-            type: "fetch-all-electronics",
-              filteredElectronics,
-          });
-          setElectronics(filteredElectronics);
-        }),
-    []
-  );
+  setElectronics() {
+    fetch(`http://localhost:4000/api/${this.props.category}`)
+      .then((response) => response.json())
+      .then((electronics) => {
+        console.log(electronics);
+        this.setState({ electronics: electronics });
+        const filteredElex = electronics.filter((e) =>
+          e["brand"].toLowerCase().includes(this.props.keyword.toLowerCase())
+        );
+        this.setState({ filteredElectronics: filteredElex });
+      });
+  }
 
-  return (
-    <Container>
-      {electronics.map((elecs) => (
-        <Product item={elecs} key={elecs._id} />
-      ))}
-    </Container>
-  );
-};
+  render() {
+    return (
+      <Container>
+        {this.state.filteredElectronics.map((elecs) => (
+          <Product item={elecs} key={elecs._id} />
+        ))}
+      </Container>
+    );
+  }
+}
 
 export default Products;
