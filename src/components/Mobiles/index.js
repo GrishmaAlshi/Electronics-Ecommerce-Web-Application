@@ -48,27 +48,7 @@ const Mobiles = () => {
     <Container>
       <NavigationTop />
       <Title>Shop Mobiles</Title>
-      <FilterContainer>
-        <Filter>
-          <FilterText>Filter Products:</FilterText>
-          <Select>
-            <Option defaultValue="electronics">All</Option>
-            <Option value="laptops">Laptops</Option>
-            <Option value="mobiles">Mobile Phones</Option>
-            {/* <Option>Smart Wearables</Option>
-            <Option>Tablets</Option> */}
-          </Select>
-          <Select>
-            <Option disabled selected>
-              Brands
-            </Option>
-            <Option>Apple</Option>
-            <Option>Samsung</Option>
-            <Option>Nokia</Option>
-          </Select>
-        </Filter>
         <SearchBar keyword={keyword} setKeyword={onChange} />
-      </FilterContainer>
       <Products category="mobiles" keyword={keyword} />
       <br />
       <Footer />

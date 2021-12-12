@@ -18,10 +18,12 @@ import Laptops from "./components/Laptops";
 import Mobiles from "./components/Mobiles";
 import About from "./components/About";
 import Construction from "./components/PageInConstruction";
-import NotFound from "./components/ProductNotFound";
+import WishList from "./components/WishList" ;
 
 const reducer = combineReducers({ electronics: electronics });
 const store = createStore(reducer);
+
+
 
 function App() {
   return (
@@ -51,7 +53,7 @@ function App() {
                     <Edit/>
                 </Route>
                 <Route path="/wishlist">
-                    {/*<Wishlist/>*/}
+                    <WishList/>
                 </Route>
                 <Route path="/productDetails">
                     <ProductDetails/>
@@ -65,9 +67,6 @@ function App() {
                 <Route path="/mobiles">
                     <Mobiles />
                 </Route>
-                <Route path="/cart">
-                    <Cart />
-                </Route>
                 <Route path="/privacypolicy">
                     <Privacy/>
                 </Route>
@@ -76,8 +75,6 @@ function App() {
                 </Route>
                 <Route path="/construction">
                     <Construction/>
-                </Route>
-                <Route component={NotFound}>
                 </Route>
             </div>
         </Switch>

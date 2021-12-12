@@ -47,25 +47,7 @@ const Laptops = () => {
     <Container>
       <NavigationTop />
       <Title>Shop Laptops</Title>
-      <FilterContainer>
-        <Filter>
-          <FilterText>Filter Products:</FilterText>
-          <Select>
-            <Option defaultValue="electronics">All</Option>
-            <Option value="laptops">Laptops</Option>
-            <Option value="mobiles">Mobile Phones</Option>
-          </Select>
-          <Select>
-            <Option disabled selected>
-              Brands
-            </Option>
-            <Option>Apple</Option>
-            <Option>Samsung</Option>
-            <Option>Nokia</Option>
-          </Select>
-        </Filter>
         <SearchBar keyword={keyword} setKeyword={onChange} />
-      </FilterContainer>
       <Products category="laptops" keyword={keyword} />
       <br />
       <Footer />

@@ -17,6 +17,12 @@ const Signup = () => {
             <p>Please fill in this form to create an account.</p>
             <hr/>
 
+            <b>First Name</b>
+            <input type="text" placeholder="Enter First Name" name="firstname" required/>
+
+            <b>Last Name</b>
+            <input type="text" placeholder="Enter Last Name" name="lastname" required/>
+
             <b>Email</b>
             <input type="text" placeholder="Enter Email" name="email" required/>
 

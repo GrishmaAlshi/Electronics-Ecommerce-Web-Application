@@ -5,6 +5,7 @@ import {
 } from "@material-ui/icons";
 import styled from "styled-components";
 import ProductList from "./ProductList";
+import {useHistory} from "react-router-dom";
 
 const Info = styled.div`
   opacity: 0;
@@ -78,6 +79,21 @@ const Icon = styled.div`
 
 const Product = ({ item }) => {
 
+    const history = useHistory();
+
+    const onClickCart = () =>{
+        let path = "/cart";
+        history.push(path);
+    }
+    const onClickProduct = () =>{
+        let path = "/productDetails";
+        history.push(path);
+    }
+    const onClickFav = () =>{
+        let path = "/wishlist";
+        history.push(path);
+    }
+
     return (
 
         <Container>
@@ -87,13 +103,13 @@ const Product = ({ item }) => {
 
             <Info>
                 <Icon>
-                    <ShoppingCartOutlined />
+                    <ShoppingCartOutlined onClick={onClickCart}/>
                 </Icon>
                 <Icon>
-                    <SearchOutlined />
+                    <SearchOutlined onClick={onClickProduct}/>
                 </Icon>
                 <Icon>
-                    <FavoriteBorderOutlined />
+                    <FavoriteBorderOutlined onClick={onClickFav}/>
                 </Icon>
             </Info>
         </Container>
