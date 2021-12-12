@@ -16,7 +16,7 @@ const Login = () => {
             if(user) {
                 history.push("/");
             } else {
-                history.push("/login");
+            
             }
         });
     }

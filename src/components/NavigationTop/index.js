@@ -1,27 +1,17 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import { useState } from 'react';
 import {logout} from '../../firebase';
+import { useEffect } from "react";
 import {Container, Dropdown, Nav, Navbar, NavItem, NavLink} from "react-bootstrap";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 
-const NavigationTop = () => {
-    let text = "";
-    const authListener= () => { 
-        const auth = getAuth();
-        onAuthStateChanged(auth, (user) => {
-            if(user) {
-                alert(user);
-                text = "Profile";
-            } else {
-                text = "Login";
-            }
-        });
-    }
+const NavigationTop = ({isLoggedIn}) => {
     return(
         <>
             <Navbar bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand href="/">E-Commerce</Navbar.Brand>
+                    <Navbar.Brand href="/">Electronics</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/about">About</Nav.Link>
                         <Dropdown as={NavItem}>
@@ -38,9 +28,10 @@ const NavigationTop = () => {
                             </Dropdown.Menu>
                         </Dropdown>
                         <Nav.Link href="/blog">Blog</Nav.Link>
-                        <Nav.Link href="/login">{text}</Nav.Link>
-                        <button onClick = {() => logout()}>Logout</button>
-                        
+                        {!isLoggedIn && <Nav.Link href="/login">Login</Nav.Link>}
+                        {isLoggedIn && <Nav.Link href="/profile">Profile</Nav.Link>}
+                        {isLoggedIn && <Nav.Link href = "" onClick={() => logout()}>Logout</Nav.Link>}
+                        {isLoggedIn && <Nav.Link href="/cart" className="float-right">Cart</Nav.Link>}
                     </Nav>
                 </Container>
             </Navbar>

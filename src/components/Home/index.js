@@ -5,10 +5,28 @@ import CarouselShop from "../Carousel/CarouselShop";
 import {Col, Container, Row} from "react-bootstrap";
 import Footer from "../Footer/Footer";
 import Products from "../Products";
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import { useEffect } from "react";
+import { useState } from 'react';
+
 const Home = () => {
+    const [loggedIn, setLoggedIn] = useState("");
+    const authListener= () => { 
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if(user) {
+                setLoggedIn(true);
+            } else {
+                setLoggedIn(false);
+            }
+        });
+    }
+    useEffect(() => {
+        authListener();
+    }, []);
     return (
         <>
-            <NavigationTop/>
+            <NavigationTop isLoggedIn = {loggedIn}/>
             <br/>
             <CarouselSlide/>
             <br/>

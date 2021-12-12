@@ -31,7 +31,6 @@ const NavigationSidebar = ({
                     </div>
                 </Link>
 
-
                 <Link to="/wishlist"
                       className={`list-group-item  ${active === 'wishlist' ? 'active' : ''}`}>
                     <div className="row">
