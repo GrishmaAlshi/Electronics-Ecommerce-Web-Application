@@ -26,10 +26,6 @@ const Signup = () => {
             <b>Repeat Password</b>
             <input type="password" placeholder="Repeat Password" name="psw-repeat" required/>
 
-            <label>
-                <input type="checkbox" checked="checked" name="remember"/> Remember me
-            </label>
-
             <p className="para">By creating an account you agree to our <a href="/privacypolicy">Terms
                 & Privacy</a>.</p>
 

@@ -46,10 +46,9 @@ const Circle = styled.div`
 `;
 
 const Image = styled.img`
-  height: 75%;
+  height: 50%;
   border-radius: 50%;
   z-index: 1;
-  
 `;
 
 const Details = styled.div`
@@ -57,7 +56,8 @@ const Details = styled.div`
     z-index: 2;
     overflow: hidden;
     padding-top:270px;
-    margin-left:-100px;
+    margin-left:-150px;
+    font-weight:bold;
 `;
 
 const Icon = styled.div`

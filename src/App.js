@@ -16,6 +16,7 @@ import Privacy from "./components/Privacy/index";
 import ProductList from "./components/Products/Product/ProductList";
 import Laptops from "./components/Laptops";
 import Mobiles from "./components/Mobiles";
+import About from "./components/About";
 
 const reducer = combineReducers({ electronics: electronics });
 const store = createStore(reducer);
@@ -66,6 +67,9 @@ function App() {
           </Route>
             <Route path="/privacypolicy">
                 <Privacy/>
+            </Route>
+            <Route path="/about">
+                <About/>
             </Route>
         </div>
       </BrowserRouter>
