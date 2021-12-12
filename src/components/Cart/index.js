@@ -5,9 +5,11 @@ import CartComponent from "./CartComponent";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { getCurrentUser } from '../../firebase';
 
 const Cart = () => {
     const history = useHistory();
+    const id = getCurrentUser();
     const authListener= () => { 
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
@@ -24,7 +26,7 @@ const Cart = () => {
     return (
         <>
             <NavigationTop isLoggedIn={true}/>
-            <CartComponent/>
+            <CartComponent id = {id}/>
             <Footer/>
         </>
 

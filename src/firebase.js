@@ -17,6 +17,8 @@ const firebaseConfig = {
   appId: "1:885106162808:web:1c88e0bad292fed50c018d"
 };
 
+let email = "";
+
 const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
@@ -27,6 +29,7 @@ const signInWithGoogle = () => {
     const token = credential.accessToken;
     // The signed-in user info.
     const user = result.user;
+    localStorage.setItem("email", user.email);
     var db = getFirestore();
       setDoc(doc(db, "Users", user.email), {
         FirstName: "",
@@ -53,6 +56,7 @@ const signup = (email, password, firstName, lastName) => {
       // Signed in 
       const user = userCredential.user;
       console.log(user.email);
+      localStorage.setItem("email",user.email);
       var db = getFirestore();
       setDoc(doc(db, "Users", email), {
         FirstName: "",
@@ -76,7 +80,7 @@ const signin = (email, password) => {
     // Signed in 
     const user = userCredential.user;
     console.log("User logged in");
-    
+    localStorage.setItem("email", user.email);
     // ...
   })
   .catch((error) => {
@@ -91,21 +95,15 @@ const logout = () => {
   const auth = getAuth();
   signOut(auth).then(() => {
     console.log("User signed out");
+    localStorage.removeItem("email");
 
   }).catch((error) => {
-
+    console.log(error);
   }); 
 }
 
 const getCurrentUser = () => {
-  const auth = getAuth();
-  const user = auth.currentUser;
-  if(user !== null) {
-    return user.email;
-  } else {
-    return null;
-  }
-  
+  return localStorage.getItem("email");
 }
 
 // Initialize Firebase
