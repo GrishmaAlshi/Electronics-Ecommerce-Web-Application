@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { setDoc, doc } from "@firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -16,6 +16,35 @@ const firebaseConfig = {
   messagingSenderId: "885106162808",
   appId: "1:885106162808:web:1c88e0bad292fed50c018d"
 };
+
+const signInWithGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth();
+  signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    var db = getFirestore();
+      setDoc(doc(db, "Users", user.email), {
+        FirstName: "",
+        LastName : "",
+        cart: []
+      });
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+}
 
 const signup = (email, password, firstName, lastName) => {
   const auth = getAuth();
@@ -85,5 +114,6 @@ export { app,
   signup,
   logout,
   signin,
-  getCurrentUser
+  getCurrentUser,
+  signInWithGoogle
 };

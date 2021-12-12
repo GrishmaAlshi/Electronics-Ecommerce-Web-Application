@@ -5,11 +5,15 @@ import { signin} from '../../firebase';
 import { useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import { signInWithGoogle } from '../../firebase';
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory();
+    const googleSignIn =() => {
+        signInWithGoogle();
+    }
     const authListener= () => { 
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
@@ -34,7 +38,7 @@ const Login = () => {
                     <span>
                 <p>login with social media</p>
                 <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="#"><i className="fa fa-google" aria-hidden="true"></i></a>
+                <a href="#"><i className="fa fa-google" aria-hidden="true" onClick={() => googleSignIn()}></i></a>
             </span>
                 </div>
             </div>
