@@ -18,7 +18,7 @@ const Orders = () => {
             <Container>
                 {popularProducts.map((item) => (
                     <Product item={item} key={item.id} />
-                ))}
+                    ))}
             </Container>
         </>
     )

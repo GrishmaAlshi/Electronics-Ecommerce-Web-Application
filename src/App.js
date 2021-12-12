@@ -12,7 +12,7 @@ import Cart from "./components/Cart";
 import {Provider} from "react-redux";
 import {combineReducers, createStore} from "redux";
 import electronics from "./reducers/electronics";
-import ProductList from "./components/Products/Product/ProductList";
+import Privacy from "./components/Privacy/index";
 
 const reducer = combineReducers({electronics: electronics});
 const store = createStore(reducer);
@@ -51,6 +51,9 @@ function App() {
                     </Route>
                     <Route path="/cart">
                         <Cart/>
+                    </Route>
+                    <Route path="/privacypolicy">
+                        <Privacy/>
                     </Route>
                 </div>
             </BrowserRouter>

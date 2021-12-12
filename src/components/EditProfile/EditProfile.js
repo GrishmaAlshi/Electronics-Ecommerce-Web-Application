@@ -58,14 +58,21 @@ const EditProfile = () => {
                     onChange={(e) => setName(e.target.value)}
                 />
 
-            Change your address:
+            Change your shipping address:
                 <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
 
-            Change your bank details:
+            Change your billing address:
+            <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            />
+
+            Change your contact info:
                 <input
                     type="text"
                     value={name}

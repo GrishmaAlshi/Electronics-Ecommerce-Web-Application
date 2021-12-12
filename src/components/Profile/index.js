@@ -14,7 +14,6 @@ const Profile = () => {
                 <Col>
                   <NavigationSidebar/>
                 </Col>
-
             </Row>
 
             <Footer/>

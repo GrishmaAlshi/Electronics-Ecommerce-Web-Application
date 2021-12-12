@@ -1,13 +1,14 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {Container, Dropdown, Nav, Navbar, NavItem, NavLink} from "react-bootstrap";
+import SearchBar from "./SearchBar";
 
 const NavigationTop = () => {
     return(
         <>
             <Navbar bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand href="/">E-Commerce</Navbar.Brand>
+                    <Navbar.Brand href="/">Bazinga</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/about">About</Nav.Link>
                         <Dropdown as={NavItem}>
@@ -25,7 +26,7 @@ const NavigationTop = () => {
                         </Dropdown>
                         <Nav.Link href="/blog">Blog</Nav.Link>
                         <Nav.Link href="/login">Login</Nav.Link>
-
+                     <SearchBar/>
                     </Nav>
                 </Container>
             </Navbar>

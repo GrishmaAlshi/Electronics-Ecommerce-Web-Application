@@ -18,7 +18,7 @@ const Footer = () => {
                         <FooterLink href="#">About us</FooterLink>
                         <FooterLink href="#">FAQ's</FooterLink>
                         <FooterLink href="#">Return Policy</FooterLink>
-                        <FooterLink href="#">Terms of use</FooterLink>
+                        <FooterLink href="/privacypolicy">Terms of use</FooterLink>
                     </Column>
                     <Column>
                         <Heading>Products</Heading>
