@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {Container, Dropdown, Nav, Navbar, NavItem, NavLink} from "react-bootstrap";
 import SearchBar from "./SearchBar";
 
 const NavigationTop = () => {
+    const[keyword,setKeyword] = useState("");
+    function onChange(newValue) {
+        console.log(newValue);
+        setKeyword(newValue);
+
+    }
     return(
         <>
             <Navbar bg="dark" variant="dark">
@@ -17,12 +23,12 @@ const NavigationTop = () => {
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
                                 <Dropdown.Item>
-                                    <Link to="/laptops">Laptops</Link>
+                                    <Link to="/laptops" params={{keyword:keyword}}>Laptops</Link>
                                     {/* <Nav.Link href="/shop/laptops">Laptops</Nav.Link> */}
                                 </Dropdown.Item>
                                 <Dropdown.Item>Television sets</Dropdown.Item>
                                 <Dropdown.Item>
-                                    <Link to="/mobiles">Mobile Phones</Link>
+                                    <Link to="/mobiles"  params={{keyword:keyword}}>Mobile Phones</Link>
                                 </Dropdown.Item>
                                 <Dropdown.Item>Tablets</Dropdown.Item>
                                 <Dropdown.Item>Smart devices</Dropdown.Item>
@@ -31,7 +37,7 @@ const NavigationTop = () => {
                         </Dropdown>
                         <Nav.Link href="/blog">Blog</Nav.Link>
                         <Nav.Link href="/login">Login</Nav.Link>
-                     <SearchBar/>
+                     <SearchBar keyword={keyword} setKeyword={onChange}/>
                     </Nav>
                 </Container>
             </Navbar>

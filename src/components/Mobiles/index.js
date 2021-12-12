@@ -37,7 +37,7 @@ const Select = styled.select`
 `;
 const Option = styled.option``;
 
-const Mobiles = () => {
+const Mobiles = ({keyword}) => {
   return (
     <Container>
       <NavigationTop />
@@ -70,7 +70,7 @@ const Mobiles = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <Products category="mobiles" />
+      <Products category="mobiles" keyword={keyword}/>
       <br />
       <Footer />
     </Container>
