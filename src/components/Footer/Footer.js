@@ -7,6 +7,12 @@ import {
   FooterLink,
   Heading,
 } from "./FooterStyles";
+import {
+    Facebook,
+    Twitter,
+    Instagram,
+    YouTube
+} from "@material-ui/icons";
 
 const Footer = () => {
     return (
@@ -15,47 +21,47 @@ const Footer = () => {
                 <Row>
                     <Column>
                         <Heading>Useful Links</Heading>
-                        <FooterLink href="#">About us</FooterLink>
-                        <FooterLink href="#">FAQ's</FooterLink>
-                        <FooterLink href="#">Return Policy</FooterLink>
+                        <FooterLink href="/about">About us</FooterLink>
+                        <FooterLink href="/construction">FAQ's</FooterLink>
+                        <FooterLink href="/construction">Return Policy</FooterLink>
                         <FooterLink href="/privacypolicy">Terms of use</FooterLink>
                     </Column>
                     <Column>
                         <Heading>Products</Heading>
                         <FooterLink href="/laptops">Laptops</FooterLink>
-                        <FooterLink href="#">Tablets</FooterLink>
+                        <FooterLink href="/construction">Tablets</FooterLink>
                         <FooterLink href="/mobiles">Mobile Phones</FooterLink>
-                        <FooterLink href="#">Smart wearables</FooterLink>
+                        <FooterLink href="/construction">Smart wearables</FooterLink>
                     </Column>
                     <Column>
                         <Heading>Social Media</Heading>
-                        <FooterLink href="#">
-                            <i className="fab fa-facebook-f">
+                        <FooterLink href="/construction">
+                            <Facebook/>
                 <span style={{ marginLeft: "10px" }}>
                   Facebook
                 </span>
-                            </i>
+
                         </FooterLink>
-                        <FooterLink href="#">
-                            <i className="fab fa-instagram">
+                        <FooterLink href="/construction">
+                            <Instagram/>
                 <span style={{ marginLeft: "10px" }}>
                   Instagram
                 </span>
-                            </i>
+
                         </FooterLink>
-                        <FooterLink href="#">
-                            <i className="fab fa-twitter">
+                        <FooterLink href="/construction">
+                            <Twitter/>
                 <span style={{ marginLeft: "10px" }}>
                   Twitter
                 </span>
-                            </i>
+
                         </FooterLink>
-                        <FooterLink href="#">
-                            <i className="fab fa-youtube">
+                        <FooterLink href="/construction">
+                            <YouTube/>
                 <span style={{ marginLeft: "10px" }}>
                   Youtube
                 </span>
-                            </i>
+
                         </FooterLink>
                     </Column>
                 </Row>
