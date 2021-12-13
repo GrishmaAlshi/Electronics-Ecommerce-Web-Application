@@ -8,21 +8,18 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { setDoc, doc } from "@firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAlPQUCFeg-UI2zfG1f_xE3GBXH8D8Rdyg",
-  authDomain: "webdev-demo-b3f8d.firebaseapp.com",
-  databaseURL: "https://webdev-demo-b3f8d-default-rtdb.firebaseio.com",
-  projectId: "webdev-demo-b3f8d",
-  storageBucket: "webdev-demo-b3f8d.appspot.com",
-  messagingSenderId: "1064464019118",
-  appId: "1:1064464019118:web:cabf3b76eff400de5d073f",
-  measurementId: "G-8LFRGVF5TQ",
+  apiKey: "AIzaSyBCWFDGujN2H1FYs2seMl72hzv6b7P00v8",
+  authDomain: "webdevproject-7c916.firebaseapp.com",
+  databaseURL: "https://webdevproject-7c916-default-rtdb.firebaseio.com",
+  projectId: "webdevproject-7c916",
+  storageBucket: "webdevproject-7c916.appspot.com",
+  messagingSenderId: "885106162808",
+  appId: "1:885106162808:web:1c88e0bad292fed50c018d",
 };
 
 const signup = (email, password, firstName, lastName) => {
@@ -31,15 +28,20 @@ const signup = (email, password, firstName, lastName) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log(user.email);
       localStorage.setItem("email", user.email);
-      var db = getFirestore();
-      setDoc(doc(db, "Users", email), {
-        FirstName: "",
-        LastName: "",
-        cart: [],
-        wishlist: [],
-      });
+      let currUser = {};
+      currUser.email = localStorage.getItem("email");
+      currUser.cart = [];
+      currUser.wishlist = [];
+      fetch("http://localhost:4000/api/users/", {
+        method: "POST",
+        body: JSON.stringify(currUser),
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then(console.log("User details added to db"));
       // ...
     })
     .catch((error) => {
@@ -95,12 +97,19 @@ const signInWithGoogle = () => {
       // The signed-in user info.
       const user = result.user;
       localStorage.setItem("email", user.email);
-      var db = getFirestore();
-      setDoc(doc(db, "Users", user.email), {
-        FirstName: "",
-        LastName: "",
-        cart: [],
-      });
+      let currUser = {};
+      currUser.email = localStorage.getItem("email");
+      currUser.cart = [];
+      currUser.wishlist = [];
+      fetch("http://localhost:4000/api/users/", {
+        method: "POST",
+        body: JSON.stringify(currUser),
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then(console.log("User details added to db"));
       // ...
     })
     .catch((error) => {

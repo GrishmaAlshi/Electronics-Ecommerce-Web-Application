@@ -6,6 +6,7 @@ import { mobile } from "../../responsive";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SearchBar from "../NavigationTop/SearchBar";
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
 
 const Container = styled.div``;
 
@@ -43,9 +44,23 @@ const Laptops = () => {
     console.log(newValue);
     setKeyword(newValue);
   }
+  const [loggedIn, setLoggedIn] = useState("");
+    const authListener= () => { 
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if(user) {
+                setLoggedIn(true);
+            } else {
+                setLoggedIn(false);
+            }
+        });
+    }
+    useEffect(() => {
+        authListener();
+    }, []);
   return (
     <Container>
-      <NavigationTop />
+      <NavigationTop isLoggedIn={loggedIn}/>
       <Title>Shop Laptops</Title>
         <SearchBar keyword={keyword} setKeyword={onChange} />
       <Products category="laptops" keyword={keyword} />

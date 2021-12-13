@@ -32,19 +32,19 @@ class Products extends React.Component {
     }
   }
 
-  setElectronics()
-  {
-    this.setState()
-  }
   setElectronics() {
     fetch(`http://localhost:4000/api/${this.props.category}`)
       .then((response) => response.json())
       .then((electronics) => {
         console.log(electronics);
         this.setState({ electronics: electronics });
-        const filteredElex = electronics.filter((e) =>
-          e["brand"].toLowerCase().includes(this.props.keyword.toLowerCase())
-        );
+        console.log("Keyword", this.props.keyword);
+        const filteredElex = electronics.filter((e) => {
+          return e["brand"]
+            .toLowerCase()
+            .includes(this.props.keyword.toLowerCase());
+        });
+        console.log("filtered", filteredElex);
         this.setState({ filteredElectronics: filteredElex });
       });
   }
@@ -53,7 +53,7 @@ class Products extends React.Component {
     return (
       <Container>
         {this.state.filteredElectronics.map((elecs) => (
-          <Product item={elecs} key={elecs._id} />
+          <Product item={elecs} key={elecs.id} />
         ))}
       </Container>
     );
