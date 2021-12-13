@@ -44,6 +44,7 @@ class Products extends React.Component {
             .toLowerCase()
             .includes(this.props.keyword.toLowerCase());
         });
+        console.log("filtered", filteredElex);
         this.setState({ filteredElectronics: filteredElex });
       });
   }

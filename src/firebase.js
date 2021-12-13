@@ -8,8 +8,6 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { setDoc, doc } from "@firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,7 +19,7 @@ const firebaseConfig = {
   projectId: "webdevproject-7c916",
   storageBucket: "webdevproject-7c916.appspot.com",
   messagingSenderId: "885106162808",
-  appId: "1:885106162808:web:1c88e0bad292fed50c018d"
+  appId: "1:885106162808:web:1c88e0bad292fed50c018d",
 };
 
 const signup = (email, password, firstName, lastName) => {
@@ -35,15 +33,15 @@ const signup = (email, password, firstName, lastName) => {
       currUser.email = localStorage.getItem("email");
       currUser.cart = [];
       currUser.wishlist = [];
-      fetch("http://localhost:4000/api/users/" , {
-        method: 'POST',
+      fetch("http://localhost:4000/api/users/", {
+        method: "POST",
         body: JSON.stringify(currUser),
         headers: {
-          'content-type': 'application/json'
-        }
+          "content-type": "application/json",
+        },
       })
-      .then((response) => response.json())
-      .then(console.log("User details added to db"));
+        .then((response) => response.json())
+        .then(console.log("User details added to db"));
       // ...
     })
     .catch((error) => {
@@ -103,15 +101,15 @@ const signInWithGoogle = () => {
       currUser.email = localStorage.getItem("email");
       currUser.cart = [];
       currUser.wishlist = [];
-      fetch("http://localhost:4000/api/users/" , {
-        method: 'POST',
+      fetch("http://localhost:4000/api/users/", {
+        method: "POST",
         body: JSON.stringify(currUser),
         headers: {
-          'content-type': 'application/json'
-        }
+          "content-type": "application/json",
+        },
       })
-      .then((response) => response.json())
-      .then(console.log("User details added to db"));
+        .then((response) => response.json())
+        .then(console.log("User details added to db"));
       // ...
     })
     .catch((error) => {
