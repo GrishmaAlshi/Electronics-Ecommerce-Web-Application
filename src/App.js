@@ -52,7 +52,9 @@ function App() {
           <Route path="/editaccount">
             <Edit />
           </Route>
-          <Route path="/wishlist">{/*<Wishlist/>*/}</Route>
+          <Route path="/wishlist">
+            <WishList />
+          </Route>
           <Route path="/productDetails">
             <ProductDetails />
           </Route>

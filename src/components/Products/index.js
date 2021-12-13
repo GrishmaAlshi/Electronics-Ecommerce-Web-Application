@@ -32,6 +32,10 @@ class Products extends React.Component {
     }
   }
 
+  setElectronics()
+  {
+    this.setState()
+  }
   setElectronics() {
     fetch(`http://localhost:4000/api/${this.props.category}`)
       .then((response) => response.json())
