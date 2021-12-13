@@ -43,6 +43,7 @@ const ElectronicsAdd = () => {
 
   return (
     <>
+    <div className="container">
       <AdminNavbar />
       <h2>Add New Electronics</h2>
       <form>
@@ -208,6 +209,7 @@ const ElectronicsAdd = () => {
           Submit
         </button>
       </form>
+      </div>
     </>
   );
 };

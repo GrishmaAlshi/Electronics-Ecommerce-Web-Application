@@ -5,8 +5,10 @@ import ElectronicsList from "../ElectronicsList";
 const ElectronicsUpdate = () => {
   return (
     <>
+    <div className="container">
       <AdminNavbar />
       <ElectronicsList/>
+    </div>
     </>
   );
 };

@@ -2,8 +2,9 @@ import React from "react";
 import Logo from "../../images/logo.jpeg";
 import { Link } from "react-router-dom";
 import "../Styles/AdminNavbar.css";
+import "./index.css";
 
-const AdminNavbar = (user) => {
+const AdminNavbar = (selected) => {
   return (
     <>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,7 +22,7 @@ const AdminNavbar = (user) => {
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <Link className="nav-link" to="/admin/add" exact="true">
+              <Link className="nav-link selected" to="/admin/add" exact="true">
                 Add
               </Link>
             </li>

@@ -16,6 +16,7 @@ const ElectronicsList = () => {
             .then(electronics => setElectronics(electronics))
         , []);
     return(
+        <div className="container">
         <ul className = "list-group">
             {
                 electronics.map(elecs =>
@@ -23,6 +24,7 @@ const ElectronicsList = () => {
                 )
             }
         </ul>
+        </div>
     )
 }
 
