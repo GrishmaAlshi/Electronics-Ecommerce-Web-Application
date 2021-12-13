@@ -1,28 +1,49 @@
 import NavigationSidebar from "../NavigationSidebar";
-import {Col} from "react-bootstrap";
-import {Row} from "../Footer/FooterStyles";
+import { Col } from "react-bootstrap";
+import { Row } from "../Footer/FooterStyles";
 import NavigationTop from "../NavigationTop";
 import Footer from "../Footer/Footer";
-import Orders from "./Orders";
+import React from "react";
+import Order from "./Order";
 
-const Order = () => {
+class Orders extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      orders: [],
+    };
+    this.getUserOrders();
+  }
+
+  getUserOrders() {
+    const userEmail = localStorage.getItem("email");
+    console.log("USERMAL", userEmail);
+    fetch(`http://localhost:4000/api/orders/${userEmail}`)
+      .then((response) => response.json())
+      .then((orders) => {
+        this.setState({ orders: orders });
+      });
+  }
+
+  render() {
     return (
-        <>
-            <NavigationTop/>
-            <h1>Welcome to your profile</h1>
-            <Row>
-                <Col>
-                    <NavigationSidebar/>
-                </Col>
-                <Row>
-                    <Orders/>
-                </Row>
-
-            </Row>
-            <Footer/>
-        </>
-
+      <>
+        <NavigationTop />
+        <h1>Welcome to your profile</h1>
+        <Row>
+          <Col>
+            <NavigationSidebar />
+          </Col>
+          <Row>
+            {this.state.orders.map((order) => (
+              <Order order={order} />
+            ))}
+          </Row>
+        </Row>
+        <Footer />
+      </>
     );
+  }
 }
 
-export default Order;
+export default Orders;

@@ -16,6 +16,7 @@ import Privacy from "./components/Privacy/index";
 import ProductList from "./components/Products/Product/ProductList";
 import Laptops from "./components/Laptops";
 import Mobiles from "./components/Mobiles";
+import Orders from "./components/Orders";
 
 const reducer = combineReducers({ electronics: electronics });
 const store = createStore(reducer);
@@ -25,36 +26,34 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <div className="container">
-            <Route path="/" exact={true}>
-                <Home/>
-            </Route>
-            <Route path="/shop">
-                <Shop/>
-            </Route>
-            <Route path="/login">
-                <Login/>
-            </Route>
-            <Route path="/signup">
-                <Signup/>
-            </Route>
-            <Route path="/profile">
-                <Profile/>
-            </Route>
-            <Route path="/orders">
-                <Order/>
-            </Route>
-            <Route path="/editaccount">
-                <Edit/>
-            </Route>
-            <Route path="/wishlist">
-                {/*<Wishlist/>*/}
-            </Route>
-            <Route path="/productDetails">
-                <ProductDetails/>
-            </Route>
-            <Route path="/cart">
-                <Cart/>
-            </Route>
+          <Route path="/" exact={true}>
+            <Home />
+          </Route>
+          <Route path="/shop">
+            <Shop />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/signup">
+            <Signup />
+          </Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          <Route path="/orders">
+            <Orders />
+          </Route>
+          <Route path="/editaccount">
+            <Edit />
+          </Route>
+          <Route path="/wishlist">{/*<Wishlist/>*/}</Route>
+          <Route path="/productDetails">
+            <ProductDetails />
+          </Route>
+          <Route path="/cart">
+            <Cart />
+          </Route>
           <Route path="/laptops">
             <Laptops />
           </Route>
@@ -64,9 +63,9 @@ function App() {
           <Route path="/cart">
             <Cart />
           </Route>
-            <Route path="/privacypolicy">
-                <Privacy/>
-            </Route>
+          <Route path="/privacypolicy">
+            <Privacy />
+          </Route>
         </div>
       </BrowserRouter>
     </Provider>
