@@ -42,7 +42,6 @@ const Option = styled.option``;
 const Shop = () => {
   const [keyword, setKeyword] = useState("");
   function onChange(newValue) {
-    console.log(newValue);
     setKeyword(newValue);
   }
   const [loggedIn, setLoggedIn] = useState("");
