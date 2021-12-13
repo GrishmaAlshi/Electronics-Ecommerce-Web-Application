@@ -91,21 +91,24 @@ const OrderDetails = (props) => {
 
   const getOrder = () => {
     const email = localStorage.getItem("email");
-    fetch(`http://localhost:4000/api/orders/${email}/${orderId}`)
+    return fetch(`http://localhost:4000/api/orders/${email}/${orderId}`)
       .then((response) => response.json())
       .then((orders) => {
         setOrder(orders[0]);
         const orderProducts = orders[0].products;
-        getProducts(orderProducts);
+        const allProducts = getProducts(orderProducts);
+        Promise.all(allProducts).then((data) => {
+          setProductsInOrder(data);
+        });
       });
   };
 
   const getProducts = (products) => {
-    products.map((product) => {
-      fetch(`http://localhost:4000/api/electronics/${product}`)
+    return products.map((product) => {
+      return fetch(`http://localhost:4000/api/electronics/${product}`)
         .then((response) => response.json())
         .then((productDetails) => {
-          setProductsInOrder([...productsInOrder, productDetails[0]]);
+          return productDetails[0];
         });
     });
   };
