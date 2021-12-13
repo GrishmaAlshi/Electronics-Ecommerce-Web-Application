@@ -1,5 +1,8 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
+import {
+   OfflineBolt
+} from "@material-ui/icons";
 import {Container, Dropdown, Nav, Navbar, NavItem, NavLink} from "react-bootstrap";
 import SearchBar from "./SearchBar";
 
@@ -9,7 +12,10 @@ const NavigationTop = () => {
         <>
             <Navbar bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand href="/">Bazinga</Navbar.Brand>
+                    <Navbar.Brand href="/">Bazinga
+                        &nbsp;
+                    <OfflineBolt/>
+                    </Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/about">About</Nav.Link>
                         <Dropdown as={NavItem}>

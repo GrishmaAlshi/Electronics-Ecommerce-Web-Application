@@ -46,29 +46,7 @@ const Shop = () => {
     <Container>
       <NavigationTop />
       <Title>Shop Electronics</Title>
-      <FilterContainer>
-        <Filter>
-          <FilterText>Filter Products:</FilterText>
-          <Select>
-            <Option disabled selected>
-              Electronics
-            </Option>
-            <Option>Laptops</Option>
-            <Option>Mobile Phones</Option>
-            <Option>Smart Wearables</Option>
-            <Option>Tablets</Option>
-          </Select>
-          <Select>
-            <Option disabled selected>
-              Brands
-            </Option>
-            <Option>Apple</Option>
-            <Option>Samsung</Option>
-            <Option>Nokia</Option>
-          </Select>
-        </Filter>
         <SearchBar keyword={keyword} setKeyword={onChange} />
-      </FilterContainer>
       <Products category="electronics" keyword={keyword} />
       <br />
       <Footer />

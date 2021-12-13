@@ -1,6 +1,7 @@
 import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import {useHistory} from "react-router-dom";
 
 const Container = styled.div``;
 
@@ -166,12 +167,18 @@ const Button = styled.button`
 `;
 
 const CartComponent = () => {
+    const history = useHistory();
+
+    const backToShop = () =>{
+        let path = "/shop";
+        history.push(path);
+    }
     return (
         <Container>
             <Wrapper>
                 <Title>YOUR BAG</Title>
                 <Top>
-                    <TopButton1>CONTINUE SHOPPING</TopButton1>
+                    <TopButton1 onClick={backToShop}>CONTINUE SHOPPING</TopButton1>
                     <TopText>Shopping Bag(2)</TopText>
                     <TopText>Your Wishlist (0)</TopText>
                     <TopButton2 type="filled">CHECKOUT NOW</TopButton2>

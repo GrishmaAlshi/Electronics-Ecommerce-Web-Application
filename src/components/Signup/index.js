@@ -17,6 +17,12 @@ const Signup = () => {
             <p>Please fill in this form to create an account.</p>
             <hr/>
 
+            <b>First Name</b>
+            <input type="text" placeholder="Enter First Name" name="firstname" required/>
+
+            <b>Last Name</b>
+            <input type="text" placeholder="Enter Last Name" name="lastname" required/>
+
             <b>Email</b>
             <input type="text" placeholder="Enter Email" name="email" required/>
 
@@ -25,10 +31,6 @@ const Signup = () => {
 
             <b>Repeat Password</b>
             <input type="password" placeholder="Repeat Password" name="psw-repeat" required/>
-
-            <label>
-                <input type="checkbox" checked="checked" name="remember"/> Remember me
-            </label>
 
             <p className="para">By creating an account you agree to our <a href="/privacypolicy">Terms
                 & Privacy</a>.</p>

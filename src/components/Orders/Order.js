@@ -51,7 +51,14 @@ class Order extends React.Component {
                   </Col>
                 </Row>
               </Card.Text>
-              <Link to="">View Order</Link>
+              <Link
+                to={{
+                  pathname: "/orderDetails",
+                  search: `orderId=${this.state.order.orderId}`,
+                }}
+              >
+                View Order
+              </Link>
               {/* <Button variant="primary">View Order</Button> */}
             </Card.Body>
           </Card>

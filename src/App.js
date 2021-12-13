@@ -1,5 +1,5 @@
 import Home from "./components/Home/index";
-import { BrowserRouter, Link, Route } from "react-router-dom";
+import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Shop from "./components/Shop/index";
 import Login from "./components/Login/index";
 import Signup from "./components/Signup/index";
@@ -17,6 +17,10 @@ import ProductList from "./components/Products/Product/ProductList";
 import Laptops from "./components/Laptops";
 import Mobiles from "./components/Mobiles";
 import Orders from "./components/Orders";
+import About from "./components/About";
+import Construction from "./components/PageInConstruction";
+import WishList from "./components/WishList";
+import OrderDetails from "./components/Orders/OrderDetails";
 
 const reducer = combineReducers({ electronics: electronics });
 const store = createStore(reducer);
@@ -60,11 +64,17 @@ function App() {
           <Route path="/mobiles">
             <Mobiles />
           </Route>
-          <Route path="/cart">
-            <Cart />
-          </Route>
           <Route path="/privacypolicy">
             <Privacy />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/construction">
+            <Construction />
+          </Route>
+          <Route path="/orderDetails">
+            <OrderDetails />
           </Route>
         </div>
       </BrowserRouter>
