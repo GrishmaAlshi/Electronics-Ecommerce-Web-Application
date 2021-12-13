@@ -1,9 +1,27 @@
 import '../../vendors/bootstrap/css/signup.css';
-import {useHistory} from "react-router-dom";
+import { signup } from '../../firebase';
+import { useState } from "react";
+import { getAuth, onAuthStateChanged} from "firebase/auth";
+import { useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 
 const Signup = () => {
-
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const history = useHistory();
+    const authListener= () => { 
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if(user) {
+                history.goBack();
+            } else {
+                console.log("Please register");
+            }
+        });
+    }
+    useEffect(() => {
+        authListener();
+    }, []);
 
     const cancelSignUp = () =>{
         let path = "/";
@@ -24,10 +42,17 @@ const Signup = () => {
             <input type="text" placeholder="Enter Last Name" name="lastname" required/>
 
             <b>Email</b>
-            <input type="text" placeholder="Enter Email" name="email" required/>
+            <input type="text" 
+            value={email}
+            onChange = {(e) => setEmail(e.target.value)}
+            placeholder="Enter Email" 
+            name="email" required/>
 
             <b>Password</b>
-            <input type="password" placeholder="Enter Password" name="psw" required/>
+            <input type="password" 
+            value = {password}
+            onChange = {(e) => setPassword(e.target.value)}
+            placeholder="Enter Password" name="psw" required/>
 
             <b>Repeat Password</b>
             <input type="password" placeholder="Repeat Password" name="psw-repeat" required/>
@@ -36,8 +61,8 @@ const Signup = () => {
                 & Privacy</a>.</p>
 
             <div className="clearfix">
-                <button type="button" className="cancelbtn" onClick={cancelSignUp}>Cancel</button>
-                <button type="submit" className="signupbtn" >Sign Up</button>
+                <button type="submit" className="signupbtn" onClick={() => signup(email, password)}>Sign Up</button>
+                <button type="button" className="cancelbtn" onclick={() => cancelSignUp()}>Cancel</button>
             </div>
         </div>
 

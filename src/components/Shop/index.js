@@ -6,6 +6,9 @@ import Footer from "../Footer/Footer";
 import { mobile } from "../../responsive";
 import SearchBar from "../NavigationTop/SearchBar";
 
+import { useEffect } from "react";
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
+
 const Container = styled.div``;
 
 const Title = styled.h1`
@@ -42,11 +45,25 @@ const Shop = () => {
     console.log(newValue);
     setKeyword(newValue);
   }
+  const [loggedIn, setLoggedIn] = useState("");
+  const authListener = () => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setLoggedIn(true);
+      } else {
+        setLoggedIn(false);
+      }
+    });
+  };
+  useEffect(() => {
+    authListener();
+  }, []);
   return (
     <Container>
-      <NavigationTop />
+      <NavigationTop isLoggedIn={loggedIn} />
       <Title>Shop Electronics</Title>
-        <SearchBar keyword={keyword} setKeyword={onChange} />
+      <SearchBar keyword={keyword} setKeyword={onChange} />
       <Products category="electronics" keyword={keyword} />
       <br />
       <Footer />

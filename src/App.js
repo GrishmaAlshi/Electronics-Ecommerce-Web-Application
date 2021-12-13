@@ -47,7 +47,7 @@ function App() {
             <Profile />
           </Route>
           <Route path="/orders">
-            <Orders />
+            <Order />
           </Route>
           <Route path="/editaccount">
             <Edit />
@@ -55,14 +55,14 @@ function App() {
           <Route path="/wishlist">
             <WishList />
           </Route>
-          <Route path="/productDetails">
+          <Route path="/productDetails/:id" exact={true}>
             <ProductDetails />
-          </Route>
-          <Route path="/cart">
-            <Cart />
           </Route>
           <Route path="/laptops">
             <Laptops />
+          </Route>
+          <Route path="/cart">
+            <Cart />
           </Route>
           <Route path="/mobiles">
             <Mobiles />

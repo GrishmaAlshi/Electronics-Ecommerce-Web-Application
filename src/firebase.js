@@ -5,6 +5,8 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { setDoc, doc } from "@firebase/firestore";
@@ -30,11 +32,13 @@ const signup = (email, password, firstName, lastName) => {
       // Signed in
       const user = userCredential.user;
       console.log(user.email);
+      localStorage.setItem("email", user.email);
       var db = getFirestore();
       setDoc(doc(db, "Users", email), {
         FirstName: "",
         LastName: "",
         cart: [],
+        wishlist: [],
       });
       // ...
     })
@@ -53,7 +57,7 @@ const signin = (email, password) => {
       // Signed in
       const user = userCredential.user;
       console.log("User logged in");
-
+      localStorage.setItem("email", user.email);
       // ...
     })
     .catch((error) => {
@@ -69,20 +73,48 @@ const logout = () => {
   signOut(auth)
     .then(() => {
       console.log("User signed out");
+      localStorage.removeItem("email");
     })
-    .catch((error) => {});
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 const getCurrentUser = () => {
+  return localStorage.getItem("email");
+};
+
+const signInWithGoogle = () => {
+  const provider = new GoogleAuthProvider();
   const auth = getAuth();
-  const user = auth.currentUser;
-  if (user !== null) {
-    return user.email;
-  } else {
-    return null;
-  }
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      localStorage.setItem("email", user.email);
+      var db = getFirestore();
+      setDoc(doc(db, "Users", user.email), {
+        FirstName: "",
+        LastName: "",
+        cart: [],
+      });
+      // ...
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export { app, signup, logout, signin, getCurrentUser };
+export { app, signup, logout, signin, getCurrentUser, signInWithGoogle };

@@ -5,9 +5,10 @@ import {
 } from "@material-ui/icons";
 import styled from "styled-components";
 import ProductList from "./ProductList";
-import { useHistory } from "react-router-dom";
 import ProductDetails from "../../ProductDetails";
 import ProductDetailsComponent from "../../ProductDetails/ProductDetailsComponent";
+import { getCurrentUser } from "../../../firebase";
+import { useHistory } from "react-router-dom";
 
 const Info = styled.div`
   opacity: 0;
@@ -80,12 +81,12 @@ const Icon = styled.div`
 `;
 
 const Product = ({ item }) => {
+  const ELECTRONICS_API = "http://localhost:4000/api/addToCart";
   const history = useHistory();
+  const id = getCurrentUser();
+  const isLoggedin = id === null ? false : true;
+  console.log(id);
 
-  const onClickCart = () => {
-    let path = "/cart";
-    history.push(path);
-  };
   const onClickProduct = () => {
     let path = "/productDetails/" + item.id;
     console.log(path);
@@ -93,7 +94,22 @@ const Product = ({ item }) => {
     // console.log(item);
     // return <ProductDetailsComponent id={item}/>
   };
-  async function myFetch() {}
+
+  const addToCart = () => {
+    if (!isLoggedin) {
+      history.push("/login");
+    } else {
+      fetch(`${ELECTRONICS_API}/${id}`, {
+        method: "PUT",
+        body: JSON.stringify(item),
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data + "Added to cart"));
+    }
+  };
 
   const onClickFav = () => {
     let path = "/wishlist";
@@ -121,14 +137,16 @@ const Product = ({ item }) => {
 
       <Info>
         <Icon>
-          <ShoppingCartOutlined onClick={onClickCart} />
+          <ShoppingCartOutlined onClick={addToCart} />
         </Icon>
         <Icon>
           <SearchOutlined onClick={onClickProduct} />
         </Icon>
-        <Icon>
-          <FavoriteBorderOutlined onClick={onClickFav} />
-        </Icon>
+        {isLoggedin && (
+          <Icon>
+            <FavoriteBorderOutlined onClick={onClickFav} />
+          </Icon>
+        )}
       </Info>
     </Container>
   );
