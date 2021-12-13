@@ -19,6 +19,7 @@ import Mobiles from "./components/Mobiles";
 import About from "./components/About";
 import Construction from "./components/PageInConstruction";
 import WishList from "./components/WishList" ;
+import ProductDetailsComponent from "./components/ProductDetails/ProductDetailsComponent";
 
 const reducer = combineReducers({ electronics: electronics });
 const store = createStore(reducer);
@@ -55,8 +56,8 @@ function App() {
                 <Route path="/wishlist">
                     <WishList/>
                 </Route>
-                <Route path="/productDetails">
-                    <ProductDetails/>
+                <Route path="/productDetails/:id" exact={true}>
+                    <ProductDetails />
                 </Route>
                 <Route path="/cart">
                     <Cart/>

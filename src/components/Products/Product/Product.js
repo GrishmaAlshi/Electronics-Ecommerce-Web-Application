@@ -6,6 +6,8 @@ import {
 import styled from "styled-components";
 import ProductList from "./ProductList";
 import {useHistory} from "react-router-dom";
+import ProductDetails from "../../ProductDetails";
+import ProductDetailsComponent from "../../ProductDetails/ProductDetailsComponent";
 
 const Info = styled.div`
   opacity: 0;
@@ -86,8 +88,11 @@ const Product = ({ item }) => {
         history.push(path);
     }
     const onClickProduct = () =>{
-        let path = "/productDetails";
+        let path = "/productDetails/"+item.id;
+        console.log(path);
         history.push(path);
+        // console.log(item);
+        // return <ProductDetailsComponent id={item}/>
     }
     const onClickFav = () =>{
         let path = "/wishlist";
