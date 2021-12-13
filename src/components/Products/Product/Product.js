@@ -6,6 +6,10 @@ import {
 import React from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
+import ProductList from "./ProductList";
+import { useHistory } from "react-router-dom";
+import ProductDetails from "../../ProductDetails";
+import ProductDetailsComponent from "../../ProductDetails/ProductDetailsComponent";
 
 const Info = styled.div`
   opacity: 0;
@@ -76,23 +80,6 @@ const Icon = styled.div`
     transform: scale(1.1);
   }
 `;
-
-// const Product = ({ item }) => {
-
-// const history = useHistory();
-
-// const onClickCart = () => {
-//   let path = "/cart";
-//   history.push(path);
-// };
-// const onClickProduct = () => {
-//   let path = "/productDetails";
-//   history.push(path);
-// };
-// const onClickFav = () => {
-//   let path = "/wishlist";
-//   history.push(path);
-// };
 
 class Product extends React.Component {
   constructor(props) {

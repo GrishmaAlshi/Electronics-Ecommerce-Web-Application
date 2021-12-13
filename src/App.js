@@ -19,8 +19,9 @@ import Mobiles from "./components/Mobiles";
 import Orders from "./components/Orders";
 import About from "./components/About";
 import Construction from "./components/PageInConstruction";
-import WishList from "./components/WishList";
 import OrderDetails from "./components/Orders/OrderDetails";
+import WishList from "./components/WishList";
+import ProductDetailsComponent from "./components/ProductDetails/ProductDetailsComponent";
 
 const reducer = combineReducers({ electronics: electronics });
 const store = createStore(reducer);
