@@ -89,9 +89,25 @@ const Product = ({ item }) => {
         let path = "/productDetails";
         history.push(path);
     }
+    async function myFetch() {
+    }
+
     const onClickFav = () =>{
         let path = "/wishlist";
-        history.push(path);
+        fetch(`http://localhost:4000/api/users/updateWishlist`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                id: item.id,
+                email: localStorage.getItem("email")
+            }),
+            headers: {
+                "content-type": "application/json"
+            }
+        })
+            .then((response) => response.json())
+            .then(productDetails => {
+                history.push(path);
+            })
     }
 
     return (

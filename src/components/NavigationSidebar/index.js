@@ -1,18 +1,23 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {
+    Home,
+    FavoriteBorderOutlined,
+    BookmarkBorderOutlined, Book
+} from "@material-ui/icons";
 
 const NavigationSidebar = ({
                                active = 'editaccount'
                            }
 ) => {
-    return(
+    return (
         <>
             <div className="list-group">
                 <Link to="/editaccount"
                       className={`list-group-item  ${active === 'editaccount' ? 'active' : ''}`}>
                     <div className="row">
                         <div className="col-2">
-                            <i className="fas fa-home"></i>
+                            <Home/>
                         </div>
                         <div className="col-10 d-none d-xl-block">
                             My Account
@@ -23,7 +28,7 @@ const NavigationSidebar = ({
                       className={`list-group-item  ${active === 'orders' ? 'active' : ''}`}>
                     <div className="row">
                         <div className="col-2">
-                            <i className="fas fa-hashtag"></i>
+                            <BookmarkBorderOutlined/>
                         </div>
                         <div className="col-10 d-none d-xl-block">
                             <span> My Orders</span>
@@ -31,12 +36,11 @@ const NavigationSidebar = ({
                     </div>
                 </Link>
 
-
                 <Link to="/wishlist"
                       className={`list-group-item  ${active === 'wishlist' ? 'active' : ''}`}>
                     <div className="row">
                         <div className="col-2">
-                            <i className="fas fa-hashtag"></i>
+                            <FavoriteBorderOutlined/>
                         </div>
                         <div className="col-10 d-none d-xl-block">
                             <span> My Wishlist</span>

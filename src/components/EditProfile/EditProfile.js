@@ -51,7 +51,7 @@ const EditProfile = () => {
 <Card>
 
         <form>
-            Enter your name:
+            Edit your name:
                 <input
                     type="text"
                     value={name}
