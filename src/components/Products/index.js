@@ -38,13 +38,11 @@ class Products extends React.Component {
       .then((electronics) => {
         console.log(electronics);
         this.setState({ electronics: electronics });
-        console.log("Keyword", this.props.keyword);
         const filteredElex = electronics.filter((e) => {
           return e["brand"]
             .toLowerCase()
             .includes(this.props.keyword.toLowerCase());
         });
-        console.log("filtered", filteredElex);
         this.setState({ filteredElectronics: filteredElex });
       });
   }
