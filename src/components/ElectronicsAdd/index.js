@@ -4,10 +4,19 @@ import { createNewElectronics } from "../../services/electronicsService";
 
 const ElectronicsAdd = () => {
   const [deviceData, setDeviceData] = useState({
-    name: "",
+    brand: "",
+    cpu: "",
+    gpu: "",
+    model_name: "",
+    operating_system: "",
+    price: "",
+    screen: "",
+    screen_size: "",
     ram: "",
     quantity: "",
     drive: "",
+    storage:"",
+    weight:"",
     category: "Select Catgeory",
   });
 
@@ -38,33 +47,97 @@ const ElectronicsAdd = () => {
       <h2>Add New Electronics</h2>
       <form>
         <div class="form-group">
-          <label for="name">Name</label>
+          <label for="name">Brand</label>
           <input
             type="text"
             class="form-control"
             aria-describedby="emailHelp"
-            placeholder="Enter Name"
-            name="name"
+            placeholder="Enter Brand"
+            name="brand"
             onChange={onChange}
           />
         </div>
+        <div class="form-group">
+          <label for="name">Model Name</label>
+          <input
+            type="text"
+            class="form-control"
+            aria-describedby="emailHelp"
+            placeholder="Enter Model Name"
+            name="model_name"
+            onChange={onChange}
+          />
+        </div>
+
         <div class="form-group">
           <label for="ram">RAM</label>
           <input
             type="text"
             class="form-control"
-            placeholder="RAM"
+            placeholder="Enter RAM"
             name="ram"
             onChange={onChange}
           />
         </div>
         <div class="form-group">
-          <label for="quantity">Quantity</label>
+          <label for="name">CPU</label>
           <input
             type="text"
             class="form-control"
-            placeholder="Enter Quantity of Units"
-            name="quantity"
+            aria-describedby="emailHelp"
+            placeholder="Enter CPU"
+            name="cpu"
+            onChange={onChange}
+          />
+        </div>
+        <div class="form-group">
+          <label for="name">GPU</label>
+          <input
+            type="text"
+            class="form-control"
+            aria-describedby="emailHelp"
+            placeholder="Enter GPU"
+            name="gpu"
+            onChange={onChange}
+          />
+        </div>
+        <div class="form-group">
+          <label for="ram">Operating System</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Operating System"
+            name="operating_system"
+            onChange={onChange}
+          />
+        </div>
+        <div class="form-group">
+          <label for="ram">Screen</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Scren Details"
+            name="screen"
+            onChange={onChange}
+          />
+        </div>
+        <div class="form-group">
+          <label for="ram">Screen Size</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Screen Size"
+            name="screen_size"
+            onChange={onChange}
+          />
+        </div>
+        <div class="form-group">
+          <label for="ram">Weight</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Weight"
+            name="weight"
             onChange={onChange}
           />
         </div>
@@ -73,8 +146,8 @@ const ElectronicsAdd = () => {
           <input
             type="text"
             class="form-control"
-            placeholder="Memory Capacity"
-            name="memory"
+            placeholder="Enter Internal Memory Capacity"
+            name="storage"
             onChange={onChange}
           />
         </div>
@@ -109,8 +182,18 @@ const ElectronicsAdd = () => {
           <input
             type="text"
             class="form-control"
-            placeholder="Price"
+            placeholder="Enter Price"
             name="price"
+            onChange={onChange}
+          />
+        </div>
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Quantity of Units"
+            name="quantity"
             onChange={onChange}
           />
         </div>

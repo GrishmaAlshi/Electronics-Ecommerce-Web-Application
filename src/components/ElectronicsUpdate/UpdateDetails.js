@@ -8,10 +8,11 @@ import './index.css';
 
 const productDetails = (state) => state.electronics.electronics;
 
-const UpdateDetails = () => {
+const UpdateDetails = ({data}) => {
     const {id} = useParams();
+    console.log(useParams());
     const ELECTRONICS_API = "http://localhost:4000/api/electronics";
-    const [electronics, setElectronics] = useState({model_name: "", highest_price: ""});
+    const [electronics, setElectronics] = useState({model_name: "iPhone", highest_price: "999"});
     const [inputs, setInputs] = useState({});
     // const dispatch = useDispatch();
     // useEffect(() => fetchElectronicById(dispatch, id.id), []);
@@ -36,7 +37,7 @@ const UpdateDetails = () => {
         .then(response => response.json())
         .then(electronics => console.log(electronics));
     };
-    useEffect(() => 
+    useEffect(() =>  
         fetch(`${ELECTRONICS_API}/${id}`)
             .then(response => response.json())
             .then(electronics => {

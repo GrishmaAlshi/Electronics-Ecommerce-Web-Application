@@ -7,7 +7,7 @@ const ElectronicsListItem = ({electronics}) => {
     const dispatch = useDispatch();
     const editClickHandler = () => {
         console.log("From List Item " + electronics.id);
-        return <UpdateDetails data={electronics}/>
+        return <UpdateDetails data={electronics.id}/>
     }
     return(
         <li className="list-group-item" key={electronics.id}>
