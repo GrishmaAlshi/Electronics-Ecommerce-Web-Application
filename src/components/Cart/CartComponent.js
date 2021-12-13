@@ -173,34 +173,65 @@ const Button = styled.button`
 const CartComponent = () => {
 
     const [products, setProducts] = useState([]);
-    const [id, setId] = useState("");
     const ELECTRONICS_API = "http://localhost:4000/api/cartProducts";
+    const remove_api = "http://localhost:4000/api/removeFromCart";
     const dispatch = useDispatch();
     let total = 0;
-    const authListener= () => { 
-      const auth = getAuth();
-      onAuthStateChanged(auth, (user) => {
-        console.log("User" + user);
-          if(user) {
-              setId(user.email);
-          } else {
-            
-          }
+    const id = getCurrentUser();
+
+    const removeFromCart = (data) => {
+      fetch(`${remove_api}/${id}`, {
+        method: 'DELETE',
+        body: JSON.stringify(data),
+        headers: {
+          'content-type': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(electronics => console.log(electronics));
+      window.location.reload(false);
+    }  
+
+    const checkout = () => {
+      var today = new Date();
+      var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      let orderData = {};
+      orderData.date = date;
+      orderData.userid = id;
+      orderData.total_amount = total;
+      let productID = [];
+      products.forEach((prod) => {
+        productID = [
+          ...productID,
+          prod.id
+        ]
       });
-  }
-  console.log(id);
+      orderData.products = productID;
+      fetch("http://localhost:4000/api/orders/", {
+        method: 'POST',
+        body: JSON.stringify(orderData),
+        headers: {
+          'content-type': 'application/json'
+        }
+      })
+        .then(response => response.json())
+        .then(electronics => console.log(electronics))
+        alert("Order Placed");
+        products.forEach((prod) => {
+          removeFromCart(prod);
+        })
+      }
+      
     useEffect(
         () =>
             {
-              authListener()
               fetch(`${ELECTRONICS_API}/${id}`)
                 .then((response) => response.json())
                 .then((products) => {setProducts(products);})
-                
             },
         []
     );
-    
+    console.log(products);
     {products.map((product) => ( total = total + parseInt(product.price)))}
    
     return (
@@ -234,6 +265,7 @@ const CartComponent = () => {
                                 </ProductDetail>
                                 <PriceDetail>
                                     <ProductPrice>$ {product.price}</ProductPrice>
+                                    <button className="btn-danger" onClick={() => removeFromCart(product)}>Remove From Cart</button>
                                 </PriceDetail>
                             </Product>
 
@@ -261,7 +293,7 @@ const CartComponent = () => {
                             <SummaryItemText>Total</SummaryItemText>
                             <SummaryItemPrice>$ {total+0.05*total+0.05*total}</SummaryItemPrice>
                         </SummaryItem>
-                        <Button>CHECKOUT NOW</Button>
+                        <Button onClick={() => checkout()}>CHECKOUT NOW</Button>
                     </Summary>
                 </Bottom>
             </Wrapper>

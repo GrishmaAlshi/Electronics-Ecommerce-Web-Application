@@ -1,10 +1,9 @@
 import Home from "./components/Home/index";
-import { BrowserRouter, Link, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import Shop from "./components/Shop/index";
 import Login from "./components/Login/index";
 import Signup from "./components/Signup/index";
 import Profile from "./components/Profile/index";
-import EditProfile from "./components/EditProfile/EditProfile";
 import Edit from "./components/EditProfile";
 import Order from "./components/Orders";
 import ProductDetails from "./components/ProductDetails";
@@ -13,7 +12,6 @@ import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
 import electronics from "./reducers/electronics";
 import Privacy from "./components/Privacy/index";
-import ProductList from "./components/Products/Product/ProductList";
 import Laptops from "./components/Laptops";
 import Mobiles from "./components/Mobiles";
 

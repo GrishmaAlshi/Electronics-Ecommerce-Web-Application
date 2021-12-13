@@ -83,7 +83,6 @@ const Product = ({ item }) => {
   const history = useHistory();
   const id = getCurrentUser();
   const isLoggedin = id === null ? false : true;
-  console.log(id);
   const addToCart = () => {
     if(!isLoggedin) {
       history.push("/login");
@@ -97,6 +96,7 @@ const Product = ({ item }) => {
     })
     .then(response => response.json())
     .then(data => console.log(data + "Added to cart"));
+    alert(item.model_name + " added to cart.");
   }
 }
 
@@ -106,7 +106,6 @@ const Product = ({ item }) => {
             {/*<Circle />*/}
             
             <Details className="row">{item.model_name}</Details>
-
             <Info>
               <Icon>
                     <ShoppingCartOutlined onClick={() => addToCart()}/>

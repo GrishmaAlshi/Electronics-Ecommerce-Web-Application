@@ -26,7 +26,6 @@ const Products = ({ category, keyword }) => {
 
   // electronics = useSelector(selectAllElectronics);
   const dispatch = useDispatch();
-  console.log("====", keyword)
   useEffect(
     () =>
       fetch(`http://localhost:4000/api/${category}`)
@@ -35,13 +34,8 @@ const Products = ({ category, keyword }) => {
             console.log(electronics)
             const filteredElectronics = electronics.filter(e=>
                 e['brand'].includes(keyword)
-
             )
-          dispatch({
-            type: "fetch-all-electronics",
-              filteredElectronics,
-          });
-          setElectronics(filteredElectronics);
+          setElectronics(electronics);
         }),
     []
   );
