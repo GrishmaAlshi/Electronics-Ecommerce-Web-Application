@@ -25,6 +25,11 @@ import ProductDetailsComponent from "./components/ProductDetails/ProductDetailsC
 import Shipping from "./components/Checkout/AddressDetails";
 import OrderPlaced from "./components/Checkout/OrderPlaced";
 
+import "./App.css";
+import ElectronicsAdd from "./components/ElectronicsAdd";
+import ElectronicsUpdate from "./components/ElectronicsUpdate";
+import UpdateDetails from "./components/ElectronicsUpdate/UpdateDetails";
+
 const reducer = combineReducers({ electronics: electronics });
 const store = createStore(reducer);
 
@@ -81,11 +86,20 @@ function App() {
           <Route path="/orderDetails">
             <OrderDetails />
           </Route>
-          <Route path = "/shippingDetails">
-            <Shipping/>
+          <Route path="/shippingDetails">
+            <Shipping />
           </Route>
-          <Route path = "/orderPlaced">
-            <OrderPlaced/>
+          <Route path="/orderPlaced">
+            <OrderPlaced />
+          </Route>
+          <Route path="/admin/add" exact={true}>
+            <ElectronicsAdd />
+          </Route>
+          <Route path="/admin/update" exact={true}>
+            <ElectronicsUpdate />
+          </Route>
+          <Route path="/admin/updateElectronics">
+            <UpdateDetails />
           </Route>
         </div>
       </BrowserRouter>
