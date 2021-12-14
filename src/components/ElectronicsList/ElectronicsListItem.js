@@ -9,6 +9,7 @@ const ElectronicsListItem = ({electronics}) => {
     const link = "/admin/update/" + electronics.id;
     const editClickHandler = () => {
         console.log("From List Item " + electronics.id);
+        console.log(link);
     }
     return(
         <li className="list-group-item" key={electronics.id}>
