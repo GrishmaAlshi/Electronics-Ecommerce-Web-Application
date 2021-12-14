@@ -2,7 +2,7 @@ import React from "react";
 import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Container = styled.div``;
 
@@ -216,7 +216,7 @@ class Wish extends React.Component {
           <Wrapper>
             <Title>YOUR WISHLIST</Title>
             <Top>
-              <TopButton1>CONTINUE SHOPPING</TopButton1>
+              <Link to="/shop">CONTINUE SHOPPING</Link>
             </Top>
             <Bottom>
               <Info>
