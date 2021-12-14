@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -8,6 +7,13 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytes,
+  uploadBytesResumable,
+} from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,6 +26,18 @@ const firebaseConfig = {
   storageBucket: "webdevproject-7c916.appspot.com",
   messagingSenderId: "885106162808",
   appId: "1:885106162808:web:1c88e0bad292fed50c018d",
+};
+
+const uploadImage = (image, path) => {
+  const storage = getStorage();
+  if (image == null) return;
+  const storageRef = ref(storage, path);
+  uploadBytes(storageRef, image).then((snapshot) => {
+    console.log("Uploaded an image");
+    getDownloadURL(ref(storage, path)).then((url) => {
+      return url;
+    });
+  });
 };
 
 const signup = (email, password, firstName, lastName) => {
@@ -128,4 +146,12 @@ const signInWithGoogle = () => {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export { app, signup, logout, signin, getCurrentUser, signInWithGoogle };
+export {
+  app,
+  signup,
+  logout,
+  signin,
+  getCurrentUser,
+  signInWithGoogle,
+  uploadImage,
+};
