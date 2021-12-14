@@ -19,7 +19,8 @@ const ElectronicsListItem = ({electronics}) => {
                     {electronics.model_name}
                 </div>
                     <div className="col">
-                        <button className="editbutton" onClick={editClickHandler}>Edit</button>
+                        <Link to={{pathname: "/admin/updateElectronics", search:`id=${electronics.id}`}}>Edit</Link>
+                        {/* <button className="editbutton" onClick={editClickHandler}>Edit</button> */}
                     </div>
             </div>
         </li>

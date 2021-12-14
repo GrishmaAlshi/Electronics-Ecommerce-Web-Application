@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AdminNavbar from "../AdminNavbar";
 import { createNewElectronics } from "../../services/electronicsService";
 import "./index.css";
-import NavigationTop from "../NavigationTop";
+import NavigationTop from "../AdminNavbar";
 
 const ElectronicsAdd = () => {
   const [deviceData, setDeviceData] = useState({
@@ -20,7 +20,8 @@ const ElectronicsAdd = () => {
     storage:"",
     weight:"",
     category: "Select Catgeory",
-    reviews:[]
+    reviews:[],
+    quantity: 0
   });
 
   const onSubmit = (event) => {
@@ -46,8 +47,9 @@ const ElectronicsAdd = () => {
 
   return (
     <>
+    <AdminNavbar/>
     <div className="container">
-      <NavigationTop/>
+      
       <br></br>
       <h2>Add New Electronics</h2>
       <form>

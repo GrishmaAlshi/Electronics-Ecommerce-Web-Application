@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router";
+import {  useParams } from "react-router";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { fetchElectronicById } from "../../services/electronicsService";
 import AdminNavbar from "../AdminNavbar";
 import './index.css';
-import NavigationTop from "../NavigationTop";
+import NavigationTop from "../AdminNavbar";
 
 const productDetails = (state) => state.electronics.electronics;
 
-const UpdateDetails = () => {
-    const {id} = useParams();
+const UpdateDetails = (props) => {
+    const {search} = useLocation()
+    console.log(search);
+    const id = new URLSearchParams(search).get('id')
     console.log(id);
     const ELECTRONICS_API = "http://localhost:4000/api/electronics";
     const [electronics, setElectronics] = useState({model_name: "", highest_price: ""});
     const [inputs, setInputs] = useState({});
-    // const dispatch = useDispatch();
-    // useEffect(() => fetchElectronicById(dispatch, id.id), []);
-    // const onQuantityChange = (event) => {
-    //     const name = event.target.name;
-    //     const value = event.target.value;
-    //     setElectronics({...electronics, [name] : value});
-    // } 
     const onPriceChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setElectronics({...electronics, [name] : value});
+    } 
+    const onQuantityChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         setElectronics({...electronics, [name] : value});
@@ -42,29 +43,40 @@ const UpdateDetails = () => {
         fetch(`${ELECTRONICS_API}/${id}`)
             .then(response => response.json())
             .then(electronics => {
-                setElectronics(electronics)})
+                setElectronics(electronics[0])})
         , []);
-   console.log()
+        console.log(electronics);
     return(
         <div>
-            <NavigationTop/>
-            <label>Model Name</label>
-            <input type = "text" value = {electronics.model_name}></input>
+            <AdminNavbar/>
             <br></br>
+            <div className="container">
+            <h1>{electronics.model_name}</h1>
             <form>
-            {/* <label>Quantity</label>
-            <input type = "number" 
-                value = "10"
-                name="quantity"
-                onChange ={onQuantityChange}
-                ></input> */}
                 <br></br>
-            <label>Price</label>
-            <input type = "number" 
-                value = {electronics.highest_price} 
-                name='highest_price'
-                onChange ={onPriceChange}
-                ></input>
+                <div class="form-group">
+                    <label for="name">Price</label>
+                    <input
+                        type="number"
+                        class="form-control"
+                        aria-describedby="emailHelp"
+                        value={electronics.price}
+                        name="price"
+                        onChange={onPriceChange}
+                    />
+                </div>
+                <br></br>
+                <div class="form-group">
+                    <label for="name">Quantity</label>
+                    <input
+                        type="number"
+                        class="form-control"
+                        aria-describedby="emailHelp"
+                        value={electronics.quantity}
+                        name="quantity"
+                        onChange={onQuantityChange}
+                    />
+                </div>
             <div className = "btn">
                 <Link to="/admin/update" onClick={submitHandler}>
                     Save
@@ -76,6 +88,7 @@ const UpdateDetails = () => {
                 </Link>
             </div>
             </form>
+        </div>
         </div>
     );
 }
