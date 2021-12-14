@@ -180,13 +180,68 @@ const CartComponent = () => {
   };
 
   const [products, setProducts] = useState([]);
-  const [id, setId] = useState("");
+
   const ELECTRONICS_API = "http://localhost:4000/api/cartProducts";
   const dispatch = useDispatch();
   let total = 0;
+  const remove_api = "http://localhost:4000/api/removeFromCart";
 
   const email = localStorage.getItem("email");
   console.log(email);
+  const id = localStorage.getItem("email");
+
+  const backToMart = () => {
+    history.push("/shop");
+  }
+
+  const backToWishList = () => {
+    history.push("/wishlist");
+  }
+
+
+  const removeFromCart = (data) => {
+    fetch(`${remove_api}/${id}`, {
+      method: 'DELETE',
+      body: JSON.stringify(data),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(electronics => console.log(electronics));
+    window.location.reload(false);
+  }  
+
+
+  const checkout = () => {
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let orderData = {};
+    orderData.date = date;
+    orderData.userid = id;
+    orderData.total_amount = total;
+    let productID = [];
+    products.forEach((prod) => {
+      productID = [
+        ...productID,
+        prod.id
+      ]
+    });
+    orderData.products = productID;
+    fetch("http://localhost:4000/api/orders/", {
+      method: 'POST',
+      body: JSON.stringify(orderData),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(electronics => console.log(electronics))
+      alert("Order Placed");
+      products.forEach((prod) => {
+        removeFromCart(prod);
+      })
+    }
   useEffect(() => {
     // authListener();
     fetch(`${ELECTRONICS_API}/${email}`)
@@ -205,8 +260,8 @@ const CartComponent = () => {
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
-          <TopButton1>CONTINUE SHOPPING</TopButton1>
-          <TopText>Your Wishlist</TopText>
+          <TopButton1 onClick={() => backToMart()}>CONTINUE SHOPPING</TopButton1>&nbsp;
+          <TopButton1 onClick={() => backToWishList()}>YOUR WISHLIST</TopButton1>
         </Top>
         <Bottom>
           <Info>
@@ -231,6 +286,7 @@ const CartComponent = () => {
                 </ProductDetail>
                 <PriceDetail>
                   <ProductPrice>$ {product.price}</ProductPrice>
+                  <button className="btn-danger" onClick={() => removeFromCart(product)}>Remove From Cart</button>
                 </PriceDetail>
               </Product>
             ))}
@@ -256,7 +312,7 @@ const CartComponent = () => {
                 $ {total + 0.05 * total + 0.05 * total}
               </SummaryItemPrice>
             </SummaryItem>
-            <Button>CHECKOUT NOW</Button>
+            <Button onClick={() => checkout()}>CHECKOUT NOW</Button>
           </Summary>
         </Bottom>
       </Wrapper>
