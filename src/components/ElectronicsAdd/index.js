@@ -20,6 +20,7 @@ const ElectronicsAdd = () => {
     storage:"",
     weight:"",
     category: "Select Catgeory",
+    reviews:[]
   });
 
   const onSubmit = (event) => {
