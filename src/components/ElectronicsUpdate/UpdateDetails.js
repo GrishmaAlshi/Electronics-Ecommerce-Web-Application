@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { fetchElectronicById } from "../../services/electronicsService";
 import AdminNavbar from "../AdminNavbar";
 import './index.css';
+import NavigationTop from "../NavigationTop";
 
 const productDetails = (state) => state.electronics.electronics;
 
@@ -46,7 +47,7 @@ const UpdateDetails = () => {
    console.log()
     return(
         <div>
-            <AdminNavbar/>
+            <NavigationTop/>
             <label>Model Name</label>
             <input type = "text" value = {electronics.model_name}></input>
             <br></br>
