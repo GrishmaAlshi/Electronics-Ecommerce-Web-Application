@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getCurrentUser } from "../../firebase";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import Shipping from "../Checkout/AddressDetails";
+import { Link } from "react-router-dom";
 
 const Container = styled.div``;
 
@@ -138,6 +140,7 @@ const Hr = styled.hr`
 `;
 
 const Summary = styled.div`
+  margin-left: 20px;
   flex: 1;
   border: 0.5px solid lightgray;
   border-radius: 10px;
@@ -145,7 +148,7 @@ const Summary = styled.div`
   height: 50vh;
 `;
 
-const SummaryTitle = styled.h1`
+const SummaryTitle = styled.h2`
   font-weight: 200;
   color: white;
 `;
@@ -312,7 +315,9 @@ const CartComponent = () => {
                 $ {total + 0.05 * total + 0.05 * total}
               </SummaryItemPrice>
             </SummaryItem>
-            <Button onClick={() => checkout()}>CHECKOUT NOW</Button>
+            <Link to ="/shippingDetails">
+              <Button>CHECKOUT NOW</Button>
+            </Link>
           </Summary>
         </Bottom>
       </Wrapper>

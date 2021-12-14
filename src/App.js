@@ -22,6 +22,8 @@ import Construction from "./components/PageInConstruction";
 import OrderDetails from "./components/Orders/OrderDetails";
 import WishList from "./components/WishList";
 import ProductDetailsComponent from "./components/ProductDetails/ProductDetailsComponent";
+import Shipping from "./components/Checkout/AddressDetails";
+import OrderPlaced from "./components/Checkout/OrderPlaced";
 
 const reducer = combineReducers({ electronics: electronics });
 const store = createStore(reducer);
@@ -78,6 +80,12 @@ function App() {
           </Route>
           <Route path="/orderDetails">
             <OrderDetails />
+          </Route>
+          <Route path = "/shippingDetails">
+            <Shipping/>
+          </Route>
+          <Route path = "/orderPlaced">
+            <OrderPlaced/>
           </Route>
         </div>
       </BrowserRouter>

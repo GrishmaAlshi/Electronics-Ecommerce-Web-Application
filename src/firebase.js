@@ -33,6 +33,8 @@ const signup = (email, password, firstName, lastName) => {
       currUser.email = localStorage.getItem("email");
       currUser.cart = [];
       currUser.wishlist = [];
+      currUser.firstName = firstName;
+      currUser.lastName = lastName;
       fetch("http://localhost:4000/api/users/", {
         method: "POST",
         body: JSON.stringify(currUser),

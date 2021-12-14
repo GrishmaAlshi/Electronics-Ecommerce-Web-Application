@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 
 const Signup = () => {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory();
@@ -36,10 +38,20 @@ const Signup = () => {
             <hr/>
 
             <b>First Name</b>
-            <input type="text" placeholder="Enter First Name" name="firstname" required/>
+            <input type="text" 
+            placeholder="Enter First Name" 
+            name="firstName"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)} 
+            required/>
 
             <b>Last Name</b>
-            <input type="text" placeholder="Enter Last Name" name="lastname" required/>
+            <input type="text" 
+            placeholder="Enter Last Name" 
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            name="lastName" 
+            required/>
 
             <b>Email</b>
             <input type="text" 
@@ -61,7 +73,7 @@ const Signup = () => {
                 & Privacy</a>.</p>
 
             <div className="clearfix">
-                <button type="submit" className="signupbtn" onClick={() => signup(email, password)}>Sign Up</button>
+                <button type="submit" className="signupbtn" onClick={() => signup(email, password, firstName, lastName)}>Sign Up</button>
                 <button type="button" className="cancelbtn" onclick={() => cancelSignUp()}>Cancel</button>
             </div>
         </div>
