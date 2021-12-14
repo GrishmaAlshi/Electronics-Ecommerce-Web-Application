@@ -140,8 +140,8 @@ const ProductDetailsComponent = ({ item }) => {
   const CART_API = "http://localhost:4000/api/addToCart";
   const [electronics, setElectronics] = useState([]);
   const dispatch = useDispatch();
-  const review = electronics.map((elec) => elec.reviews);
-  console.log(review);
+  const [review, setReview] = useState([]);
+
   useEffect(
     () =>
       fetch(`${ELECTRONICS_API}/${item}`)
@@ -149,6 +149,7 @@ const ProductDetailsComponent = ({ item }) => {
         .then((electronics) => {
           setElectronics(electronics);
           setLoaded(true);
+          setReview(electronics[0].reviews);
         }),
     []
   );
@@ -161,7 +162,7 @@ const ProductDetailsComponent = ({ item }) => {
     } else {
       fetch(`${CART_API}/${id}`, {
         method: "PUT",
-        body: JSON.stringify(item),
+        body: JSON.stringify(electronics[0]),
         headers: {
           "content-type": "application/json",
         },
@@ -203,7 +204,7 @@ const ProductDetailsComponent = ({ item }) => {
       </Container>
 
       <h2>Reviews</h2>
-      {review !== null && (
+      {review.length !== 0 && (
         <ul className="list-group">
           {review.map((rev) => (
             <li className="list-group-item">{rev}</li>

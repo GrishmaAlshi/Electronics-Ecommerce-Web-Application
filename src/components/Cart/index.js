@@ -27,6 +27,10 @@ const Cart = () => {
         <>
             <NavigationTop isLoggedIn={true}/>
             <CartComponent id = {id}/>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <Footer/>
         </>
 
