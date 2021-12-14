@@ -6,6 +6,8 @@ import { Row } from "../Footer/FooterStyles";
 import NavigationTop from "../NavigationTop";
 import Footer from "../Footer/Footer";
 import { useLocation } from "react-router";
+import {Card} from "react-bootstrap";
+import {mobile} from "../responsive";
 
 const Info = styled.div`
   opacity: 0;
@@ -21,6 +23,17 @@ const Info = styled.div`
   justify-content: center;
   transition: all 0.5s ease;
   cursor: pointer;
+`;
+
+const Product = styled.div`
+  display: flex;
+  justify-content: space-between;
+  ${mobile({flexDirection: "column"})}
+`;
+
+const ProductDetail = styled.div`
+  flex: 2;
+  display: flex;
 `;
 
 const Container = styled.div`
@@ -52,6 +65,14 @@ const Image = styled.img`
   z-index: 1;
 `;
 
+const PriceDetail = styled.div`
+color: black;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 const Details = styled.div`
   justify-content: center;
   z-index: 2;
@@ -59,6 +80,28 @@ const Details = styled.div`
   padding-top: 270px;
   margin-left: -150px;
   font-weight: bold;
+`;
+
+const ProductName = styled.span``;
+const ProductSize = styled.span``;
+
+const ProductId = styled.span``;
+
+const ProductColor = styled.div`
+color: black;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: ${(props) => props.color};
+`;
+
+
+const ProductPrice = styled.div`
+color: white;
+  font-size: 30px;
+  font-weight: 200;
+  ${mobile({marginBottom: "20px"})}
 `;
 
 const Icon = styled.div`
@@ -116,11 +159,44 @@ const OrderDetails = (props) => {
     <>
       <NavigationTop />
       <h1>Order Details</h1>
-      <Row>
-        <Col>
-          <NavigationSidebar />
-        </Col>
-      </Row>
+        <br/>
+        <div className="col-2 col-md-2 col-lg-1 col-xl-2">
+            <NavigationSidebar/>
+        </div>
+        <br/>
+          <Col>
+              <div className="col-10 col-sm-10 col-lg-6" style={{"margin-left":"400px","margin-top":"-150px"}}>
+              {productsInOrder.map((product) => (
+                  <React.Fragment>
+                     <Card>
+                         <Card.Header as="h5">
+                             Order Details
+                         </Card.Header>
+                         <Card.Text>
+                         <Image style={{"margin-left":"20px",padding:"5px",width:"150px",height:"150px"}}
+                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwbWRWBH9nh4wJdlJND0_n36oGoInrUsdfw&usqp=CAU"/>
+                         <br/>
+                         <div style={{"margin-left":"350px","margin-top":"-90px","font-size":"20px"}}>
+                         <b>Product:</b> {product.model_name}
+                         &nbsp;
+                         <br/>
+
+                         <b>Memory:</b> {product.storage}
+                         &nbsp;
+                         <br/>
+
+                         <b>Product Price: $</b>{product.price}
+                         </div>
+                             </Card.Text>
+
+                     </Card>
+                      <br/>
+
+                  </React.Fragment>
+                  ))}
+              </div>
+          </Col>
+        <br/>
       <Footer />
     </>
   );

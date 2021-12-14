@@ -31,18 +31,12 @@ const NavigationTop = ({ isLoggedIn }) => {
               <Dropdown.Menu>
                 <Dropdown.Item>
                   <Link to="/laptops">Laptops</Link>
-                  {/* <Nav.Link href="/shop/laptops">Laptops</Nav.Link> */}
                 </Dropdown.Item>
-                <Dropdown.Item>Television sets</Dropdown.Item>
                 <Dropdown.Item>
                   <Link to="/mobiles">Mobile Phones</Link>
                 </Dropdown.Item>
-                <Dropdown.Item>Tablets</Dropdown.Item>
-                <Dropdown.Item>Smart devices</Dropdown.Item>
-                <Dropdown.Item>Washing machines</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-            <Nav.Link href="/blog">Blog</Nav.Link>
             {!isLoggedIn && <Nav.Link href="/login">Login</Nav.Link>}
             {isLoggedIn && <Nav.Link href="/profile">Profile</Nav.Link>}
             {isLoggedIn && (

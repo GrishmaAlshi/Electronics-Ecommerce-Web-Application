@@ -16,7 +16,7 @@ const Edit = () => {
             </div>
             <br/>
             <Col>
-            <div className="col-10 col-sm-10 col-lg-6" style={{"margin-left":"400px"}}>
+            <div className="col-10 col-sm-10 col-lg-6" style={{"margin-left":"400px","margin-top":"-150px"}}>
                 <EditProfile/>
             </div>
             </Col>
