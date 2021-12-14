@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "../Styles/AdminNavbar.css";
 import "./index.css";
 
-const AdminNavbar = (selected) => {
+const AdminNavbar = ({selected}) => {
   return (
     <>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -22,12 +22,12 @@ const AdminNavbar = (selected) => {
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <Link className="nav-link selected" to="/admin/add" exact="true">
+              <Link className={`nav-link ${selected === "add" ? "selected" : ""}`} to="/admin/add" exact="true">
                 Add
               </Link>
             </li>
             <li class="nav-item">
-              <Link className="nav-link" to="/admin/update" exact="true">
+              <Link className={`nav-link ${selected === "update" ? "selected" : ""}`} to="/admin/update" exact="true">
                 Update
               </Link>
             </li>

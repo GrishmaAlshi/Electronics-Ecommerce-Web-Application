@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AdminNavbar from "../AdminNavbar";
 import { createNewElectronics } from "../../services/electronicsService";
+import "./index.css";
 
 const ElectronicsAdd = () => {
   const [deviceData, setDeviceData] = useState({
@@ -44,7 +45,8 @@ const ElectronicsAdd = () => {
   return (
     <>
     <div className="container">
-      <AdminNavbar />
+      <AdminNavbar selected={"add"} />
+      <br></br>
       <h2>Add New Electronics</h2>
       <form>
         <div class="form-group">

@@ -6,7 +6,8 @@ const ElectronicsUpdate = () => {
   return (
     <>
     <div className="container">
-      <AdminNavbar />
+      <AdminNavbar selected={"update"}/>
+      <br></br>
       <ElectronicsList/>
     </div>
     </>

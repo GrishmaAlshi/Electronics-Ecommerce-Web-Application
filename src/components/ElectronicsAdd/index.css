@@ -1,0 +1,12 @@
+body {
+    background-color: gray;
+}
+
+label{
+    color: black;
+    font-weight: bold;
+}
+
+input::placeholder{
+    color: black;
+}

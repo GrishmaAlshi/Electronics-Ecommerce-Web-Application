@@ -1,8 +1,5 @@
-body {
-    background-color: black;
-    color: white;
-}
 
 .selected {
-    background-color: aqua;
+    font-weight: bold;
+
 }

@@ -8,11 +8,11 @@ import './index.css';
 
 const productDetails = (state) => state.electronics.electronics;
 
-const UpdateDetails = ({data}) => {
+const UpdateDetails = () => {
     const {id} = useParams();
     console.log(useParams());
     const ELECTRONICS_API = "http://localhost:4000/api/electronics";
-    const [electronics, setElectronics] = useState({model_name: "iPhone", highest_price: "999"});
+    const [electronics, setElectronics] = useState({model_name: "", highest_price: ""});
     const [inputs, setInputs] = useState({});
     // const dispatch = useDispatch();
     // useEffect(() => fetchElectronicById(dispatch, id.id), []);
@@ -41,9 +41,9 @@ const UpdateDetails = ({data}) => {
         fetch(`${ELECTRONICS_API}/${id}`)
             .then(response => response.json())
             .then(electronics => {
-                setElectronics(electronics[0])})
+                setElectronics(electronics)})
         , []);
-   
+   console.log()
     return(
         <div>
             <AdminNavbar/>
