@@ -190,6 +190,15 @@ const CartComponent = () => {
   console.log(email);
   const id = localStorage.getItem("email");
 
+  const backToMart = () => {
+    history.push("/shop");
+  }
+
+  const backToWishList = () => {
+    history.push("/wishlist");
+  }
+
+
   const removeFromCart = (data) => {
     fetch(`${remove_api}/${id}`, {
       method: 'DELETE',
@@ -202,6 +211,7 @@ const CartComponent = () => {
     .then(electronics => console.log(electronics));
     window.location.reload(false);
   }  
+
 
   const checkout = () => {
     var today = new Date();
@@ -250,8 +260,8 @@ const CartComponent = () => {
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
-          <TopButton1>CONTINUE SHOPPING</TopButton1>
-          <TopText>Your Wishlist</TopText>
+          <TopButton1 onClick={() => backToMart()}>CONTINUE SHOPPING</TopButton1>&nbsp;
+          <TopButton1 onClick={() => backToWishList()}>YOUR WISHLIST</TopButton1>
         </Top>
         <Bottom>
           <Info>
