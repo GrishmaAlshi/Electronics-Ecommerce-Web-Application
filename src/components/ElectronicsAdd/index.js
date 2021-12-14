@@ -3,8 +3,11 @@ import AdminNavbar from "../AdminNavbar";
 import { createNewElectronics } from "../../services/electronicsService";
 import "./index.css";
 import NavigationTop from "../AdminNavbar";
+import { uploadImage } from "../../firebase";
+import { getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 
 const ElectronicsAdd = () => {
+  const [image, setImage] = useState('');
   const [deviceData, setDeviceData] = useState({
     brand: "",
     cpu: "",
@@ -21,19 +24,32 @@ const ElectronicsAdd = () => {
     weight:"",
     category: "Select Catgeory",
     reviews:[],
-    quantity: 0
+    quantity: 0,
+    img1: ""
   });
 
   const onSubmit = (event) => {
     event.preventDefault();
     console.log(deviceData);
-    createNewElectronics(deviceData)
+    const storage = getStorage();
+    if(image == null)
+        return;
+    const storageRef = ref(storage, deviceData.model_name);
+    uploadBytes(storageRef, image).then((snapshot) => {
+        console.log("Uploaded an image")
+        getDownloadURL(ref(storage, deviceData.model_name)).then((url) => {
+          deviceData.img1 = url;
+          createNewElectronics(deviceData)
       .then((res) => res.json())
       .then((res) => {
         if (res["success"]) {
           setDeviceData({});
         }
       });
+      })
+    })
+    
+    
   };
 
   const onChange = (event) => {
@@ -211,6 +227,10 @@ const ElectronicsAdd = () => {
             <option value="mobile">Mobile</option>
           </select>
         </div>
+        <div class="form-group">
+          <input type="file" onChange={(e) => {setImage(e.target.files[0])}}/>
+        </div>
+
         <button type="submit" class="btn btn-primary" onClick={onSubmit}>
           Submit
         </button>
