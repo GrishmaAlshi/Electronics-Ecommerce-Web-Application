@@ -217,7 +217,7 @@ class Wish extends React.Component {
 
   removeFromWishList(product) {
     console.log(product);
-    fetch(`http://localhost:4000/api/users/removeFromWishList`, {
+    fetch(`http://localhost:4000/api/wishlist/remove`, {
       method: "PUT",
       body: JSON.stringify({
         id: product.id,
@@ -229,7 +229,7 @@ class Wish extends React.Component {
     })
       .then((response) => response.json())
       .then((updatedWishlist) => {
-        // window.location.reload();
+        window.location.reload();
       });
   }
 

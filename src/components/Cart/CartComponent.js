@@ -313,19 +313,19 @@ const CartComponent = () => {
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ {0.05 * total}</SummaryItemPrice>
+              <SummaryItemPrice>$ {(0.05 * total).toFixed(2)}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Tax</SummaryItemText>
-              <SummaryItemPrice>$ {0.05 * total}</SummaryItemPrice>
+              <SummaryItemPrice>$ {(0.05 * total).toFixed(2)}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>
-                $ {total + 0.05 * total + 0.05 * total}
+                $ {(total + 0.05 * total + 0.05 * total).toFixed(2)}
               </SummaryItemPrice>
             </SummaryItem>
-            <Link to ="/shippingDetails">
+            <Link to="/shippingDetails">
               <Button>CHECKOUT NOW</Button>
             </Link>
           </Summary>

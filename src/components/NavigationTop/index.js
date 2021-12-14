@@ -57,7 +57,7 @@ const NavigationTop = ({ isLoggedIn }) => {
             </Dropdown>
             <Nav.Link href="/blog">Blog</Nav.Link>
             {!isLoggedIn && <Nav.Link href="/login">Login</Nav.Link>}
-            {isLoggedIn && <Nav.Link href="/profile">Profile</Nav.Link>}
+            {isLoggedIn && <Nav.Link href="/editaccount">Profile</Nav.Link>}
             {isLoggedIn && (
               <Nav.Link href="" onClick={() => logout()}>
                 Logout
