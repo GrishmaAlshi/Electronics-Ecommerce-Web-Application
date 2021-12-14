@@ -6,6 +6,8 @@ import { mobile } from "../responsive";
 import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getCurrentUser } from "../../firebase";
+import history from "../../history";
+
 const Container = styled.div`
   padding: 20px;
   display: flex;
@@ -133,7 +135,7 @@ const styles = {
 };
 
 const ProductDetailsComponent = ({ item }) => {
-  console.log(item);
+  const [isLoaded, setLoaded] = useState(false);
   const ELECTRONICS_API = "http://localhost:4000/api/electronics";
   const CART_API = "http://localhost:4000/api/addToCart";
   const [electronics, setElectronics] = useState([]);
@@ -146,10 +148,11 @@ const ProductDetailsComponent = ({ item }) => {
         .then((response) => response.json())
         .then((electronics) => {
           setElectronics(electronics);
+          setLoaded(true);
         }),
     []
   );
-  const history = useHistory();
+  //   const history = useHistory();
   const id = getCurrentUser();
   const isLoggedin = id === null ? false : true;
   const addToCart = () => {
@@ -172,29 +175,11 @@ const ProductDetailsComponent = ({ item }) => {
       <Container>
         <Wrapper>
           <ImgContainer>
-            <Carousel width="200px" overflow="hidden">
-              <Carousel.Item>
-                <Image
-                  className="d-block"
-                  src={electronics.map((elec) => elec.img1)}
-                  alt="First slide"
-                ></Image>
-              </Carousel.Item>
-              <Carousel.Item>
-                <Image
-                  className="d-block"
-                  src={electronics.map((elec) => elec.img2)}
-                  alt="Second slide"
-                ></Image>
-              </Carousel.Item>
-              <Carousel.Item>
-                <Image
-                  className="d-block"
-                  src={electronics.map((elec) => elec.img3)}
-                  alt="Third slide"
-                ></Image>
-              </Carousel.Item>
-            </Carousel>
+            <Image
+              className="d-block w-150"
+              src={electronics.map((elec) => elec.img1)}
+              alt="First slide"
+            ></Image>
           </ImgContainer>
           <InfoContainer>
             <Title>
@@ -212,9 +197,7 @@ const ProductDetailsComponent = ({ item }) => {
               Screen Size: {electronics.map((elec) => elec.screen_size)}
             </Desc>
             <Desc>Storage: {electronics.map((elec) => elec.storage)}</Desc>
-            <AddContainer>
-              <Button onClick={() => addToCart()}>ADD TO CART</Button>
-            </AddContainer>
+            <Button onClick={() => addToCart()}>ADD TO CART</Button>
           </InfoContainer>
         </Wrapper>
       </Container>

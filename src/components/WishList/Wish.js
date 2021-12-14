@@ -3,6 +3,8 @@ import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { Link, useHistory } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
+import "../../vendors/bootstrap/css/wish.css";
 
 const Container = styled.div``;
 
@@ -179,6 +181,7 @@ class Wish extends React.Component {
     this.state = {
       wishlist: [],
       wishlistProductDetails: [],
+      isLoaded: false,
     };
     this.setWish();
   }
@@ -194,7 +197,10 @@ class Wish extends React.Component {
         const allProducts = this.getWishListProducts();
         Promise.all(allProducts).then((productDetail) => {
           console.log("PrductDetails", productDetail);
-          this.setState({ wishlistProductDetails: [...productDetail] });
+          this.setState({
+            wishlistProductDetails: [...productDetail],
+            isLoaded: true,
+          });
           console.log(this.state);
         });
       });
@@ -209,46 +215,98 @@ class Wish extends React.Component {
     });
   }
 
+  removeFromWishList(product) {
+    fetch(`http://localhost:4000/api/users/removeFromWishList`, {
+      method: "PUT",
+      body: JSON.stringify({
+        id: product.id,
+        email: localStorage.getItem("email"),
+      }),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((updatedWishlist) => {
+        window.location.reload();
+      });
+  }
+
   render() {
     return (
       <>
         <Container>
           <Wrapper>
             <Title>YOUR WISHLIST</Title>
-            <Link to="/shop">
-            <Top>
-                <TopButton1>CONTINUE SHOPPING</TopButton1>
-            </Top>
-            </Link>
-            <Bottom>
-              <Info>
-                {this.state.wishlistProductDetails.map((product) => (
-                  <Product>
-                    <ProductDetail>
-                      <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwbWRWBH9nh4wJdlJND0_n36oGoInrUsdfw&usqp=CAU" />
-                      <Details>
-                        <ProductName>
-                          {}
-                          <b>Product:</b> {product.model_name}
-                        </ProductName>
-                        <ProductId>
-                          <b>ID:</b> 93813718293
-                        </ProductId>
-                        <ProductColor color="grey" />
-                        <ProductSize>
-                          <b>Memory:</b> {product.storage}
-                        </ProductSize>
-                      </Details>
-                    </ProductDetail>
-                    <PriceDetail>
-                      <ProductPrice>$ {product.price}</ProductPrice>
-                    </PriceDetail>
-                  </Product>
 
-                  // <Product item={product} key={product._id} />
-                ))}
-              </Info>
-            </Bottom>
+            {this.state.isLoaded ? (
+              <>
+                <Link to="/shop">
+                  <Top>
+                    <Link to="/shop">CONTINUE SHOPPING</Link>
+                  </Top>
+                </Link>
+                <Bottom>
+                  <Info>
+                    {this.state.wishlistProductDetails.map((product) => (
+                      // <Product>
+                      //   <ProductDetail>
+                      //     <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwbWRWBH9nh4wJdlJND0_n36oGoInrUsdfw&usqp=CAU" />
+                      //     <Details>
+                      //       <ProductName>
+                      //         {}
+                      //         <b>Product:</b> {product.model_name}
+                      //       </ProductName>
+                      //       <ProductId>
+                      //         <b>ID:</b> 93813718293
+                      //       </ProductId>
+                      //       <ProductColor color="grey" />
+                      //       <ProductSize>
+                      //         <b>Memory:</b> {product.storage}
+                      //       </ProductSize>
+                      //     </Details>
+                      //   </ProductDetail>
+                      //   <PriceDetail>
+                      //     <ProductPrice>$ {product.price}</ProductPrice>
+                      //   </PriceDetail>
+                      // </Product>
+                      <Product>
+                        <ProductDetail>
+                          <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwbWRWBH9nh4wJdlJND0_n36oGoInrUsdfw&usqp=CAU" />
+                          <Details>
+                            <ProductName>
+                              <b>Brand:</b> {product.brand}
+                            </ProductName>
+                            <ProductId>
+                              <b>Model:</b> {product.model_name}
+                            </ProductId>
+                            <ProductSize>
+                              <b>Storage:</b> {product.storage}
+                            </ProductSize>
+                            <ProductSize>
+                              <b>Screen Size:</b> {product.screen_size}
+                            </ProductSize>
+                          </Details>
+                        </ProductDetail>
+                        <PriceDetail>
+                          <ProductPrice>$ {product.price}</ProductPrice>
+                          <button
+                            className="btn-danger"
+                            onClick={() => this.removeFromWishList(product)}
+                          >
+                            Remove From Wishlist
+                          </button>
+                        </PriceDetail>
+                      </Product>
+                    ))}
+                  </Info>
+                </Bottom>
+              </>
+            ) : (
+              <div className="spinner-container">
+                <Spinner animation="border" />
+              </div>
+            )}
           </Wrapper>
         </Container>
       </>
