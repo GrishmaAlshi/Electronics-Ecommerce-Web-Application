@@ -22,7 +22,7 @@ function App() {
       <Route path="/admin/update" exact={true}>
         <ElectronicsUpdate />
       </Route>
-      <Route path = "/admin/update/:id" exact={true}>
+      <Route path = "/admin/update/:id">
         <UpdateDetails />
       </Route>
     </BrowserRouter>
