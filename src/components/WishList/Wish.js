@@ -217,7 +217,7 @@ class Wish extends React.Component {
 
   removeFromWishList(product) {
     console.log(product);
-    fetch(`http://localhost:4000/api/users/removeFromWishList`, {
+    fetch("http://localhost:4000/api/users/removeFromWishList", {
       method: "PUT",
       body: JSON.stringify({
         id: product.id,
