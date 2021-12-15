@@ -49,6 +49,7 @@ const ElectronicsAdd = () => {
           .then((res) => {
             if (res["success"]) {
               setDeviceData({});
+              alert("New device added.");
             }
           });
       });
@@ -141,7 +142,7 @@ const ElectronicsAdd = () => {
             <input
               type="text"
               class="form-control"
-              placeholder="Enter Scren Details"
+              placeholder="Enter Screen Details"
               name="screen"
               onChange={onChange}
             />

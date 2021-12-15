@@ -105,7 +105,7 @@ const Product = ({ item }) => {
         },
       })
         .then((response) => response.json())
-        .then((data) => console.log(data + "Added to cart"));
+        .then((data) => window.alert("Added to cart!"));
     }
   };
 
@@ -138,6 +138,7 @@ const Product = ({ item }) => {
         src={item.img1}
         style={{ "margin-left": "-50px", width: "200px", height: "200px" }}
       />
+
       <Details className="row">{item.model_name}</Details>
 
       <Info>
