@@ -123,12 +123,13 @@ const Shipping = () => {
       .then((response) => response.json())
       .then((products) => {
         setProducts(products);
+        if(products.length == 0) {
+          alert("Empty Cart");
+          history.goBack();
+        }
       });
     getAddress();
-    if(products.length == 0) {
-      alert("Empty Cart");
-      history.goBack();
-    }
+    
   }, []);
   {
     products.map((product) => (total = total + parseInt(product.price)));
