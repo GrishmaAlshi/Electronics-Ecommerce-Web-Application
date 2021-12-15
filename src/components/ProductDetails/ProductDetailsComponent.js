@@ -84,6 +84,10 @@ const FilterSize = styled.select`
   font-size: 14px;
 `;
 
+const Quantity = styled.div`
+  color: red;
+`;
+
 const FilterSizeOption = styled.option``;
 
 const AddContainer = styled.div`
@@ -190,6 +194,15 @@ const ProductDetailsComponent = ({ item }) => {
             </Title>
             <Desc>{electronics.map((elec) => elec.gpu)}</Desc>
             <Price>${electronics.map((elec) => elec.price)}</Price>
+            <Quantity>
+              {electronics.map((elec) =>
+                elec.quantity
+                  ? parseInt(elec.quantity) > 0 && parseInt(elec.quantity) <= 5
+                    ? `Hurry up! Only ${elec.quantity} left in stock.`
+                    : ""
+                  : ""
+              )}
+            </Quantity>
             <Desc>
               Operating System:{" "}
               {electronics.map((elec) => elec.operating_system)}

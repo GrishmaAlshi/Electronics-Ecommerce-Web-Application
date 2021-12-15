@@ -51,8 +51,6 @@ const NavigationTop = ({ isLoggedIn }) => {
                     Mobile Phones
                   </Link>
                 </Dropdown.Item>
-                <Dropdown.Item>Tablets</Dropdown.Item>
-                <Dropdown.Item>Smart devices</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
             {!isLoggedIn && <Nav.Link href="/login">Login</Nav.Link>}

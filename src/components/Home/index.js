@@ -9,8 +9,10 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 import PrivacyAlert from "../PrivacyAlert";
+
 const Home = () => {
   const [loggedIn, setLoggedIn] = useState("");
+  const [showPrivacyAlert, setShowPrivacyAlert] = useState(true);
   const authListener = () => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
@@ -21,13 +23,26 @@ const Home = () => {
       }
     });
   };
+
+  const getUser = () => {
+    fetch(`http://localhost:4000/api/users/${localStorage.getItem("email")}`)
+      .then((res) => res.json())
+      .then((userData) => {
+        if (userData["isPrivacyPolicyAccepted"] == false) {
+          setShowPrivacyAlert(true);
+        } else {
+          setShowPrivacyAlert(false);
+        }
+      });
+  };
   useEffect(() => {
     authListener();
+    getUser();
   }, []);
   return (
     <>
       <NavigationTop isLoggedIn={loggedIn} />
-      <PrivacyAlert />
+      {showPrivacyAlert ? <PrivacyAlert /> : ""}
       <br />
       <CarouselSlide />
       <br />
@@ -39,7 +54,7 @@ const Home = () => {
                 <Image
                   className="d-block"
                   alt="Second slide"
-                  src="https://cdn4.vectorstock.com/i/1000x1000/04/13/free-delivery-badge-with-truck-stock-vector-30920413.jpg"
+                  src="https://cdn1.vectorstock.com/i/1000x1000/67/65/free-delivery-rubber-stamp-vector-896765.jpg"
                   fluid
                 />
               </Col>
@@ -47,7 +62,7 @@ const Home = () => {
                 <Image
                   className="d-block"
                   alt="Second slide"
-                  src="https://cdn4.vectorstock.com/i/1000x1000/04/13/free-delivery-badge-with-truck-stock-vector-30920413.jpg"
+                  src="https://cdn2.vectorstock.com/i/1000x1000/61/46/square-grunge-red-free-delivery-stamp-vector-16336146.jpg"
                   fluid
                 />
               </Col>
@@ -60,7 +75,7 @@ const Home = () => {
                 <Image
                   className="d-block"
                   alt="Second slide"
-                  src="https://i.pinimg.com/originals/67/ab/52/67ab5239e6ea87d79ca578fbe6ec982c.png"
+                  src="https://thumbs.dreamstime.com/z/new-arrival-sale-market-advertising-design-laptop-discount-offer-banner-arrivals-134026483.jpg"
                   fluid
                 />
               </Col>
@@ -68,7 +83,7 @@ const Home = () => {
                 <Image
                   className="d-block"
                   alt="Second slide"
-                  src="https://i.pinimg.com/originals/67/ab/52/67ab5239e6ea87d79ca578fbe6ec982c.png"
+                  src="https://s3b.cashify.in/gpro/uploads/2019/09/16135517/buyback_offer_banner.png"
                   fluid
                 />
               </Col>
