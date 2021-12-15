@@ -10,7 +10,7 @@ import {
 const NavigationSidebar = ({ active = "editaccount" }) => {
   return (
     <>
-      <div className="list-group">
+      <div className="list-group" style={{ width: "200px" }}>
         <Link
           to="/editaccount"
           className={`list-group-item  ${

@@ -66,11 +66,7 @@ const Login = () => {
 
           <span>
             <p>Login with Google</p>
-            {/* <i
-              className="fa fa-google"
-              aria-hidden="true"
-              onClick={() => googleSignIn()}
-            ></i> */}
+
             <Image
               src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png"
               style={{ width: "40px", height: "40px" }}
