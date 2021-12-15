@@ -14,17 +14,40 @@ const Login = () => {
   const googleSignIn = () => {
     signInWithGoogle();
   };
+
+  const login = () => {
+    signin(email, password).then((data) => {
+      fetch(`http://localhost:4000/api/users/${localStorage.getItem("email")}`)
+        .then((res) => res.json())
+        .then((data) => {
+          localStorage.setItem("role", data["role"]);
+          if (data["role"] == "admin") {
+            history.push("/admin/add");
+          } else {
+            history.goBack();
+          }
+        });
+    });
+  };
+
   const authListener = () => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        history.goBack();
-      } else {
+        fetch(
+          `http://localhost:4000/api/users/${localStorage.getItem("email")}`
+        ).then((data) => {
+          if (data["role"] == "admin") {
+            history.push("/admin/add");
+          } else {
+            history.goBack();
+          }
+        });
       }
     });
   };
   useEffect(() => {
-    authListener();
+    // authListener();
   }, []);
   return (
     <div className="box-form">
@@ -69,7 +92,7 @@ const Login = () => {
         <br />
 
         <br />
-        <button onClick={() => signin(email, password)}>Login</button>
+        <button onClick={() => login()}>Login</button>
       </div>
     </div>
   );

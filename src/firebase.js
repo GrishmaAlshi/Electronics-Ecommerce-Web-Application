@@ -53,6 +53,7 @@ const signup = (email, password, firstName, lastName) => {
       currUser.wishlist = [];
       currUser.firstName = firstName;
       currUser.lastName = lastName;
+      currUser.address = {};
       fetch("http://localhost:4000/api/users/", {
         method: "POST",
         body: JSON.stringify(currUser),
@@ -74,18 +75,15 @@ const signup = (email, password, firstName, lastName) => {
 
 const signin = (email, password) => {
   const auth = getAuth();
-  signInWithEmailAndPassword(auth, email, password)
+  return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log("User logged in");
       localStorage.setItem("email", user.email);
-      // ...
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert(errorMessage);
       console.log(errorMessage);
     });
 };
@@ -96,6 +94,7 @@ const logout = () => {
     .then(() => {
       console.log("User signed out");
       localStorage.removeItem("email");
+      localStorage.removeItem("role");
     })
     .catch((error) => {
       console.log(error);

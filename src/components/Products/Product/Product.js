@@ -110,6 +110,7 @@ const Product = ({ item }) => {
   };
 
   const onClickFav = () => {
+    console.log("Wishlist updated");
     let path = "/wishlist";
     fetch(`http://localhost:4000/api/wishlist/update`, {
       method: "PUT",
@@ -124,6 +125,9 @@ const Product = ({ item }) => {
       .then((response) => response.json())
       .then((productDetails) => {
         history.push(path);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
