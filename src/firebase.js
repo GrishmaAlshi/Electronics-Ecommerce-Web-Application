@@ -14,10 +14,6 @@ import {
   uploadBytes,
   uploadBytesResumable,
 } from "firebase/storage";
-import { doc, getDoc } from "firebase/firestore";
-import { getFirestore } from "firebase/firestore"
-import { useState } from "react";
-import axios from 'axios'
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -80,18 +76,11 @@ const signup = (email, password, firstName, lastName) => {
 
 const signin = (email, password) => {
   const auth = getAuth();
-  signInWithEmailAndPassword(auth, email, password)
+  return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
       localStorage.setItem("email", user.email);
-      const user_api = "http://localhost:4000/api/users";
-      const url = `${user_api}/${user.email}`
-      alert(url)
-      fetch(url).then().catch(err => {
-        alert(err)
-      })
-      
     })
     .catch((error) => {
       const errorCode = error.code;
