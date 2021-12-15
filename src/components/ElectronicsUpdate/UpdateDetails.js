@@ -55,7 +55,7 @@ const UpdateDetails = (props) => {
             <form>
                 <br></br>
                 <div class="form-group">
-                    <label for="name">Price</label>
+                    <h3>Price</h3>
                     <input
                         type="number"
                         class="form-control"
@@ -67,7 +67,7 @@ const UpdateDetails = (props) => {
                 </div>
                 <br></br>
                 <div class="form-group">
-                    <label for="name">Quantity</label>
+                    <h3>Quantity</h3>
                     <input
                         type="number"
                         class="form-control"
