@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Product from "../Products/Product/Product";
+import "../../vendors/bootstrap/css/wish.css";
+import { Spinner } from "react-bootstrap";
 
 const Container = styled.div`
   padding: 20px;
@@ -15,6 +17,7 @@ class Products extends React.Component {
     this.state = {
       electronics: [],
       filteredElectronics: [],
+      isLoaded: false,
     };
     this.setElectronics();
   }
@@ -43,16 +46,22 @@ class Products extends React.Component {
             .toLowerCase()
             .includes(this.props.keyword.toLowerCase());
         });
-        this.setState({ filteredElectronics: filteredElex });
+        this.setState({ filteredElectronics: filteredElex, isLoaded: true });
       });
   }
 
   render() {
     return (
       <Container>
-        {this.state.filteredElectronics.map((elecs) => (
-          <Product item={elecs} key={elecs.id} />
-        ))}
+        {this.state.isLoaded ? (
+          this.state.filteredElectronics.map((elecs) => (
+            <Product item={elecs} key={elecs.id} />
+          ))
+        ) : (
+          <div className="spinner-container">
+            <Spinner animation="border" />
+          </div>
+        )}
       </Container>
     );
   }

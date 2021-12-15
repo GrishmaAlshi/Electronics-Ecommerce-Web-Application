@@ -184,7 +184,7 @@ const ProductDetailsComponent = ({ item }) => {
             ></Image>
           </ImgContainer>
           <InfoContainer>
-            <Title>
+            <Title style={{ "font-size": "35px" }}>
               {electronics.map((elec) => elec.brand)} -{" "}
               {electronics.map((elec) => elec.model_name)}
             </Title>
@@ -204,7 +204,7 @@ const ProductDetailsComponent = ({ item }) => {
         </Wrapper>
       </Container>
 
-      <h2>Reviews</h2>
+      <h2 style={{ color: "white" }}>Reviews</h2>
       {review.length !== 0 && (
         <ul className="list-group">
           {review.map((rev) => (

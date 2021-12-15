@@ -91,8 +91,6 @@ const Product = ({ item }) => {
     let path = "/productDetails/" + item.id;
     console.log(path);
     history.push(path);
-    // console.log(item);
-    // return <ProductDetailsComponent id={item}/>
   };
 
   const addToCart = () => {

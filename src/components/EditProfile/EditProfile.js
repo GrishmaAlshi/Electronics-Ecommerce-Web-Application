@@ -25,7 +25,7 @@ const EditProfile = () => {
         setContact(data.contact ? data.contact : "");
         const address = data.address;
         console.log(address);
-        setApartment(address.apartment);
+        setApartment(address.apartment_no);
         setAddress(address.address);
         setCity(address.city);
         setCountry(address.country);

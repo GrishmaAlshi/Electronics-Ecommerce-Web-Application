@@ -121,6 +121,14 @@ const signInWithGoogle = () => {
       currUser.email = localStorage.getItem("email");
       currUser.cart = [];
       currUser.wishlist = [];
+      currUser.address = {
+        apartment_no: "",
+        address: "",
+        state: "",
+        city: "",
+        country: "",
+        zipcode: "",
+      };
       fetch("http://localhost:4000/api/users/", {
         method: "POST",
         body: JSON.stringify(currUser),
