@@ -85,7 +85,7 @@ const Shipping = () => {
       today.getDate();
     let orderData = {};
     orderData.date = date;
-    orderData.userid = id;
+    orderData.userId = id;
     orderData.total_amount = total;
     let productID = [];
     products.forEach((prod) => {

@@ -276,7 +276,13 @@ const CartComponent = () => {
             {products.map((product) => (
               <Product>
                 <ProductDetail>
-                  <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwbWRWBH9nh4wJdlJND0_n36oGoInrUsdfw&usqp=CAU" />
+                  <Image
+                    src={
+                      product.img1
+                        ? product.img1
+                        : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwbWRWBH9nh4wJdlJND0_n36oGoInrUsdfw&usqp=CAU"
+                    }
+                  />
                   <Details>
                     <ProductName>
                       <b>Brand:</b> {product.brand}

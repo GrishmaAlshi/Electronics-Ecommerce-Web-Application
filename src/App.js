@@ -54,7 +54,7 @@ function App() {
             <Profile />
           </Route>
           <Route path="/orders">
-            <Order />
+            <Orders />
           </Route>
           <Route path="/editaccount">
             <Edit />
