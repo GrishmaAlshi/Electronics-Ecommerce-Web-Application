@@ -23,6 +23,8 @@ const Login = () => {
           localStorage.setItem("role", data["role"]);
           if (data["role"] == "admin") {
             history.push("/admin/add");
+          } else if (data["role"] == "owner") {
+            history.push("/ownerhome");
           } else {
             history.goBack();
           }
@@ -36,13 +38,19 @@ const Login = () => {
       if (user) {
         fetch(
           `http://localhost:4000/api/users/${localStorage.getItem("email")}`
-        ).then((data) => {
-          if (localStorage.getItem("role") == "admin") {
-            history.push("/admin/add");
-          } else {
-            history.goBack();
-          }
-        });
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("role", data["role"]);
+
+            if (localStorage.getItem("role") == "admin") {
+              history.push("/admin/add");
+            } else if (data["role"] == "owner") {
+              history.push("/owner");
+            } else {
+              history.goBack();
+            }
+          });
       }
     });
   };
