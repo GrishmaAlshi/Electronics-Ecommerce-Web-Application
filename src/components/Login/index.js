@@ -56,7 +56,7 @@ const Login = () => {
         history.push("/");
       }
     }
-    // authListener();
+    authListener();
   }, []);
   return (
     <div className="box-form">
