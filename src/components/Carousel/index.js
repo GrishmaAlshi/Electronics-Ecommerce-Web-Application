@@ -1,6 +1,6 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 const CarouselSlide = () => {
   const history = useHistory();

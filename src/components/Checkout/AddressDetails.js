@@ -76,6 +76,15 @@ const Shipping = () => {
   };
 
   const order = () => {
+    if(apartment == "" || address == "" || city == "" || country == "" || pincode == "" || state == "") {
+      alert("Please enter address details");
+      return;
+    }
+    if(apartment == undefined || address == undefined || city == undefined || country == undefined 
+      || pincode == undefined || state == undefined) {
+      alert("Please enter address details");
+      return;
+    }
     var today = new Date();
     var date =
       today.getFullYear() +
@@ -116,6 +125,10 @@ const Shipping = () => {
         setProducts(products);
       });
     getAddress();
+    if(products.length == 0) {
+      alert("Empty Cart");
+      history.goBack();
+    }
   }, []);
   {
     products.map((product) => (total = total + parseInt(product.price)));

@@ -5,10 +5,28 @@ import { Card, Col } from "react-bootstrap";
 import { Row } from "../Footer/FooterStyles";
 import NavigationSidebar from "../NavigationSidebar";
 import EditProfile from "./EditProfile";
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import { useEffect } from "react";
+import { useState } from "react";
+
 const Edit = () => {
+  const [loggedIn, setLoggedIn] = useState("");
+  const authListener = () => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setLoggedIn(true);
+      } else {
+        setLoggedIn(false);
+      }
+    });
+  };
+  useEffect(() => {
+    authListener();
+  }, []);
   return (
     <>
-      <NavigationTop />
+      <NavigationTop isLoggedIn={loggedIn}/>
       <h1>Welcome to your profile</h1>
       <br />
       {/* <div className="col-2 col-md-2 col-lg-1 col-xl-2">

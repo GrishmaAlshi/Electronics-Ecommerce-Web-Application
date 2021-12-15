@@ -10,8 +10,27 @@ import {
   NavItem,
   NavLink,
 } from "react-bootstrap";
+import { logout } from "../../firebase";
+import { getAuth, onAuthStateChanged } from "@firebase/auth";
+import { useHistory } from "react-router-dom";
 
-const AdminNavbar = ({ isLoggedIn }) => {
+const AdminNavbar = () => {
+  const [loggedIn, setLoggedIn] = useState("");
+  const history = useHistory();
+  const authListener = () => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setLoggedIn(true);
+      } else {
+        setLoggedIn(false);
+        history.push("/");
+      }
+    });
+  };
+  useEffect(() => {
+    authListener();
+  }, []);
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -23,7 +42,11 @@ const AdminNavbar = ({ isLoggedIn }) => {
           <Nav className="me-auto">
             <Nav.Link href="/admin/add">Add</Nav.Link>
             <Nav.Link href="/admin/update">Update</Nav.Link>
-            
+            {loggedIn && (
+              <Nav.Link href="" onClick={() => logout()}>
+                Logout
+              </Nav.Link>
+            )}
           </Nav>
         </Container>
       </Navbar>

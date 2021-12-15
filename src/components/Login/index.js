@@ -37,7 +37,7 @@ const Login = () => {
         fetch(
           `http://localhost:4000/api/users/${localStorage.getItem("email")}`
         ).then((data) => {
-          if (data["role"] == "admin") {
+          if (localStorage.getItem("role") == "admin") {
             history.push("/admin/add");
           } else {
             history.goBack();
@@ -90,7 +90,6 @@ const Login = () => {
 
         <br />
         <br />
-
         <br />
         <button onClick={() => login()}>Login</button>
       </div>
