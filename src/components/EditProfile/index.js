@@ -11,18 +11,32 @@ const Edit = () => {
       <NavigationTop />
       <h1>Welcome to your profile</h1>
       <br />
-      <div className="col-2 col-md-2 col-lg-1 col-xl-2">
+      {/* <div className="col-2 col-md-2 col-lg-1 col-xl-2">
         <NavigationSidebar />
       </div>
       <br />
       <Col>
         <div
           className="col-10 col-sm-10 col-lg-6"
-          style={{ "margin-left": "400px", "margin-top": "-150px" }}
+          style={{ "margin-left": "400px" }}
         >
           <EditProfile />
         </div>
-      </Col>
+      </Col> */}
+      <div className="profile">
+        <div
+          className="col-2 col-md-2 col-lg-1 col-xl-2"
+          style={{ width: "700px" }}
+        >
+          <NavigationSidebar />
+        </div>
+        <div
+          className="col-10 col-sm-10 col-lg-6"
+          style={{ "margin-left": "100px" }}
+        >
+          <EditProfile />
+        </div>
+      </div>
       <br />
       <Footer />
     </>

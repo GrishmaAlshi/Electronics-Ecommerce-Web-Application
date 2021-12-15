@@ -136,7 +136,7 @@ const EditProfile = () => {
           />
         </form>
         <Button
-          style={{ width: "500px", "margin-left": "80px" }}
+          style={{ width: "400px", "margin-left": "30px" }}
           onClick={() => {
             updateUserDetails();
           }}

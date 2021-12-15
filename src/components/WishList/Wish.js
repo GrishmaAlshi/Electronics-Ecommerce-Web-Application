@@ -255,8 +255,11 @@ class Wish extends React.Component {
                         "text-decoration": "none",
                         display: "inline-block",
                         margin: "4px 2px",
+                        "text-decoration": "none",
                         cursor: "pointer",
+                        width: "700px",
                         "border-radius": "16px",
+                        "margin-left": "150px",
                       }}
                     >
                       CONTINUE SHOPPING
@@ -278,16 +281,28 @@ class Wish extends React.Component {
                             />
                             <Details>
                               <ProductName>
-                                <b>Brand:</b> {product.brand}
+                                <b style={{ color: "white" }}>Brand:</b>{" "}
+                                <b style={{ color: "whitesmoke" }}>
+                                  {product.brand}
+                                </b>
                               </ProductName>
                               <ProductId>
-                                <b>Model:</b> {product.model_name}
+                                <b style={{ color: "white" }}>Model:</b>{" "}
+                                <b style={{ color: "whitesmoke" }}>
+                                  {product.model_name}
+                                </b>
                               </ProductId>
                               <ProductSize>
-                                <b>Storage:</b> {product.storage}
+                                <b style={{ color: "white" }}>Storage:</b>{" "}
+                                <b style={{ color: "whitesmoke" }}>
+                                  {product.storage}
+                                </b>
                               </ProductSize>
                               <ProductSize>
-                                <b>Screen Size:</b> {product.screen_size}
+                                <b style={{ color: "white" }}>Screen Size:</b>{" "}
+                                <b style={{ color: "whitesmoke" }}>
+                                  {product.screen_size}
+                                </b>
                               </ProductSize>
                             </Details>
                           </ProductDetail>

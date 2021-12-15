@@ -5,7 +5,6 @@ import NavigationTop from "../NavigationTop";
 import Footer from "../Footer/Footer";
 import React from "react";
 import Order from "./Order";
-
 class Orders extends React.Component {
   constructor(props) {
     super(props);
@@ -30,16 +29,19 @@ class Orders extends React.Component {
       <>
         <NavigationTop />
         <h1>Welcome to your profile</h1>
-        <Row>
-          <Col>
+        <div style={{ display: "flex", "justify-content": "space-between" }}>
+          <div className="col-2 col-md-2 col-lg-1 col-xl-2">
             <NavigationSidebar />
-          </Col>
-          <Row>
+          </div>
+          <div
+            className="col-10 col-sm-10 col-lg-6"
+            style={{ "margin-left": "100px" }}
+          >
             {this.state.orders.map((order) => (
               <Order order={order} />
             ))}
-          </Row>
-        </Row>
+          </div>
+        </div>
         <Footer />
       </>
     );

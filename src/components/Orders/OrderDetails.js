@@ -61,7 +61,7 @@ const Circle = styled.div`
 
 const Image = styled.img`
   height: 50%;
-  border-radius: 50%;
+
   z-index: 1;
 `;
 
@@ -166,7 +166,7 @@ const OrderDetails = (props) => {
       <Col>
         <div
           className="col-10 col-sm-10 col-lg-6"
-          style={{ "margin-left": "400px", "margin-top": "-150px" }}
+          style={{ "margin-left": "400px" }}
         >
           {productsInOrder.map((product) => (
             <React.Fragment>

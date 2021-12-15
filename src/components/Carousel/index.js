@@ -1,36 +1,53 @@
 import React from "react";
-import {Carousel} from "react-bootstrap";
-
+import { Carousel } from "react-bootstrap";
+import { useHistory } from "react-router";
 
 const CarouselSlide = () => {
-    return(
-        <>
-            <Carousel>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src="https://cdn.thewirecutter.com/wp-content/uploads/2020/04/laptops-lowres-2x1-.jpg?auto=webp&quality=75&crop=2:1&width=1024"
-                        alt="First slide"
-                    />
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-fridges-2019-1569421093.png?crop=0.730xw:0.599xh;0.134xw,0.0989xh&resize=1200:*"
-                        alt="Second slide"
-                    />
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gh-best-tv-brands-1587581394.png?crop=0.853xw:0.657xh;0.0733xw,0.165xh&resize=1200:*"
-                        alt="Third slide"
-                    />
+  const history = useHistory();
+  const goToMobile = () => {
+    let path = "/mobiles";
+    history.push(path);
+  };
+  const goToLaptops = () => {
+    let path = "/laptops";
+    history.push(path);
+  };
 
-                </Carousel.Item>
-            </Carousel>
-
-        </>
-    );
-}
+  return (
+    <>
+      <Carousel>
+        <Carousel.Item onClick={goToLaptops}>
+          <img
+            className="d-block w-100"
+            src="https://cdn.thewirecutter.com/wp-content/uploads/2020/04/laptops-lowres-2x1-.jpg?auto=webp&quality=75&crop=2:1&width=1024"
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h3>Shop for Laptops</h3>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item onClick={goToMobile}>
+          <img
+            className="d-block w-100"
+            src="https://assets.pandaily.com/uploads/2020/02/samsung-flagship-s20-1600x832.jpg"
+            alt="Second slide"
+          />
+          <Carousel.Caption>
+            <h3>Shop for Mobiles</h3>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item onClick={goToLaptops}>
+          <img
+            className="d-block w-100"
+            src="https://cdn.mos.cms.futurecdn.net/qBfGdkRvjJszWvRJGJfdhS.jpg"
+            alt="Third slide"
+          />
+          <Carousel.Caption>
+            <h3>Shop for Laptops</h3>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+    </>
+  );
+};
 export default CarouselSlide;
