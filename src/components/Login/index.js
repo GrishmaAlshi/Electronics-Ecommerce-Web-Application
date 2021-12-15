@@ -18,7 +18,11 @@ const Login = () => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        history.goBack();
+        if(localStorage.getItem("role") == "admin") {
+          history.push("/admin/add");
+        } else {
+          history.goBack();
+        }
       } else {
       }
     });

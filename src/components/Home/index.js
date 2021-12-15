@@ -7,7 +7,6 @@ import Footer from "../Footer/Footer";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { useEffect } from "react";
 import { useState } from 'react';
-
 import PrivacyAlert from "../PrivacyAlert";
 const Home = () => {
     const [loggedIn, setLoggedIn] = useState("");
@@ -21,6 +20,7 @@ const Home = () => {
             }
         });
     }
+    console.log(localStorage.getItem("role"));
     useEffect(() => {
         authListener();
     }, []);

@@ -50,8 +50,8 @@ const Circle = styled.div`
 `;
 
 const Image = styled.img`
-  height: 50%;
-  border-radius: 50%;
+  height: 300px;
+  width: 300px;
   z-index: 1;
 `;
 
@@ -137,7 +137,10 @@ const Product = ({ item }) => {
   return (
     <Container>
       {/*<Circle />*/}
-      <Image src={item.img1}/>
+      <Image
+        src={item.img1}
+        style={{ "margin-left": "-50px", width: "200px", height: "200px" }}
+      />
       <Details className="row">{item.model_name}</Details>
 
       <Info>

@@ -35,11 +35,12 @@ const InfoContainer = styled.div`
   ${mobile({ padding: "10px" })}
 `;
 
-const Title = styled.h1`
+const Title = styled.h2`
   font-weight: 700;
   color: black;
 `;
 const Desc = styled.p`
+  font-size: 16px;
   color: white;
   margin: 20px 0px;
 `;

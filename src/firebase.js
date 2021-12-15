@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -8,6 +7,18 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytes,
+  uploadBytesResumable,
+} from "firebase/storage";
+import { doc, getDoc } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore"
+import { useState } from "react";
+import axios from 'axios'
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,6 +31,18 @@ const firebaseConfig = {
   storageBucket: "webdevproject-7c916.appspot.com",
   messagingSenderId: "885106162808",
   appId: "1:885106162808:web:1c88e0bad292fed50c018d",
+};
+
+const uploadImage = (image, path) => {
+  const storage = getStorage();
+  if (image == null) return;
+  const storageRef = ref(storage, path);
+  uploadBytes(storageRef, image).then((snapshot) => {
+    console.log("Uploaded an image");
+    getDownloadURL(ref(storage, path)).then((url) => {
+      return url;
+    });
+  });
 };
 
 const signup = (email, password, firstName, lastName) => {
@@ -35,6 +58,7 @@ const signup = (email, password, firstName, lastName) => {
       currUser.wishlist = [];
       currUser.firstName = firstName;
       currUser.lastName = lastName;
+      currUser.address = {};
       fetch("http://localhost:4000/api/users/", {
         method: "POST",
         body: JSON.stringify(currUser),
@@ -60,16 +84,22 @@ const signin = (email, password) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log("User logged in");
       localStorage.setItem("email", user.email);
-      // ...
+      const user_api = "http://localhost:4000/api/users";
+      const url = `${user_api}/${user.email}`
+      alert(url)
+      fetch(url).then().catch(err => {
+        alert(err)
+      })
+      
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       alert(errorMessage);
       console.log(errorMessage);
-    });
+    })
+      
 };
 
 const logout = () => {
@@ -78,6 +108,7 @@ const logout = () => {
     .then(() => {
       console.log("User signed out");
       localStorage.removeItem("email");
+      localStorage.removeItem("role");
     })
     .catch((error) => {
       console.log(error);
@@ -87,6 +118,8 @@ const logout = () => {
 const getCurrentUser = () => {
   return localStorage.getItem("email");
 };
+
+
 
 const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
@@ -103,6 +136,7 @@ const signInWithGoogle = () => {
       currUser.email = localStorage.getItem("email");
       currUser.cart = [];
       currUser.wishlist = [];
+      currUser.address = {};
       fetch("http://localhost:4000/api/users/", {
         method: "POST",
         body: JSON.stringify(currUser),
@@ -128,4 +162,12 @@ const signInWithGoogle = () => {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export { app, signup, logout, signin, getCurrentUser, signInWithGoogle };
+export {
+  app,
+  signup,
+  logout,
+  signin,
+  getCurrentUser,
+  signInWithGoogle,
+  uploadImage,
+};

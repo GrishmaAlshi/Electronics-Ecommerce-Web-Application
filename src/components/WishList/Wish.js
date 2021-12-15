@@ -229,7 +229,7 @@ class Wish extends React.Component {
     })
       .then((response) => response.json())
       .then((updatedWishlist) => {
-        // window.location.reload();
+        window.location.reload();
       });
   }
 
@@ -266,55 +266,43 @@ class Wish extends React.Component {
                 <Bottom>
                   <Info>
                     {this.state.wishlistProductDetails.map((product) => (
-                      // <Product>
-                      //   <ProductDetail>
-                      //     <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwbWRWBH9nh4wJdlJND0_n36oGoInrUsdfw&usqp=CAU" />
-                      //     <Details>
-                      //       <ProductName>
-                      //         {}
-                      //         <b>Product:</b> {product.model_name}
-                      //       </ProductName>
-                      //       <ProductId>
-                      //         <b>ID:</b> 93813718293
-                      //       </ProductId>
-                      //       <ProductColor color="grey" />
-                      //       <ProductSize>
-                      //         <b>Memory:</b> {product.storage}
-                      //       </ProductSize>
-                      //     </Details>
-                      //   </ProductDetail>
-                      //   <PriceDetail>
-                      //     <ProductPrice>$ {product.price}</ProductPrice>
-                      //   </PriceDetail>
-                      // </Product>
-                      <Product>
-                        <ProductDetail>
-                          <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwbWRWBH9nh4wJdlJND0_n36oGoInrUsdfw&usqp=CAU" />
-                          <Details>
-                            <ProductName>
-                              <b>Brand:</b> {product.brand}
-                            </ProductName>
-                            <ProductId>
-                              <b>Model:</b> {product.model_name}
-                            </ProductId>
-                            <ProductSize>
-                              <b>Storage:</b> {product.storage}
-                            </ProductSize>
-                            <ProductSize>
-                              <b>Screen Size:</b> {product.screen_size}
-                            </ProductSize>
-                          </Details>
-                        </ProductDetail>
-                        <PriceDetail>
-                          <ProductPrice>$ {product.price}</ProductPrice>
-                          <button
-                            className="btn-danger"
-                            onClick={() => this.removeFromWishList(product)}
-                          >
-                            Remove From Wishlist
-                          </button>
-                        </PriceDetail>
-                      </Product>
+                      <React.Fragment>
+                        <Product>
+                          <ProductDetail>
+                            <Image
+                              src={
+                                product.img1
+                                  ? product.img1
+                                  : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwbWRWBH9nh4wJdlJND0_n36oGoInrUsdfw&usqp=CAU"
+                              }
+                            />
+                            <Details>
+                              <ProductName>
+                                <b>Brand:</b> {product.brand}
+                              </ProductName>
+                              <ProductId>
+                                <b>Model:</b> {product.model_name}
+                              </ProductId>
+                              <ProductSize>
+                                <b>Storage:</b> {product.storage}
+                              </ProductSize>
+                              <ProductSize>
+                                <b>Screen Size:</b> {product.screen_size}
+                              </ProductSize>
+                            </Details>
+                          </ProductDetail>
+                          <PriceDetail>
+                            <ProductPrice>$ {product.price}</ProductPrice>
+                            <button
+                              className="btn-danger"
+                              onClick={() => this.removeFromWishList(product)}
+                            >
+                              Remove From Wishlist
+                            </button>
+                          </PriceDetail>
+                        </Product>
+                        <br />
+                      </React.Fragment>
                     ))}
                   </Info>
                 </Bottom>

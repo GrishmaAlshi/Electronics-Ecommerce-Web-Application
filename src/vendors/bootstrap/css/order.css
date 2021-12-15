@@ -1,11 +1,11 @@
 * {box-sizing: border-box}
 
-h1 {
+.heading {
     align-content: center;
     font-size: 80px;
 }
 
-p{
+.para{
     font-size: 25px;
     font-weight: bold;
     color: black;
