@@ -47,6 +47,15 @@ const Login = () => {
     });
   };
   useEffect(() => {
+    const email = localStorage.getItem("email");
+    if (email) {
+      const role = localStorage.getItem("role");
+      if (role == "admin") {
+        history.push("/admin/add");
+      } else {
+        history.push("/");
+      }
+    }
     // authListener();
   }, []);
   return (

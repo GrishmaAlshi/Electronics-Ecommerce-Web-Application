@@ -25,7 +25,7 @@ const Edit = () => {
       </Col> */}
       <div className="profile">
         <div className="col-2 col-md-2 col-lg-1 col-xl-2">
-          <NavigationSidebar />
+          <NavigationSidebar active="editaccount" />
         </div>
         <div
           className="col-10 col-sm-10 col-lg-6"

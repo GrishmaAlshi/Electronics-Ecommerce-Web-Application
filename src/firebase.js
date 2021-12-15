@@ -51,6 +51,7 @@ const signup = (email, password, firstName, lastName) => {
       currUser.email = localStorage.getItem("email");
       currUser.cart = [];
       currUser.wishlist = [];
+      currUser.isPrivacyPolicyAccepted = true;
       currUser.firstName = firstName;
       currUser.lastName = lastName;
       currUser.address = {};

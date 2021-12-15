@@ -2,7 +2,7 @@ import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { useHistory } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getCurrentUser } from "../../firebase";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
@@ -274,40 +274,43 @@ const CartComponent = () => {
         <Bottom>
           <Info>
             {products.map((product) => (
-              <Product>
-                <ProductDetail>
-                  <Image
-                    src={
-                      product.img1
-                        ? product.img1
-                        : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwbWRWBH9nh4wJdlJND0_n36oGoInrUsdfw&usqp=CAU"
-                    }
-                  />
-                  <Details>
-                    <ProductName>
-                      <b>Brand:</b> {product.brand}
-                    </ProductName>
-                    <ProductId>
-                      <b>Model:</b> {product.model_name}
-                    </ProductId>
-                    <ProductSize>
-                      <b>Storage:</b> {product.storage}
-                    </ProductSize>
-                    <ProductSize>
-                      <b>Screen Size:</b> {product.screen_size}
-                    </ProductSize>
-                  </Details>
-                </ProductDetail>
-                <PriceDetail>
-                  <ProductPrice>$ {product.price}</ProductPrice>
-                  <button
-                    className="btn-danger"
-                    onClick={() => removeFromCart(product)}
-                  >
-                    Remove From Cart
-                  </button>
-                </PriceDetail>
-              </Product>
+              <React.Fragment>
+                <Product>
+                  <ProductDetail>
+                    <Image
+                      src={
+                        product.img1
+                          ? product.img1
+                          : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwbWRWBH9nh4wJdlJND0_n36oGoInrUsdfw&usqp=CAU"
+                      }
+                    />
+                    <Details>
+                      <ProductName>
+                        <b>Brand:</b> {product.brand}
+                      </ProductName>
+                      <ProductId>
+                        <b>Model:</b> {product.model_name}
+                      </ProductId>
+                      <ProductSize>
+                        <b>Storage:</b> {product.storage}
+                      </ProductSize>
+                      <ProductSize>
+                        <b>Screen Size:</b> {product.screen_size}
+                      </ProductSize>
+                    </Details>
+                  </ProductDetail>
+                  <PriceDetail>
+                    <ProductPrice>$ {product.price}</ProductPrice>
+                    <button
+                      className="btn-danger"
+                      onClick={() => removeFromCart(product)}
+                    >
+                      Remove From Cart
+                    </button>
+                  </PriceDetail>
+                </Product>
+                <br />
+              </React.Fragment>
             ))}
           </Info>
 

@@ -24,11 +24,12 @@ import WishList from "./components/WishList";
 import ProductDetailsComponent from "./components/ProductDetails/ProductDetailsComponent";
 import Shipping from "./components/Checkout/AddressDetails";
 import OrderPlaced from "./components/Checkout/OrderPlaced";
-
+import FAQ from "./components/FAQ";
 import "./App.css";
 import ElectronicsAdd from "./components/ElectronicsAdd";
 import ElectronicsUpdate from "./components/ElectronicsUpdate";
 import UpdateDetails from "./components/ElectronicsUpdate/UpdateDetails";
+import ReturnPolicy from "./components/ReturnPolicy";
 
 const reducer = combineReducers({ electronics: electronics });
 const store = createStore(reducer);
@@ -100,6 +101,12 @@ function App() {
           </Route>
           <Route path="/admin/updateElectronics">
             <UpdateDetails />
+          </Route>
+          <Route path="/FAQ">
+            <FAQ />
+          </Route>
+          <Route path="/returnpolicy">
+            <ReturnPolicy />
           </Route>
         </div>
       </BrowserRouter>

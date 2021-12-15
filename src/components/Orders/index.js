@@ -31,7 +31,7 @@ class Orders extends React.Component {
         <h1>Welcome to your profile</h1>
         <div style={{ display: "flex", "justify-content": "space-between" }}>
           <div className="col-2 col-md-2 col-lg-1 col-xl-2">
-            <NavigationSidebar />
+            <NavigationSidebar active="orders" />
           </div>
           <div
             className="col-10 col-sm-10 col-lg-6"
