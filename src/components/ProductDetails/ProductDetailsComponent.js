@@ -212,7 +212,11 @@ const ProductDetailsComponent = ({ item }) => {
               Screen Size: {electronics.map((elec) => elec.screen_size)}
             </Desc>
             <Desc>Storage: {electronics.map((elec) => elec.storage)}</Desc>
-            <Button onClick={() => addToCart()}>ADD TO CART</Button>
+            {localStorage.getItem("email") ? (
+              <Button onClick={() => addToCart()}>ADD TO CART</Button>
+            ) : (
+              ""
+            )}
           </InfoContainer>
         </Wrapper>
       </Container>
