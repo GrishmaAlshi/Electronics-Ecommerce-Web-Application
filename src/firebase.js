@@ -118,6 +118,8 @@ const signInWithGoogle = () => {
       const user = result.user;
       localStorage.setItem("email", user.email);
       let currUser = {};
+      currUser.firstName = user.displayName;
+      currUser.lastName = "";
       currUser.email = localStorage.getItem("email");
       currUser.cart = [];
       currUser.wishlist = [];

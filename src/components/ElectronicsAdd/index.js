@@ -73,7 +73,7 @@ const ElectronicsAdd = () => {
         <h2>Add New Electronics</h2>
         <form>
           <div class="form-group">
-            <label for="name">Brand</label>
+            <h3>Brand</h3>
             <input
               type="text"
               class="form-control"
@@ -84,7 +84,7 @@ const ElectronicsAdd = () => {
             />
           </div>
           <div class="form-group">
-            <label for="name">Model Name</label>
+            <h3>Model Name</h3>
             <input
               type="text"
               class="form-control"
@@ -96,7 +96,7 @@ const ElectronicsAdd = () => {
           </div>
 
           <div class="form-group">
-            <label for="ram">RAM</label>
+            <h3>RAM</h3>
             <input
               type="text"
               class="form-control"
@@ -106,7 +106,7 @@ const ElectronicsAdd = () => {
             />
           </div>
           <div class="form-group">
-            <label for="name">CPU</label>
+            <h3>CPU</h3>
             <input
               type="text"
               class="form-control"
@@ -117,7 +117,7 @@ const ElectronicsAdd = () => {
             />
           </div>
           <div class="form-group">
-            <label for="name">GPU</label>
+            <h3>GPU</h3>
             <input
               type="text"
               class="form-control"
@@ -128,7 +128,7 @@ const ElectronicsAdd = () => {
             />
           </div>
           <div class="form-group">
-            <label for="ram">Operating System</label>
+            <h3>Operating System</h3>
             <input
               type="text"
               class="form-control"
@@ -138,7 +138,7 @@ const ElectronicsAdd = () => {
             />
           </div>
           <div class="form-group">
-            <label for="ram">Screen</label>
+            <h3>Screen</h3>
             <input
               type="text"
               class="form-control"
@@ -148,7 +148,7 @@ const ElectronicsAdd = () => {
             />
           </div>
           <div class="form-group">
-            <label for="ram">Screen Size</label>
+            <h3>Screen Size</h3>
             <input
               type="text"
               class="form-control"
@@ -158,7 +158,7 @@ const ElectronicsAdd = () => {
             />
           </div>
           <div class="form-group">
-            <label for="ram">Weight</label>
+            <h3>Weight</h3>
             <input
               type="text"
               class="form-control"
@@ -168,7 +168,7 @@ const ElectronicsAdd = () => {
             />
           </div>
           <div class="form-group">
-            <label for="memory">Internal Memory</label>
+            <h3>Internal Memory</h3>
             <input
               type="text"
               class="form-control"
@@ -186,9 +186,9 @@ const ElectronicsAdd = () => {
               value="hdd"
               onChange={onChange}
             />
-            <label class="form-check-label" for="hdd">
+            <h3>
               Hard Disk Drive
-            </label>
+            </h3>
           </div>
           <div class="form-check">
             <input
@@ -199,12 +199,12 @@ const ElectronicsAdd = () => {
               value="ssd"
               onChange={onChange}
             />
-            <label class="form-check-label" for="ssd">
+            <h3>
               Solid State Drive
-            </label>
+            </h3>
           </div>
           <div class="form-group">
-            <label for="price">Price</label>
+            <h3>Price</h3>
             <input
               type="text"
               class="form-control"
@@ -214,7 +214,7 @@ const ElectronicsAdd = () => {
             />
           </div>
           <div class="form-group">
-            <label for="quantity">Quantity</label>
+            <h3>Quantity</h3>
             <input
               type="text"
               class="form-control"
