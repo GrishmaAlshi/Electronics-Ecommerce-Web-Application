@@ -72,7 +72,7 @@ const ElectronicsAdd = () => {
         <h2>Add New Electronics</h2>
         <form>
           <div class="form-group">
-            <label for="name">Brand</label>
+            <b>Brand</b>
             <input
               type="text"
               class="form-control"
@@ -83,7 +83,7 @@ const ElectronicsAdd = () => {
             />
           </div>
           <div class="form-group">
-            <label for="name">Model Name</label>
+            <b>Model Name</b>
             <input
               type="text"
               class="form-control"
@@ -95,7 +95,7 @@ const ElectronicsAdd = () => {
           </div>
 
           <div class="form-group">
-            <label for="ram">RAM</label>
+          <b>RAM</b>
             <input
               type="text"
               class="form-control"
@@ -105,7 +105,7 @@ const ElectronicsAdd = () => {
             />
           </div>
           <div class="form-group">
-            <label for="name">CPU</label>
+          <b>CPU</b>
             <input
               type="text"
               class="form-control"
@@ -116,7 +116,7 @@ const ElectronicsAdd = () => {
             />
           </div>
           <div class="form-group">
-            <label for="name">GPU</label>
+          <b>GPU</b>
             <input
               type="text"
               class="form-control"
@@ -127,7 +127,7 @@ const ElectronicsAdd = () => {
             />
           </div>
           <div class="form-group">
-            <label for="ram">Operating System</label>
+          <b>Operating System</b>
             <input
               type="text"
               class="form-control"
@@ -137,7 +137,7 @@ const ElectronicsAdd = () => {
             />
           </div>
           <div class="form-group">
-            <label for="ram">Screen</label>
+          <b>Screen</b>
             <input
               type="text"
               class="form-control"
