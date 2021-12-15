@@ -1,0 +1,16 @@
+form{
+    padding:10px;
+    margin:30px;
+    align-content:center;
+    position:relative;
+}
+
+Card{
+    width: 500px;
+    margin-left: 500px;
+}
+
+.profile{
+    display: flex;
+    justify-content: space-between;
+}

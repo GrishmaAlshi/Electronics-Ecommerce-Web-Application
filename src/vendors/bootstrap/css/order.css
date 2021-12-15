@@ -1,0 +1,16 @@
+* {box-sizing: border-box}
+
+.heading {
+    align-content: center;
+    font-size: 80px;
+}
+
+.para{
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+}
+
+a{
+    color: rgb(29,161,242);
+}
