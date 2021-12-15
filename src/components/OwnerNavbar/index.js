@@ -14,7 +14,7 @@ import { logout } from "../../firebase";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { useHistory } from "react-router-dom";
 
-const AdminNavbar = () => {
+const OwnerNavbar = () => {
   const [loggedIn, setLoggedIn] = useState("");
   const history = useHistory();
   const authListener = () => {
@@ -31,6 +31,15 @@ const AdminNavbar = () => {
   useEffect(() => {
     authListener();
   }, []);
+
+  const goToHome = () => {
+    if (localStorage.getItem("role") == "admin") {
+      history.push("/admin/add");
+    } else if (localStorage.getItem("role") == "owner") {
+      history.push("/ownerhome");
+    }
+  };
+
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -40,9 +49,23 @@ const AdminNavbar = () => {
             <OfflineBolt />
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/admin/add">Home</Nav.Link>
-            <Nav.Link href="/admin/add">Add</Nav.Link>
-            <Nav.Link href="/admin/update">Update</Nav.Link>
+            {localStorage.getItem("role") != "user" ? (
+              <Nav.Link
+                onClick={() => {
+                  goToHome();
+                }}
+              >
+                Home
+              </Nav.Link>
+            ) : (
+              <></>
+            )}
+            {loggedIn && (
+              <Nav.Link href="/owner/vieworders">View Orders</Nav.Link>
+            )}
+            {loggedIn && (
+              <Nav.Link href="/owner/viewusers">View Users</Nav.Link>
+            )}
             {loggedIn && (
               <Nav.Link href="" onClick={() => logout()}>
                 Logout
@@ -55,4 +78,4 @@ const AdminNavbar = () => {
   );
 };
 
-export default AdminNavbar;
+export default OwnerNavbar;
