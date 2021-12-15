@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { signInWithGoogle } from "../../firebase";
-
+import { Image } from "react-bootstrap";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -65,12 +65,17 @@ const Login = () => {
           <h1>Welcome to Bazinga.</h1>
 
           <span>
-            <p>login with social media</p>
-            <i
+            <p>Login with Google</p>
+            {/* <i
               className="fa fa-google"
               aria-hidden="true"
               onClick={() => googleSignIn()}
-            ></i>
+            ></i> */}
+            <Image
+              src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png"
+              style={{ width: "40px", height: "40px" }}
+              onClick={() => googleSignIn()}
+            ></Image>
           </span>
         </div>
       </div>
