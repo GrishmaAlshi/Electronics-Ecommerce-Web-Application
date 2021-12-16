@@ -63,7 +63,7 @@ const EditProfile = () => {
 
   return (
     <>
-      <Card>
+      <Card style={{ paddingBottom: "2rem" }}>
         <Card.Header style={{ "font-size": "30px", "font-weight": "bold" }}>
           Edit Account Details
         </Card.Header>
@@ -136,7 +136,10 @@ const EditProfile = () => {
           />
         </form>
         <Button
-          style={{ width: "400px", "margin-left": "30px" }}
+          className="d-flex justify-content-center w-75"
+          style={{ margin: "auto" }}
+          // style={{ width: "400px", "margin-left": "30px" }}
+
           onClick={() => {
             updateUserDetails();
           }}

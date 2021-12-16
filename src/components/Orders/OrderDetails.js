@@ -8,6 +8,8 @@ import Footer from "../Footer/Footer";
 import { useLocation } from "react-router";
 import { Card } from "react-bootstrap";
 import { mobile } from "../responsive";
+import { Spinner } from "react-bootstrap";
+import "../../vendors/bootstrap/css/wish.css";
 
 const Info = styled.div`
   opacity: 0;
@@ -122,6 +124,7 @@ const Icon = styled.div`
 const OrderDetails = (props) => {
   const { search } = useLocation();
   const paramOrderId = new URLSearchParams(search).get("orderId");
+  const [loaded, setLoaded] = useState(false);
   console.log(paramOrderId);
   const [orderId, setOrderId] = useState(paramOrderId);
   const [order, setOrder] = useState({});
@@ -133,14 +136,17 @@ const OrderDetails = (props) => {
 
   const getOrder = () => {
     const email = localStorage.getItem("email");
-    return fetch(`http://localhost:4000/api/orders/${email}/${orderId}`)
+    console.log(orderId);
+    return fetch(`http://localhost:4000/api/orders/byOrderId/${orderId}`)
       .then((response) => response.json())
       .then((orders) => {
+        console.log(orders);
         setOrder(orders[0]);
         const orderProducts = orders[0].products;
         const allProducts = getProducts(orderProducts);
         Promise.all(allProducts).then((data) => {
           setProductsInOrder(data);
+          setLoaded(true);
         });
       });
   };
@@ -160,54 +166,60 @@ const OrderDetails = (props) => {
       <h1>Order Details</h1>
       <br />
       <div style={{ display: "flex" }}>
-        <div className="col-2 col-md-2 col-lg-1 col-xl-2">
-          <NavigationSidebar />
+        <div className="col-2 col-md-2 col-lg-1 col-xl-2 mr-2">
+          <NavigationSidebar active="orders" />
         </div>
         <br />
-        <Col>
-          <div className="col-10 col-sm-10 col-lg-6">
-            {productsInOrder.map((product) => (
-              <React.Fragment>
-                <Card style={{ width: "700px" }}>
-                  <Card.Header as="h5">Order Details</Card.Header>
-                  <Card.Text>
-                    <Image
-                      style={{
-                        "margin-left": "20px",
-                        padding: "5px",
-                        width: "150px",
-                        height: "150px",
-                      }}
-                      src={
-                        product.img1
-                          ? product.img1
-                          : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwbWRWBH9nh4wJdlJND0_n36oGoInrUsdfw&usqp=CAU"
-                      }
-                    />
-                    <br />
-                    <div
-                      style={{
-                        "margin-left": "350px",
-                        "margin-top": "-90px",
-                        "font-size": "20px",
-                      }}
-                    >
-                      <b>Product:</b> {product.model_name}
-                      &nbsp;
+        {loaded ? (
+          <Col>
+            <div className="col-10 col-sm-10 col-lg-6">
+              {productsInOrder.map((product) => (
+                <React.Fragment>
+                  <Card style={{ width: "700px" }}>
+                    <Card.Header as="h5">Order Details</Card.Header>
+                    <Card.Text>
+                      <Image
+                        style={{
+                          "margin-left": "20px",
+                          padding: "5px",
+                          width: "150px",
+                          height: "150px",
+                        }}
+                        src={
+                          product.img1
+                            ? product.img1
+                            : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwbWRWBH9nh4wJdlJND0_n36oGoInrUsdfw&usqp=CAU"
+                        }
+                      />
                       <br />
-                      <b>Memory:</b> {product.storage}
-                      &nbsp;
-                      <br />
-                      <b>Product Price: $</b>
-                      {product.price}
-                    </div>
-                  </Card.Text>
-                </Card>
-                <br />
-              </React.Fragment>
-            ))}
+                      <div
+                        style={{
+                          "margin-left": "350px",
+                          "margin-top": "-90px",
+                          "font-size": "20px",
+                        }}
+                      >
+                        <b>Product:</b> {product.model_name}
+                        &nbsp;
+                        <br />
+                        <b>Memory:</b> {product.storage}
+                        &nbsp;
+                        <br />
+                        <b>Product Price: $</b>
+                        {product.price}
+                      </div>
+                    </Card.Text>
+                  </Card>
+                  <br />
+                </React.Fragment>
+              ))}
+            </div>
+          </Col>
+        ) : (
+          <div className="spinner">
+            <Spinner animation="border" />
           </div>
-        </Col>
+        )}
       </div>
       <br />
       <Footer />

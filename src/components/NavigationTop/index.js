@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { OfflineBolt } from "@material-ui/icons";
 import { logout } from "../../firebase";
 import { useEffect } from "react";
@@ -15,6 +15,13 @@ import SearchBar from "./SearchBar";
 import "../../vendors/bootstrap/css/navigation-top.css";
 
 const NavigationTop = ({ isLoggedIn }) => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("email")) {
+      setLoggedIn(true);
+    }
+  }, []);
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -54,17 +61,22 @@ const NavigationTop = ({ isLoggedIn }) => {
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-            {!isLoggedIn && <Nav.Link href="/login">Login</Nav.Link>}
-            {isLoggedIn && <Nav.Link href="/editaccount">Profile</Nav.Link>}
-            {isLoggedIn && (
-              <Nav.Link href="" onClick={() => logout()}>
-                Logout
-              </Nav.Link>
-            )}
-            {isLoggedIn && (
+            {loggedIn ? "" : <Nav.Link href="/login">Login</Nav.Link>}
+            {loggedIn ? <Nav.Link href="/editaccount">Profile</Nav.Link> : ""}
+
+            {loggedIn ? (
               <Nav.Link href="/cart" className="float-right">
                 Cart
               </Nav.Link>
+            ) : (
+              ""
+            )}
+            {loggedIn ? (
+              <Nav.Link href="" onClick={() => logout()}>
+                Logout
+              </Nav.Link>
+            ) : (
+              ""
             )}
           </Nav>
         </Container>

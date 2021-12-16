@@ -39,8 +39,21 @@ class Order extends React.Component {
               # Order - {this.state.order.orderId}
             </Card.Header>
             <Card.Body>
-              <Card.Title>{this.state.order.date}</Card.Title>
+              {localStorage.getItem("role") != "owner" ? (
+                <Card.Title>{this.state.order.date}</Card.Title>
+              ) : (
+                ""
+              )}
               <Card.Text>
+                {localStorage.getItem("role") == "owner" ? (
+                  <Row>
+                    <Col xs={10} md={6}>
+                      {this.state.order.userId}
+                    </Col>
+                  </Row>
+                ) : (
+                  ""
+                )}
                 <Row>
                   <Col xs={6} md={4}>
                     <Image

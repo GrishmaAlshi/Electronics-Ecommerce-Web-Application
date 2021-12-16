@@ -13,9 +13,8 @@ import {
 import { logout } from "../../firebase";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { useHistory } from "react-router-dom";
-import "../../vendors/bootstrap/css/navigation-top.css";
 
-const AdminNavbar = () => {
+const OwnerNavbar = () => {
   const [loggedIn, setLoggedIn] = useState("");
   const history = useHistory();
   const authListener = () => {
@@ -50,15 +49,23 @@ const AdminNavbar = () => {
             <OfflineBolt />
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link
-              onClick={() => {
-                goToHome();
-              }}
-            >
-              Home
-            </Nav.Link>
-            <Nav.Link href="/admin/add">Add</Nav.Link>
-            <Nav.Link href="/admin/update">Update</Nav.Link>
+            {localStorage.getItem("role") != "user" ? (
+              <Nav.Link
+                onClick={() => {
+                  goToHome();
+                }}
+              >
+                Home
+              </Nav.Link>
+            ) : (
+              <></>
+            )}
+            {loggedIn && (
+              <Nav.Link href="/owner/vieworders">View Orders</Nav.Link>
+            )}
+            {loggedIn && (
+              <Nav.Link href="/owner/viewusers">View Users</Nav.Link>
+            )}
             {loggedIn && (
               <Nav.Link href="" onClick={() => logout()}>
                 Logout
@@ -71,4 +78,4 @@ const AdminNavbar = () => {
   );
 };
 
-export default AdminNavbar;
+export default OwnerNavbar;

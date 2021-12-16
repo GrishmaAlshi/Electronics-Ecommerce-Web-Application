@@ -28,15 +28,12 @@ class Orders extends React.Component {
     return (
       <>
         <NavigationTop />
-        <h1>Welcome to your profile</h1>
+        <h1>Welcome to your orders</h1>
         <div style={{ display: "flex" }}>
-          <div className="col-2 col-md-2 col-lg-1 col-xl-2">
+          <div className="col-4 col-md-2 col-lg-4 col-xl-3">
             <NavigationSidebar active="orders" />
           </div>
-          <div
-            className="col-10 col-sm-10 col-lg-6"
-            style={{ "margin-left": "50px" }}
-          >
+          <div className="col-8 col-sm-10 col-lg-8  col-xl-9">
             {this.state.orders.map((order) => (
               <Order order={order} />
             ))}

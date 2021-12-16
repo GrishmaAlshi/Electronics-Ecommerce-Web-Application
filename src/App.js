@@ -30,6 +30,9 @@ import ElectronicsAdd from "./components/ElectronicsAdd";
 import ElectronicsUpdate from "./components/ElectronicsUpdate";
 import UpdateDetails from "./components/ElectronicsUpdate/UpdateDetails";
 import ReturnPolicy from "./components/ReturnPolicy";
+import ViewOrders from "./components/ViewOrders.js";
+import ViewUsers from "./components/ViewUsers";
+import Owner from "./components/Owner";
 
 const reducer = combineReducers({ electronics: electronics });
 const store = createStore(reducer);
@@ -107,6 +110,15 @@ function App() {
           </Route>
           <Route path="/returnpolicy">
             <ReturnPolicy />
+          </Route>
+          <Route path="/ownerhome">
+            <Owner />
+          </Route>
+          <Route path="/owner/vieworders">
+            <ViewOrders />
+          </Route>
+          <Route path="/owner/viewusers">
+            <ViewUsers />
           </Route>
         </div>
       </BrowserRouter>
