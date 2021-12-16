@@ -11,7 +11,6 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 600px;
 `;
 
 const ImageContainer = styled.div`
@@ -72,7 +71,6 @@ class Order extends React.Component {
               >
                 View Order
               </Link>
-              {/* <Button variant="primary">View Order</Button> */}
             </Card.Body>
           </Card>
         </Container>

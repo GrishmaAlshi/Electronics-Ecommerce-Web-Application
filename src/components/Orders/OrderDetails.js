@@ -10,6 +10,7 @@ import { Card } from "react-bootstrap";
 import { mobile } from "../responsive";
 import { Spinner } from "react-bootstrap";
 import "../../vendors/bootstrap/css/wish.css";
+import "../../vendors/bootstrap/css/order.css";
 
 const Info = styled.div`
   opacity: 0;
@@ -166,60 +167,57 @@ const OrderDetails = (props) => {
       <h1>Order Details</h1>
       <br />
       <div style={{ display: "flex" }}>
-        <div className="col-2 col-md-2 col-lg-1 col-xl-2 mr-2">
+        <div className="col-4 col-md-2 col-lg-4 col-xl-3 mr-2">
           <NavigationSidebar active="orders" />
         </div>
         <br />
-        {loaded ? (
-          <Col>
-            <div className="col-10 col-sm-10 col-lg-6">
-              {productsInOrder.map((product) => (
-                <React.Fragment>
-                  <Card style={{ width: "700px" }}>
-                    <Card.Header as="h5">Order Details</Card.Header>
-                    <Card.Text>
-                      <Image
-                        style={{
-                          "margin-left": "20px",
-                          padding: "5px",
-                          width: "150px",
-                          height: "150px",
-                        }}
-                        src={
-                          product.img1
-                            ? product.img1
-                            : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwbWRWBH9nh4wJdlJND0_n36oGoInrUsdfw&usqp=CAU"
-                        }
-                      />
-                      <br />
-                      <div
-                        style={{
-                          "margin-left": "350px",
-                          "margin-top": "-90px",
-                          "font-size": "20px",
-                        }}
-                      >
-                        <b>Product:</b> {product.model_name}
-                        &nbsp;
+        <div className="col-8 col-sm-10 col-lg-8  col-xl-9 ">
+          {loaded ? (
+            <Col className="card-col">
+              <div className="col-10 col-sm-10 col-lg-6">
+                {productsInOrder.map((product) => (
+                  <React.Fragment>
+                    <Card className="order-detail-card">
+                      <Card.Header as="h5">Order Details</Card.Header>
+                      <Card.Text>
+                        <Image
+                          className="order-image"
+                          src={
+                            product.img1
+                              ? product.img1
+                              : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkwbWRWBH9nh4wJdlJND0_n36oGoInrUsdfw&usqp=CAU"
+                          }
+                        />
                         <br />
-                        <b>Memory:</b> {product.storage}
-                        &nbsp;
-                        <br />
-                        <b>Product Price: $</b>
-                        {product.price}
-                      </div>
-                    </Card.Text>
-                  </Card>
-                  <br />
-                </React.Fragment>
-              ))}
+                        <div
+                          style={{
+                            "margin-top": "-90px",
+                            "font-size": "20px",
+                          }}
+                          className="order-details-card-text"
+                        >
+                          <b>Product:</b> {product.model_name}
+                          &nbsp;
+                          <br />
+                          <b>Memory:</b> {product.storage}
+                          &nbsp;
+                          <br />
+                          <b>Product Price: $</b>
+                          {product.price}
+                        </div>
+                      </Card.Text>
+                    </Card>
+                    <br />
+                  </React.Fragment>
+                ))}
+              </div>
+            </Col>
+          ) : (
+            <div className="spinner">
+              <Spinner animation="border" />
             </div>
-          </Col>
-        ) : (
-          <div className="spinner">
-            <Spinner animation="border" />
-          </div>
-        )}
+          )}
+        </div>
       </div>
       <br />
       <Footer />
