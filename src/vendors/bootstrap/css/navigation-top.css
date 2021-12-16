@@ -1,0 +1,29 @@
+@media screen and (max-width: 500px) {
+    .navbar-brand{
+     font-size: 10px
+    }
+    .navbar-nav {
+        font-size: 10px;
+    }   
+  }
+
+  @media screen and (min-width: 500px) and (max-width: 768px) {
+    .navbar-brand{
+     font-size: 15px
+    }
+    .navbar-nav {
+        font-size: 15px;
+    }   
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+    
+}
+  
+  @media screen and (min-width: 992px) and (max-width: 1200px) {
+
+  }
+
+  @media screen and (min-width: 1200px) {
+
+}

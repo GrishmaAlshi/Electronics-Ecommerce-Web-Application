@@ -12,13 +12,14 @@ import {
   NavLink,
 } from "react-bootstrap";
 import SearchBar from "./SearchBar";
+import "../../vendors/bootstrap/css/navigation-top.css";
 
 const NavigationTop = ({ isLoggedIn }) => {
   return (
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/">
+          <Navbar.Brand className="navbar-brand-custom" href="/">
             Bazinga &nbsp;
             <OfflineBolt />
           </Navbar.Brand>

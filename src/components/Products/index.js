@@ -5,7 +5,8 @@ import "../../vendors/bootstrap/css/wish.css";
 import { Spinner } from "react-bootstrap";
 
 const Container = styled.div`
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -52,7 +53,7 @@ class Products extends React.Component {
 
   render() {
     return (
-      <Container>
+      <Container className="products-container">
         {this.state.isLoaded ? (
           this.state.filteredElectronics.map((elecs) => (
             <Product item={elecs} key={elecs.id} />

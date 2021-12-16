@@ -13,6 +13,7 @@ import {
 import { logout } from "../../firebase";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { useHistory } from "react-router-dom";
+import "../../vendors/bootstrap/css/navigation-top.css";
 
 const AdminNavbar = () => {
   const [loggedIn, setLoggedIn] = useState("");
