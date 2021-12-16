@@ -96,6 +96,7 @@ const logout = () => {
       console.log("User signed out");
       localStorage.removeItem("email");
       localStorage.removeItem("role");
+      window.location.reload();
     })
     .catch((error) => {
       console.log(error);
