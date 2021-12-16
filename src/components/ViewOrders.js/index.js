@@ -5,6 +5,8 @@ import OwnerNavbar from "../OwnerNavbar";
 
 const ViewOrders = () => {
   const [allOrders, setAllOrders] = useState([]);
+  const [order, setOrder] = useState({});
+  const [orderDates, setOrderDates] = useState([]);
 
   useEffect(() => {
     getAllOrders();
@@ -15,6 +17,17 @@ const ViewOrders = () => {
       .then((res) => res.json())
       .then((data) => {
         setAllOrders(data);
+        const temp = data.reduce(function (acc, eachOrder) {
+          if (acc[eachOrder["date"]]) {
+            acc[eachOrder["date"]] = [...acc[eachOrder["date"]], eachOrder];
+          } else {
+            acc[eachOrder["date"]] = [eachOrder];
+          }
+          return acc;
+        }, {});
+        setOrder(temp);
+        setOrderDates(Object.keys(temp));
+        console.log("TEMP", temp);
       });
   };
 
@@ -24,12 +37,14 @@ const ViewOrders = () => {
 
       <Card border="dark" style={{ padding: "40px" }}>
         <Card.Title>Orders</Card.Title>
-        {allOrders.map((eachOrder) => (
+        {orderDates.map((orderDate) => (
           <Accordion>
             <Accordion.Item eventKey="0">
-              <Accordion.Header>{eachOrder.orderId}</Accordion.Header>
+              <Accordion.Header>{orderDate}</Accordion.Header>
               <Accordion.Body>
-                <Order order={eachOrder} />
+                {order[orderDate].map((order) => (
+                  <Order order={order} />
+                ))}
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>

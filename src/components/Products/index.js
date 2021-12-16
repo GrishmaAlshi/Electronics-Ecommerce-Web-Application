@@ -58,7 +58,7 @@ class Products extends React.Component {
             <Product item={elecs} key={elecs.id} />
           ))
         ) : (
-          <div className="spinner-container">
+          <div className="spinner-electronics">
             <Spinner animation="border" />
           </div>
         )}

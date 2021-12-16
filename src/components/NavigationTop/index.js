@@ -14,35 +14,23 @@ import {
 import SearchBar from "./SearchBar";
 
 const NavigationTop = ({ isLoggedIn }) => {
-  const history = useHistory();
-  const goToHome = () => {
-    if (localStorage.getItem("role") == "admin") {
-      history.push("/admin/add");
-    } else if (localStorage.getItem("role") == "owner") {
-      history.push("/ownerhome");
-    }
-  };
+  const [loggedIn, setLoggedIn] = useState(false);
 
+  useEffect(() => {
+    if (localStorage.getItem("email")) {
+      setLoggedIn(true);
+    }
+  }, []);
   return (
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/">
-            Bazinga &nbsp;
-            <OfflineBolt />
-          </Navbar.Brand>
-          <Nav className="me-auto">
-            {localStorage.getItem("role") != "user" ? (
-              <Nav.Link
-                onClick={() => {
-                  goToHome();
-                }}
-              >
-                Home
-              </Nav.Link>
-            ) : (
-              <></>
-            )}
+          <Nav>
+            <Navbar.Brand href="/">
+              Bazinga &nbsp;
+              <OfflineBolt />
+            </Navbar.Brand>
+
             <Nav.Link href="/about">About</Nav.Link>
             <Dropdown as={NavItem}>
               <Dropdown.Toggle as={NavLink}>
@@ -73,18 +61,22 @@ const NavigationTop = ({ isLoggedIn }) => {
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-            {!isLoggedIn && <Nav.Link href="/login">Login</Nav.Link>}
-            {isLoggedIn && <Nav.Link href="/editaccount">Profile</Nav.Link>}
+            {loggedIn ? "" : <Nav.Link href="/login">Login</Nav.Link>}
+            {loggedIn ? <Nav.Link href="/editaccount">Profile</Nav.Link> : ""}
 
-            {isLoggedIn && (
+            {loggedIn ? (
               <Nav.Link href="/cart" className="float-right">
                 Cart
               </Nav.Link>
+            ) : (
+              ""
             )}
-            {isLoggedIn && (
+            {loggedIn ? (
               <Nav.Link href="" onClick={() => logout()}>
                 Logout
               </Nav.Link>
+            ) : (
+              ""
             )}
           </Nav>
         </Container>

@@ -31,6 +31,15 @@ const AdminNavbar = () => {
   useEffect(() => {
     authListener();
   }, []);
+
+  const goToHome = () => {
+    if (localStorage.getItem("role") == "admin") {
+      history.push("/admin/add");
+    } else if (localStorage.getItem("role") == "owner") {
+      history.push("/ownerhome");
+    }
+  };
+
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -40,7 +49,13 @@ const AdminNavbar = () => {
             <OfflineBolt />
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/admin/add">Home</Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                goToHome();
+              }}
+            >
+              Home
+            </Nav.Link>
             <Nav.Link href="/admin/add">Add</Nav.Link>
             <Nav.Link href="/admin/update">Update</Nav.Link>
             {loggedIn && (
