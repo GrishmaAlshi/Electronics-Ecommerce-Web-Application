@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import PrivacyAlert from "../PrivacyAlert";
 
@@ -72,20 +73,24 @@ const Home = () => {
           <>
             <Row>
               <Col>
+              <Link to ="/login">
                 <Image
                   className="d-block"
                   alt="Second slide"
                   src="https://thumbs.dreamstime.com/z/new-arrival-sale-market-advertising-design-laptop-discount-offer-banner-arrivals-134026483.jpg"
                   fluid
                 />
+                </Link>
               </Col>
               <Col>
+              <Link to ="/login">
                 <Image
                   className="d-block"
                   alt="Second slide"
                   src="https://s3b.cashify.in/gpro/uploads/2019/09/16135517/buyback_offer_banner.png"
                   fluid
                 />
+              </Link>
               </Col>
             </Row>
           </>
