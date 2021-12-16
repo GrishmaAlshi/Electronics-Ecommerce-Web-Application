@@ -43,10 +43,10 @@ const Edit = () => {
         </div>
       </Col> */}
       <div className="profile">
-        <div className="col-2 col-md-2 col-lg-1 col-xl-2">
+        <div className="col-4 col-md-2 col-lg-4 col-xl-3">
           <NavigationSidebar active="editaccount" />
         </div>
-        <div className="col-5 col-sm-10 col-lg-6 edit-profile-div">
+        <div className="col-8 col-sm-10 col-lg-8  col-xl-9 edit-profile-div">
           <EditProfile />
         </div>
       </div>

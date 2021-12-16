@@ -10,7 +10,7 @@ import {
 const NavigationSidebar = ({ active = "editaccount" }) => {
   return (
     <>
-      <div className="list-group" style={{ width: "200px" }}>
+      <div className="list-group">
         <Link
           to="/editaccount"
           className={`list-group-item  ${
@@ -21,7 +21,7 @@ const NavigationSidebar = ({ active = "editaccount" }) => {
             <div className="col-2">
               <Home />
             </div>
-            <div className="col-10 d-none d-xl-block">My Account</div>
+            <div className="col-10 d-none d-xl-block">Account</div>
           </div>
         </Link>
         <Link
@@ -33,7 +33,7 @@ const NavigationSidebar = ({ active = "editaccount" }) => {
               <BookmarkBorderOutlined />
             </div>
             <div className="col-10 d-none d-xl-block">
-              <span> My Orders</span>
+              <span> Orders</span>
             </div>
           </div>
         </Link>
@@ -49,7 +49,7 @@ const NavigationSidebar = ({ active = "editaccount" }) => {
               <FavoriteBorderOutlined />
             </div>
             <div className="col-10 d-none d-xl-block">
-              <span> My Wishlist</span>
+              <span> Wishlist</span>
             </div>
           </div>
         </Link>
