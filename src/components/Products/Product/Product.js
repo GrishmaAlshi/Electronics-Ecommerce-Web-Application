@@ -97,6 +97,10 @@ const Product = ({ item }) => {
     if (!isLoggedin) {
       history.push("/login");
     } else {
+      if(item.quantity == 0) {
+        alert("Out of Stock");
+        return;
+      }
       fetch(`${ELECTRONICS_API}/${id}`, {
         method: "PUT",
         body: JSON.stringify(item),

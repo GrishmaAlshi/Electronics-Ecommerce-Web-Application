@@ -165,6 +165,10 @@ const ProductDetailsComponent = ({ item }) => {
     if (!isLoggedin) {
       history.push("/login");
     } else {
+      if(electronics[0].quantity == 0) {
+        alert("Out of Stock");
+        return;
+      }
       fetch(`${CART_API}/${id}`, {
         method: "PUT",
         body: JSON.stringify(electronics[0]),
@@ -194,10 +198,11 @@ const ProductDetailsComponent = ({ item }) => {
             </Title>
             <Desc>{electronics.map((elec) => elec.gpu)}</Desc>
             <Price>${electronics.map((elec) => elec.price)}</Price>
+          
             <Quantity>
               {electronics.map((elec) =>
                 elec.quantity
-                  ? parseInt(elec.quantity) > 0 && parseInt(elec.quantity) <= 5
+                  ? parseInt(elec.quantity) == 0 ? "Item out of stock." :  parseInt(elec.quantity) > 0 && parseInt(elec.quantity) <= 5
                     ? `Hurry up! Only ${elec.quantity} left in stock.`
                     : ""
                   : ""
